@@ -14,9 +14,6 @@
         if (localStorage.getItem('font') === 'serif') {
           document.documentElement.classList.add('serif');
         }
-        if (localStorage.getItem('site-auth') === '1') {
-          document.documentElement.classList.add('authed');
-        }
       } catch (e) {}
     })();
   </script>
@@ -59,20 +56,6 @@
   </script>
 </head>
 <body class="bg-deep-midnight text-frost-white">
-
-  <!-- PASSWORD GATE -->
-  <div class="gate-overlay" id="gate-overlay">
-    <div class="gate-card">
-      <div class="gate-mark" aria-hidden="true"></div>
-      <p class="gate-caption">MPCraft · Acesso restrito</p>
-      <p class="gate-title">Digite a senha para continuar.</p>
-      <form id="gate-form" class="gate-form" autocomplete="off">
-        <input id="gate-input" type="password" class="gate-input" placeholder="••••••••" autocomplete="current-password" required aria-label="Senha">
-        <button type="submit" class="gate-submit">Entrar</button>
-      </form>
-      <p id="gate-error" class="gate-error" role="alert">Senha incorreta.</p>
-    </div>
-  </div>
 
   <!-- NAV -->
   <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
