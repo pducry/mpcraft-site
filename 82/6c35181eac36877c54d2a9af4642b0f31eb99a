@@ -1,0 +1,19 @@
+middleware.js
+  s_78516f086c4cd5::t_a88f17222dae2f 1-42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "826c35181eac36877c54d2a9af4642b0f31eb99a",
+  "prompts": {},
+  "sessions": {
+    "s_78516f086c4cd5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8954477c-dba1-4385-8d2a-382e3801353e",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
