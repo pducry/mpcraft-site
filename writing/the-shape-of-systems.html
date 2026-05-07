@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The shape of systems — Pedro Julien</title>
+  <meta name="description" content="On the difference between order and rigidity, and what a design system is actually for.">
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('font') === 'serif') {
+          document.documentElement.classList.add('serif');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/theme.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-midnight': 'rgb(var(--canvas) / <alpha-value>)',
+            'faded-steel':   'rgb(var(--line)   / <alpha-value>)',
+            'frost-white':   'rgb(var(--fg)     / <alpha-value>)',
+            'muted-ash':     'rgb(var(--muted)  / <alpha-value>)',
+            'whisper-gray':  'rgb(var(--whisper)/ <alpha-value>)',
+            'electric-blue': 'rgb(var(--accent) / <alpha-value>)',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+            'mono': ['"Space Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          fontSize: {
+            'caption':    ['11px', { lineHeight: '2',    letterSpacing: '0.1em' }],
+            'body-sm':    ['13px', { lineHeight: '1.43', letterSpacing: '0' }],
+            'body':       ['15px', { lineHeight: '1.5',  letterSpacing: '-0.005em' }],
+            'subheading': ['18px', { lineHeight: '1.4',  letterSpacing: '-0.005em' }],
+            'heading':    ['30px', { lineHeight: '1.2',  letterSpacing: '-0.005em' }],
+            'heading-lg': ['40px', { lineHeight: '1.11', letterSpacing: '-0.005em' }],
+            'display':    ['64px', { lineHeight: '1',    letterSpacing: '-0.005em' }],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-deep-midnight text-frost-white">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" class="text-body flex items-center gap-2 group">
+        <span class="text-muted-ash group-hover:text-frost-white transition">←</span>
+        <span>Pedro Julien</span>
+      </a>
+      <div class="flex items-center gap-5 sm:gap-6">
+        <a href="../index.html#work" class="text-body text-frost-white/80 hover:text-frost-white transition">Work</a>
+        <a href="../index.html#playground" class="text-body text-frost-white/80 hover:text-frost-white transition">Playground</a>
+        <a href="../index.html#contact" class="hidden sm:inline text-body text-frost-white/80 hover:text-frost-white transition">Contact</a>
+        <button id="font-toggle" type="button" aria-label="Toggle sans or serif typography" class="toggle-btn">
+          <span class="font-btn-label">Aa</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ARTICLE HEADER -->
+  <article class="max-w-2xl mx-auto px-6">
+    <header class="pt-24 md:pt-32 pb-12 border-b border-faded-steel">
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-caption text-muted-ash uppercase">Playground</span>
+        <span class="text-muted-ash">·</span>
+        <span class="font-mono text-caption text-muted-ash uppercase">March 2025</span>
+        <span class="text-muted-ash">·</span>
+        <span class="font-mono text-caption text-muted-ash uppercase">8 min read</span>
+      </div>
+      <h1 class="mt-6 text-heading md:text-heading-lg">The shape of systems</h1>
+      <p class="mt-4 text-subheading text-muted-ash">On the difference between order and rigidity, and what a design system is actually for.</p>
+    </header>
+
+    <!-- ARTICLE BODY -->
+    <div class="prose pt-12 pb-20">
+      <p>
+        Most teams I work with have a design system. Some of them are large and well-funded, with dedicated teams and roadmaps. Others are scrappy collections of components someone built in a weekend. But almost all of them, large or small, share a particular kind of confusion: they have mistaken the artifact for the practice.
+      </p>
+
+      <p>
+        The artifact is the library — the tokens, the components, the documentation site. The practice is everything else. It is the shared judgment about when to use what, the negotiations between teams about exceptions, the willingness to break a pattern when the pattern is wrong. The artifact is what you can show someone in five minutes. The practice is what you spend years building, and what falls apart the moment people stop paying attention.
+      </p>
+
+      <h2>Components are not the system</h2>
+
+      <p>
+        I am not arguing that components don't matter. They matter a great deal. But a component library, on its own, gives you a kind of false coherence: every team is using the same Button, but they are using it to do completely different things, in completely different contexts, for completely different reasons. The visual surface looks consistent. The product, taken as a whole, does not.
+      </p>
+
+      <p>
+        A useful test: if your design system disappeared tomorrow, what would you lose? If the answer is "the components," your team would rebuild them in a quarter, slightly worse, and continue. If the answer is "the conversations" — the design reviews, the API negotiations, the regular forums where people argue about what should and shouldn't be a primitive — then you've built something harder to replace.
+      </p>
+
+      <h2>What a system actually does</h2>
+
+      <p>
+        The most useful framing I've found is this: a design system is a <a href="#">set of decisions made in advance</a>, so that individual teams can make fewer of them. It is leverage. It is a way of compressing taste into reusable form, so that the people downstream of you can spend their attention on the questions that are actually unique to their work.
+      </p>
+
+      <p>
+        This is also why systems are so often resented. Done badly, they replace one set of decisions (the ones the team actually needed to make) with another set (the ones the system made for them, possibly years ago, in a context that no longer applies). The system feels like rigidity because it has stopped doing the work of leverage and started doing the work of control.
+      </p>
+
+      <blockquote>
+        Order is what you build. Rigidity is what you become when you stop maintaining it.
+      </blockquote>
+
+      <h2>Why most systems decay</h2>
+
+      <p>
+        Every successful system I've seen has had at least one person — and usually three or four — whose job is, in essence, to keep the system honest. Not to add more components. Not to grow the library. To <em>prune</em>. To kill patterns that have stopped earning their keep, to merge things that should never have been separated, to push back when a team wants a one-off variant that should really be a request to change the underlying primitive.
+      </p>
+
+      <p>
+        Most systems decay because nobody is doing this work, and the system grows like a city that keeps adding districts without ever updating the zoning. The map gets larger. The territory gets harder to navigate.
+      </p>
+
+      <h2>A different shape</h2>
+
+      <p>
+        I've started to think the better metaphor for a design system is not a library or a kit, but a constitution: a relatively small set of load-bearing principles, written down clearly, plus the institutions and rituals that interpret them in changing circumstances. Most of the value sits in the interpretation, not the document.
+      </p>
+
+      <p>
+        That probably sounds like a lot of overhead. It is. The honest answer is that good design systems are expensive in a particular way: they require ongoing attention from senior people, indefinitely. The teams that try to do this with a part-time committee and a Notion doc tend to end up with neither order nor leverage — just a slightly fancier version of the chaos they started with.
+      </p>
+
+      <p>
+        The shape of a system, in the end, is the shape of the team that maintains it. If the team is thoughtful, attentive, and willing to revise its own assumptions, the system bends. If it is none of those things, the system breaks. There is no third option, and there is no library that can save you from it.
+      </p>
+    </div>
+
+    <!-- NEXT -->
+    <footer class="border-t border-faded-steel pt-8 pb-16">
+      <div class="flex items-center justify-between">
+        <a href="../index.html#playground" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">← All playground</a>
+        <a href="#" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">Next: Notes on product taste →</a>
+      </div>
+    </footer>
+  </article>
+
+  <!-- SITE FOOTER -->
+  <footer class="max-w-3xl mx-auto px-6 pt-12 pb-16 border-t border-faded-steel">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">© 2026 Pedro Julien</span>
+      <div class="flex items-center gap-6">
+        <a href="#" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">Twitter</a>
+        <a href="#" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">Are.na</a>
+        <a href="mailto:hi@example.com" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/theme.js"></script>
+</body>
+</html>

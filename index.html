@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MPCraft — Mercado Pago</title>
+  <meta name="description" content="Padrão de qualidade coletivo em UX. Iniciativa do time MP Cross — rituais, frameworks de ideação e cultura de craft, integrados ao fluxo de trabalho.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- FOUC prevention: apply persisted lang/font BEFORE first paint -->
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem('lang');
+        if (lang === 'pt' || lang === 'es') {
+          document.documentElement.setAttribute('lang', lang);
+        }
+        if (localStorage.getItem('font') === 'serif') {
+          document.documentElement.classList.add('serif');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/theme.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-midnight': 'rgb(var(--canvas) / <alpha-value>)',
+            'faded-steel':   'rgb(var(--line)   / <alpha-value>)',
+            'frost-white':   'rgb(var(--fg)     / <alpha-value>)',
+            'muted-ash':     'rgb(var(--muted)  / <alpha-value>)',
+            'whisper-gray':  'rgb(var(--whisper) / <alpha-value>)',
+            'electric-blue': 'rgb(var(--accent) / <alpha-value>)',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+            'mono': ['"Space Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          fontSize: {
+            'caption':    ['11px', { lineHeight: '2',    letterSpacing: '0.1em' }],
+            'body-sm':    ['13px', { lineHeight: '1.43', letterSpacing: '0' }],
+            'body':       ['15px', { lineHeight: '1.5',  letterSpacing: '-0.005em' }],
+            'subheading': ['18px', { lineHeight: '1.4',  letterSpacing: '-0.005em' }],
+            'heading':    ['30px', { lineHeight: '1.2',  letterSpacing: '-0.005em' }],
+            'heading-lg': ['40px', { lineHeight: '1.11', letterSpacing: '-0.005em' }],
+            'display':    ['64px', { lineHeight: '1',    letterSpacing: '-0.005em' }],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-deep-midnight text-frost-white">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" aria-label="MPCraft — home">
+        <img src="assets/logo@2x.png" alt="MPCraft" class="h-6 w-auto block">
+      </a>
+      <div class="flex items-center gap-5 sm:gap-6">
+        <a href="#conceitos" class="text-body text-frost-white/80 hover:text-frost-white transition">
+          <span lang="pt">Conceitos</span>
+          <span lang="es">Conceptos</span>
+        </a>
+        <a href="#projetos" class="text-body text-frost-white/80 hover:text-frost-white transition">
+          <span lang="pt">Projetos</span>
+          <span lang="es">Proyectos</span>
+        </a>
+        <a href="#rituais" class="text-body text-frost-white/80 hover:text-frost-white transition">
+          <span lang="pt">Rituais</span>
+          <span lang="es">Rituales</span>
+        </a>
+        <button id="lang-toggle" type="button" class="toggle-btn lang-toggle" aria-label="Alternar idioma / Cambiar idioma">
+          <span class="lang-opt" data-lang="pt">PT</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-opt" data-lang="es">ES</span>
+        </button>
+        <button id="font-toggle" type="button" class="toggle-btn" aria-label="Alternar tipografia">
+          <span class="font-btn-label">Aa</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="max-w-3xl mx-auto px-6 pt-24 md:pt-32 pb-16">
+    <span class="font-mono text-caption text-muted-ash uppercase">
+      <span lang="pt">MPCraft · Versão 1.0</span>
+      <span lang="es">MPCraft · Versión 1.0</span>
+    </span>
+    <div class="mt-8 space-y-6">
+      <p lang="pt" class="text-body text-frost-white">
+        MPCraft instala o padrão de qualidade coletivo em UX — uma qualidade que se sustenta sozinha, sem depender do perfil individual de cada designer. Iniciativa conduzida pelo time de MP Cross como programa contínuo: rituais curtos, frameworks de ideação e cultura de craft, integrados ao fluxo de trabalho, sem virar agenda extra.
+      </p>
+      <p lang="es" class="text-body text-frost-white">
+        MPCraft instala el estándar de calidad colectivo en UX — una calidad que se sostiene sola, sin depender del perfil individual de cada diseñador. Iniciativa conducida por el equipo de MP Cross como programa continuo: rituales cortos, frameworks de ideación y cultura de craft, integrados al flujo de trabajo, sin volverse agenda extra.
+      </p>
+      <p lang="pt" class="text-body text-frost-white">
+        Três pilares organizam a prática — <strong>Develop the taste</strong> (vocabulário visual e critério compartilhado), <strong>Grow the craft</strong> (técnica circulando entre os times) e <strong>Own your work</strong> (autonomia para defender com racional, não com gosto).
+      </p>
+      <p lang="es" class="text-body text-frost-white">
+        Tres pilares organizan la práctica — <strong>Develop the taste</strong> (vocabulario visual y criterio compartido), <strong>Grow the craft</strong> (técnica circulando entre los equipos) y <strong>Own your work</strong> (autonomía para defender con racional, no con gusto).
+      </p>
+      <p lang="pt" class="text-body text-muted-ash">
+        Os rituais conectam os times de UX, com a AI como companheira de preparação — ela chega com o contexto, o time chega com o julgamento. O sinal final é o time operando no padrão sem precisar do lead.
+      </p>
+      <p lang="es" class="text-body text-muted-ash">
+        Los rituales conectan los equipos de UX, con la AI como compañera de preparación — ella llega con el contexto, el equipo llega con el juicio. La señal final es el equipo operando en el estándar sin necesidad del lead.
+      </p>
+      <p class="text-body text-muted-ash italic">
+        Develop the taste. Grow the craft. Own your work.
+      </p>
+    </div>
+
+    <dl class="meta-grid grid grid-cols-2 sm:grid-cols-4 gap-y-4 gap-x-6 mt-12 pt-8 border-t border-faded-steel">
+      <div>
+        <dt><span lang="pt">Início</span><span lang="es">Inicio</span></dt>
+        <dd class="mt-1">2025</dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Status</span><span lang="es">Estado</span></dt>
+        <dd class="mt-1">
+          <span lang="pt">Em rollout</span>
+          <span lang="es">En rollout</span>
+        </dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Liderança</span><span lang="es">Liderazgo</span></dt>
+        <dd class="mt-1">Pedro Julien</dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Time</span><span lang="es">Equipo</span></dt>
+        <dd class="mt-1">MP Cross</dd>
+      </div>
+    </dl>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- IMAGE SLIDESHOW -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="slideshow" role="img" aria-label="MPCraft — sequência de slides do projeto">
+        <img src="assets/imagens/Frame%201.png" alt="MPCraft — Frame 1" decoding="async">
+        <img src="assets/imagens/MPCraft1.png" alt="" aria-hidden="true" decoding="async">
+        <img src="assets/imagens/MPCraft2.png" alt="" aria-hidden="true" decoding="async">
+        <img src="assets/imagens/MPCraft3.png" alt="" aria-hidden="true" decoding="async">
+        <img src="assets/imagens/MPCraft4.png" alt="" aria-hidden="true" decoding="async">
+        <img src="assets/imagens/MPCraft6.png" alt="" aria-hidden="true" decoding="async">
+        <img src="assets/imagens/MPCraft61.png" alt="" aria-hidden="true" decoding="async">
+        <img src="assets/imagens/MPCraft7.png" alt="" aria-hidden="true" decoding="async">
+        <img src="assets/imagens/MPCraft8.png" alt="" aria-hidden="true" decoding="async">
+        <img src="assets/imagens/MPCraft9.png" alt="" aria-hidden="true" decoding="async">
+        <img src="assets/imagens/MPCraft91.png" alt="" aria-hidden="true" decoding="async">
+        <img src="assets/imagens/MPCraft10.png" alt="" aria-hidden="true" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- CONCEITOS -->
+  <section id="conceitos" class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Conceitos</span>
+        <span lang="es">Conceptos</span>
+      </span>
+    </header>
+
+    <p class="text-body-sm text-muted-ash mb-12 max-w-xl">
+      <span lang="pt">Dois conceitos organizam a prática diária do MPCraft — pontes entre os pilares <em>Develop the taste</em> e <em>Grow the craft</em>.</span>
+      <span lang="es">Dos conceptos organizan la práctica diaria de MPCraft — puentes entre los pilares <em>Develop the taste</em> y <em>Grow the craft</em>.</span>
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-12">
+      <!-- Craft -->
+      <article>
+        <h3 class="text-subheading text-frost-white">Craft</h3>
+        <p class="mt-2 text-body text-muted-ash italic">
+          <span lang="pt">A excelência se constrói nos detalhes.</span>
+          <span lang="es">La excelencia se construye en los detalles.</span>
+        </p>
+        <ul class="mt-6 space-y-3 text-body text-frost-white">
+          <li lang="pt">Craft é ser dono dos detalhes — mesmo quando o processo não pede.</li>
+          <li lang="pt">Craft é cuidado pelas pessoas do outro lado da tela.</li>
+          <li lang="pt">Craft é a diferença entre um produto que se usa e um que se ama.</li>
+          <li lang="es">El craft es adueñarse de los detalles — incluso cuando el proceso no te lo pide.</li>
+          <li lang="es">El craft es cuidado por las personas del otro lado de la pantalla.</li>
+          <li lang="es">El craft es la diferencia entre un producto que se usa y uno que se ama.</li>
+        </ul>
+
+        <div class="mt-8 pt-6 border-t border-faded-steel">
+          <span class="font-mono text-caption text-muted-ash uppercase">
+            <span lang="pt">O papel da liderança</span>
+            <span lang="es">El rol del liderazgo</span>
+          </span>
+          <p class="mt-2 text-body text-frost-white">
+            <span lang="pt"><strong>Proteja o tempo do time para o craft.</strong></span>
+            <span lang="es"><strong>Protegé el tiempo del equipo para el craft.</strong></span>
+          </p>
+          <ul class="mt-3 space-y-2 text-body-sm text-muted-ash">
+            <li lang="pt">Mantenha o foco do time em iterações e no design final — não na burocracia.</li>
+            <li lang="pt">Elimine reuniões e processos desnecessários — o trabalho tem que ser o foco.</li>
+            <li lang="pt">Construa uma cultura onde o craft é a prioridade — e seja o exemplo.</li>
+            <li lang="es">Manteneles el foco en las iteraciones y el diseño final — no en la burocracia.</li>
+            <li lang="es">Eliminá reuniones y procesos innecesarios — el trabajo tiene que ser el foco.</li>
+            <li lang="es">Construí una cultura donde el craft es la prioridad — y liderá con el ejemplo.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Design Tasting -->
+      <article>
+        <h3 class="text-subheading text-frost-white">Design Tasting</h3>
+        <p class="mt-2 text-body text-muted-ash italic">
+          <span lang="pt">Você não projeta o que não experimenta e ama.</span>
+          <span lang="es">No podés diseñar lo que no probás y amás.</span>
+        </p>
+        <ul class="mt-6 space-y-3 text-body text-frost-white">
+          <li lang="pt">Se você não ama, ninguém vai amar.</li>
+          <li lang="pt">Alimente seu olhar com referências, experiências e cultura. Gosto se constrói, não se dá.</li>
+          <li lang="pt">A IA pode ajudar na execução. Não pode substituir o gosto.</li>
+          <li lang="es">Si no lo amás vos, nadie lo va a amar.</li>
+          <li lang="es">Alimentá tu mirada con referencias y experiencias culturales. El gusto se construye, no se da.</li>
+          <li lang="es">La IA puede asistir la ejecución. No puede reemplazar el gusto.</li>
+        </ul>
+
+        <div class="mt-8 pt-6 border-t border-faded-steel">
+          <span class="font-mono text-caption text-muted-ash uppercase">
+            <span lang="pt">O objetivo</span>
+            <span lang="es">El objetivo</span>
+          </span>
+          <p class="mt-2 text-body text-frost-white">
+            <span lang="pt"><strong>Compartilhe o que te alimenta.</strong></span>
+            <span lang="es"><strong>Compartí lo que te alimenta.</strong></span>
+          </p>
+          <ul class="mt-3 space-y-2 text-body-sm text-muted-ash">
+            <li lang="pt">Compartilhe o que te alimenta — não consuma sozinho.</li>
+            <li lang="pt">Traga essas referências para seus projetos.</li>
+            <li lang="pt">As melhores ideias nascem do pensamento lateral e de conexões inesperadas.</li>
+            <li lang="pt">Seu gosto faz o gosto do time crescer.</li>
+            <li lang="es">Compartí lo que te alimenta — no lo consumas solo.</li>
+            <li lang="es">Traé esas referencias a tus proyectos.</li>
+            <li lang="es">Las mejores ideas nacen del pensamiento lateral y de conexiones inesperadas.</li>
+            <li lang="es">Tu gusto hace crecer el gusto del equipo.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- PROJETOS -->
+  <section id="projetos" class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Projetos</span>
+        <span lang="es">Proyectos</span>
+      </span>
+    </header>
+
+    <p class="text-body-sm text-muted-ash mb-10 max-w-xl">
+      <span lang="pt">Duas iniciativas ativas dentro do MPCraft. Cada uma instala uma camada do padrão coletivo — uma na decisão visual, outra na execução do trabalho.</span>
+      <span lang="es">Dos iniciativas activas dentro de MPCraft. Cada una instala una capa del estándar colectivo — una en la decisión visual, otra en la ejecución del trabajo.</span>
+    </p>
+
+    <ul class="divide-y divide-faded-steel/60">
+      <li>
+        <a href="#" class="item-row block py-8 -mx-2 px-2">
+          <div class="flex items-baseline gap-3">
+            <span class="font-mono text-caption text-muted-ash uppercase">01 · AIAD</span>
+            <span class="font-mono text-caption text-muted-ash uppercase">·</span>
+            <span class="font-mono text-caption text-muted-ash uppercase">
+              <span lang="pt">Ativo</span>
+              <span lang="es">Activo</span>
+            </span>
+          </div>
+          <h3 class="mt-3 text-subheading link-hover-underline">
+            <span lang="pt">Direção de Arte com IA.</span>
+            <span lang="es">Dirección de Arte con IA.</span>
+          </h3>
+          <p class="mt-2 text-body text-frost-white italic">
+            <span lang="pt">Direção de arte com fundamentação racional. IA como meio, não como fim.</span>
+            <span lang="es">Dirección de arte con fundamentación racional. IA como medio, no como fin.</span>
+          </p>
+          <p class="mt-4 text-body-sm text-muted-ash">
+            <span lang="pt">Framework de 4 etapas — <strong>briefing estruturado</strong>, <strong>mapa de referências</strong>, <strong>prompt com intenção</strong> e <strong>validação racional</strong>. Cada decisão visual ganha racional documentado e rastreável. A IA amplifica decisões já fundamentadas — não as substitui.</span>
+            <span lang="es">Framework de 4 etapas — <strong>briefing estructurado</strong>, <strong>mapa de referencias</strong>, <strong>prompt con intención</strong> y <strong>validación racional</strong>. Cada decisión visual gana racional documentado y rastreable. La IA amplifica decisiones ya fundamentadas — no las sustituye.</span>
+          </p>
+          <p class="mt-3 text-body-sm text-muted-ash">
+            <span lang="pt"><strong>Define</strong> o critério visual e o racional estético — direção de arte como decisão, não decoração.</span>
+            <span lang="es"><strong>Define</strong> el criterio visual y el racional estético — dirección de arte como decisión, no decoración.</span>
+          </p>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="item-row block py-8 -mx-2 px-2">
+          <div class="flex items-baseline gap-3">
+            <span class="font-mono text-caption text-muted-ash uppercase">02 · Skillflix</span>
+            <span class="font-mono text-caption text-muted-ash uppercase">·</span>
+            <span class="font-mono text-caption text-muted-ash uppercase">
+              <span lang="pt">Ativo</span>
+              <span lang="es">Activo</span>
+            </span>
+          </div>
+          <h3 class="mt-3 text-subheading link-hover-underline">
+            <span lang="pt">Designers que constroem suas próprias ferramentas.</span>
+            <span lang="es">Diseñadores que construyen sus propias herramientas.</span>
+          </h3>
+          <p class="mt-2 text-body text-frost-white italic">
+            <span lang="pt">Capacitação contínua + agentes de IA que absorvem o repetitivo.</span>
+            <span lang="es">Capacitación continua + agentes de IA que absorben lo repetitivo.</span>
+          </p>
+          <p class="mt-4 text-body-sm text-muted-ash">
+            <span lang="pt">Motor de capacitação contínua que dá ao time autonomia para criar e adaptar agentes especializados — automação inteligente em quatro eixos: <strong>identificação</strong> de necessidades, <strong>organização</strong> de fluxos, <strong>criação</strong> de protótipos e microtextos, <strong>otimização</strong> contínua com base em evidência.</span>
+            <span lang="es">Motor de capacitación continua que da al equipo autonomía para crear y adaptar agentes especializados — automatización inteligente en cuatro ejes: <strong>identificación</strong> de necesidades, <strong>organización</strong> de flujos, <strong>creación</strong> de prototipos y microtextos, <strong>optimización</strong> continua con base en evidencia.</span>
+          </p>
+          <p class="mt-3 text-body-sm text-muted-ash">
+            <span lang="pt"><strong>Libera</strong> o time para o que só o gosto e a estratégia resolvem — inovação e eficiência como disciplina permanente.</span>
+            <span lang="es"><strong>Libera</strong> al equipo para lo que solo el gusto y la estrategia resuelven — innovación y eficiencia como disciplina permanente.</span>
+          </p>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- RITUAIS -->
+  <section id="rituais" class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Rituais</span>
+        <span lang="es">Rituales</span>
+      </span>
+    </header>
+
+    <p class="text-body-sm text-muted-ash mb-12 max-w-xl">
+      <span lang="pt">4 rituais em 2 eixos. Cada ritual com objetivo claro, formato definido e output verificável.</span>
+      <span lang="es">4 rituales en 2 ejes. Cada ritual con objetivo claro, formato definido y output verificable.</span>
+    </p>
+
+    <!-- Eixo Tasting -->
+    <div>
+      <h3 class="mb-3">
+        <span class="pill pill--tasting">
+          <span lang="pt">Eixo · Tasting</span>
+          <span lang="es">Eje · Tasting</span>
+        </span>
+      </h3>
+      <p class="text-body-sm text-muted-ash mb-8 max-w-xl">
+        <span lang="pt">Vocabulário visual compartilhado. Critério antes de gosto.</span>
+        <span lang="es">Vocabulario visual compartido. Criterio antes que gusto.</span>
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-10">
+        <!-- TASTING -->
+        <article>
+          <h4 class="text-subheading text-frost-white">Tasting</h4>
+          <span class="block mt-1 font-mono text-caption text-muted-ash uppercase">45 min · Mensal</span>
+          <dl class="mt-4 space-y-4">
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">Objetivo</span><span lang="es">Objetivo</span></dt>
+              <dd lang="pt" class="mt-1 text-body text-frost-white">Construir vocabulário visual e critério compartilhado entre os 3 times. Sair do "gostei / não gostei" e chegar no "por que funciona".</dd>
+              <dd lang="es" class="mt-1 text-body text-frost-white">Construir vocabulario visual y criterio compartido entre los 3 equipos. Salir del "me gustó / no me gustó" y llegar al "por qué funciona".</dd>
+            </div>
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">Formato</span><span lang="es">Formato</span></dt>
+              <dd lang="pt" class="mt-1 text-body-sm text-muted-ash">Uma referência, uma decisão, uma pergunta — "o que isso revela sobre o critério de quem fez?". A IA contextualiza a referência antes da sessão.</dd>
+              <dd lang="es" class="mt-1 text-body-sm text-muted-ash">Una referencia, una decisión, una pregunta — "¿qué revela esto sobre el criterio de quien lo hizo?". La IA contextualiza la referencia antes de la sesión.</dd>
+            </div>
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase">Output</dt>
+              <dd lang="pt" class="mt-1 text-body-sm text-muted-ash">Registro estruturado no arquivo de repertório do time.</dd>
+              <dd lang="es" class="mt-1 text-body-sm text-muted-ash">Registro estructurado en el archivo de repertorio del equipo.</dd>
+            </div>
+          </dl>
+        </article>
+
+        <!-- Critique com Critério -->
+        <article>
+          <h4 class="text-subheading text-frost-white">
+            <span lang="pt">Critique com Critério</span>
+            <span lang="es">Critique con Criterio</span>
+          </h4>
+          <span class="block mt-1 font-mono text-caption text-muted-ash uppercase">
+            <span lang="pt">45 min · Quinzenal</span>
+            <span lang="es">45 min · Quincenal</span>
+          </span>
+          <dl class="mt-4 space-y-4">
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">Objetivo</span><span lang="es">Objetivo</span></dt>
+              <dd lang="pt" class="mt-1 text-body text-frost-white">Transformar feedback em diagnóstico. A opinião vira análise categorizada — defensável e replicável.</dd>
+              <dd lang="es" class="mt-1 text-body text-frost-white">Transformar el feedback en diagnóstico. La opinión se vuelve análisis categorizado — defendible y replicable.</dd>
+            </div>
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">Formato</span><span lang="es">Formato</span></dt>
+              <dd lang="pt" class="mt-1 text-body-sm text-muted-ash">Toda entrega revisada exige categoria por comentário: heurística, benchmark, acessibilidade, negócio ou suposição. A IA roda o Painel antes da sessão e gera relatório por categoria.</dd>
+              <dd lang="es" class="mt-1 text-body-sm text-muted-ash">Toda entrega revisada exige categoría por comentario: heurística, benchmark, accesibilidad, negocio o suposición. La IA corre el Panel antes de la sesión y genera reporte por categoría.</dd>
+            </div>
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase">Output</dt>
+              <dd lang="pt" class="mt-1 text-body-sm text-muted-ash">Comentários documentados por categoria. Padrões identificados ao longo do tempo.</dd>
+              <dd lang="es" class="mt-1 text-body-sm text-muted-ash">Comentarios documentados por categoría. Patrones identificados a lo largo del tiempo.</dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+    </div>
+
+    <!-- Eixo Técnica -->
+    <div class="mt-16">
+      <h3 class="mb-3">
+        <span class="pill pill--tecnica">
+          <span lang="pt">Eixo · Técnica</span>
+          <span lang="es">Eje · Técnica</span>
+        </span>
+      </h3>
+      <p class="text-body-sm text-muted-ash mb-8 max-w-xl">
+        <span lang="pt">Nível técnico em alta. Conhecimento que circula entre os times.</span>
+        <span lang="es">Nivel técnico al alza. Conocimiento que circula entre los equipos.</span>
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-10">
+        <!-- Skill Drop -->
+        <article>
+          <h4 class="text-subheading text-frost-white">Skill Drop</h4>
+          <span class="block mt-1 font-mono text-caption text-muted-ash uppercase">
+            <span lang="pt">30 min · Quinzenal</span>
+            <span lang="es">30 min · Quincenal</span>
+          </span>
+          <dl class="mt-4 space-y-4">
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">Objetivo</span><span lang="es">Objetivo</span></dt>
+              <dd lang="pt" class="mt-1 text-body text-frost-white">Fazer técnica circular. O que uma pessoa sabe, todas aprendem — em uma sessão curta.</dd>
+              <dd lang="es" class="mt-1 text-body text-frost-white">Hacer circular la técnica. Lo que una persona sabe, todas aprenden — en una sesión corta.</dd>
+            </div>
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">Formato</span><span lang="es">Formato</span></dt>
+              <dd lang="pt" class="mt-1 text-body-sm text-muted-ash">Show, not tell — demonstração ao vivo de uma ferramenta, técnica ou atalho. Temas comuns: Figma, Andes X, Cursor, IA, dados, prototipagem.</dd>
+              <dd lang="es" class="mt-1 text-body-sm text-muted-ash">Show, not tell — demostración en vivo de una herramienta, técnica o atajo. Temas comunes: Figma, Andes X, Cursor, IA, datos, prototipado.</dd>
+            </div>
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase">Output</dt>
+              <dd lang="pt" class="mt-1 text-body-sm text-muted-ash">Técnica replicável no dia seguinte por qualquer pessoa do time.</dd>
+              <dd lang="es" class="mt-1 text-body-sm text-muted-ash">Técnica replicable al día siguiente por cualquier persona del equipo.</dd>
+            </div>
+          </dl>
+        </article>
+
+        <!-- Build Review -->
+        <article>
+          <h4 class="text-subheading text-frost-white">Build Review</h4>
+          <span class="block mt-1 font-mono text-caption text-muted-ash uppercase">45 min · Mensal</span>
+          <dl class="mt-4 space-y-4">
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">Objetivo</span><span lang="es">Objetivo</span></dt>
+              <dd lang="pt" class="mt-1 text-body text-frost-white">Mostrar o caminho, não só o destino. Tornar o processo um artefato — visível e transferível.</dd>
+              <dd lang="es" class="mt-1 text-body text-frost-white">Mostrar el camino, no solo el destino. Volver el proceso un artefacto — visible y transferible.</dd>
+            </div>
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">Formato</span><span lang="es">Formato</span></dt>
+              <dd lang="pt" class="mt-1 text-body-sm text-muted-ash">Alguém apresenta o que construiu — decisões, atalhos, erros, iterações descartadas. ~20 min de apresentação, ~20 min de Q&amp;A, ~5 min de síntese coletiva.</dd>
+              <dd lang="es" class="mt-1 text-body-sm text-muted-ash">Alguien presenta lo que construyó — decisiones, atajos, errores, iteraciones descartadas. ~20 min de presentación, ~20 min de Q&amp;A, ~5 min de síntesis colectiva.</dd>
+            </div>
+            <div>
+              <dt class="font-mono text-caption text-muted-ash uppercase">Output</dt>
+              <dd lang="pt" class="mt-1 text-body-sm text-muted-ash">Técnica transferida pelo exemplo. Decisões compartilhadas que viram repertório do time.</dd>
+              <dd lang="es" class="mt-1 text-body-sm text-muted-ash">Técnica transferida por el ejemplo. Decisiones compartidas que se vuelven repertorio del equipo.</dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="max-w-3xl mx-auto px-6 pt-12 pb-16 mt-12 border-t border-faded-steel">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">© 2026 MPCraft · Mercado Pago</span>
+      <div class="flex items-center gap-6">
+        <a href="#" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">Notion</a>
+        <a href="#" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">Slack</a>
+        <a href="mailto:mpcraft@mercadopago.com" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/theme.js"></script>
+</body>
+</html>
