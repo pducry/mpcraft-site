@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasting — MPCraft</title>
+  <meta name="description" content="Construir vocabulário visual e critério compartilhado entre os times. Ritual mensal de 45 minutos do MPCraft.">
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem('lang');
+        if (lang === 'pt' || lang === 'es') {
+          document.documentElement.setAttribute('lang', lang);
+        }
+        if (localStorage.getItem('font') === 'serif') {
+          document.documentElement.classList.add('serif');
+        }
+        if (localStorage.getItem('site-auth') === '1') {
+          document.documentElement.classList.add('authed');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/theme.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-midnight': 'rgb(var(--canvas) / <alpha-value>)',
+            'faded-steel':   'rgb(var(--line)   / <alpha-value>)',
+            'frost-white':   'rgb(var(--fg)     / <alpha-value>)',
+            'muted-ash':     'rgb(var(--muted)  / <alpha-value>)',
+            'whisper-gray':  'rgb(var(--whisper) / <alpha-value>)',
+            'electric-blue': 'rgb(var(--accent) / <alpha-value>)',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+            'mono': ['"Space Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          fontSize: {
+            'caption':    ['11px', { lineHeight: '2',    letterSpacing: '0.1em' }],
+            'body-sm':    ['13px', { lineHeight: '1.43', letterSpacing: '0' }],
+            'body':       ['15px', { lineHeight: '1.5',  letterSpacing: '-0.005em' }],
+            'subheading': ['18px', { lineHeight: '1.4',  letterSpacing: '-0.005em' }],
+            'heading':    ['30px', { lineHeight: '1.2',  letterSpacing: '-0.005em' }],
+            'heading-lg': ['40px', { lineHeight: '1.11', letterSpacing: '-0.005em' }],
+            'display':    ['64px', { lineHeight: '1',    letterSpacing: '-0.005em' }],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-deep-midnight text-frost-white">
+
+  <!-- PASSWORD GATE -->
+  <div class="gate-overlay" id="gate-overlay">
+    <div class="gate-card">
+      <div class="gate-mark" aria-hidden="true"></div>
+      <p class="gate-caption">
+        <span lang="pt">MPCraft · Acesso restrito</span>
+        <span lang="es">MPCraft · Acceso restringido</span>
+      </p>
+      <p class="gate-title">
+        <span lang="pt">Digite a senha para continuar.</span>
+        <span lang="es">Ingresá la contraseña para continuar.</span>
+      </p>
+      <form id="gate-form" class="gate-form" autocomplete="off">
+        <input id="gate-input" type="password" class="gate-input" placeholder="••••••••" autocomplete="current-password" required aria-label="Senha">
+        <button type="submit" class="gate-submit">
+          <span lang="pt">Entrar</span>
+          <span lang="es">Entrar</span>
+        </button>
+      </form>
+      <p id="gate-error" class="gate-error" role="alert">
+        <span lang="pt">Senha incorreta.</span>
+        <span lang="es">Contraseña incorrecta.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" aria-label="MPCraft — home">
+        <img src="../assets/logo@2x.png" alt="MPCraft" class="h-6 w-auto block">
+      </a>
+      <div class="flex items-center gap-5 sm:gap-6">
+        <a href="../index.html#rituais" class="text-body text-frost-white/80 hover:text-frost-white transition">
+          <span lang="pt">← Rituais</span>
+          <span lang="es">← Rituales</span>
+        </a>
+        <button id="lang-toggle" type="button" class="toggle-btn lang-toggle" aria-label="Alternar idioma / Cambiar idioma">
+          <span class="lang-opt" data-lang="pt">PT</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-opt" data-lang="es">ES</span>
+        </button>
+        <button id="font-toggle" type="button" class="toggle-btn" aria-label="Alternar tipografia">
+          <span class="font-btn-label">Aa</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 md:pt-24 pb-12">
+    <div class="mb-6">
+      <span class="pill pill--tasting">
+        <span lang="pt">Eixo · Tasting</span>
+        <span lang="es">Eje · Tasting</span>
+      </span>
+    </div>
+    <h1 class="text-heading text-frost-white">Tasting</h1>
+    <p class="mt-3 text-body text-muted-ash italic max-w-xl">
+      <span lang="pt">Você não projeta o que não experimenta e ama.</span>
+      <span lang="es">No podés diseñar lo que no probás y amás.</span>
+    </p>
+    <dl class="meta-grid grid grid-cols-2 sm:grid-cols-4 gap-y-4 gap-x-6 mt-10 pt-8 border-t border-faded-steel">
+      <div>
+        <dt><span lang="pt">Duração</span><span lang="es">Duración</span></dt>
+        <dd class="mt-1">45 min</dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Frequência</span><span lang="es">Frecuencia</span></dt>
+        <dd class="mt-1"><span lang="pt">Mensal</span><span lang="es">Mensual</span></dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Participantes</span><span lang="es">Participantes</span></dt>
+        <dd class="mt-1"><span lang="pt">Time de UX</span><span lang="es">Equipo de UX</span></dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Facilitador</span><span lang="es">Facilitador</span></dt>
+        <dd class="mt-1"><span lang="pt">Rotativo</span><span lang="es">Rotativo</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- OBJETIVO -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Objetivo</span>
+        <span lang="es">Objetivo</span>
+      </span>
+    </header>
+    <p class="text-body text-frost-white max-w-2xl">
+      <span lang="pt">O Tasting constrói o vocabulário visual compartilhado do time — a base para que todo feedback saia do <em>"gostei / não gostei"</em> e chegue no <em>"por que funciona"</em>. Uma referência externa, escolhida com intenção, é o espelho onde o time enxerga seu próprio critério.</span>
+      <span lang="es">El Tasting construye el vocabulario visual compartido del equipo — la base para que todo feedback salga del <em>"me gustó / no me gustó"</em> y llegue al <em>"por qué funciona"</em>. Una referencia externa, elegida con intención, es el espejo donde el equipo ve su propio criterio.</span>
+    </p>
+    <p class="mt-4 text-body text-muted-ash max-w-2xl">
+      <span lang="pt">Com o tempo, sessões acumuladas formam um repertório vivo: a memória coletiva de decisões e padrões que o time reconhece como bons. O sinal de maturidade é quando o time aplica esse critério nas revisões do dia a dia — sem precisar do ritual para ativar o padrão.</span>
+      <span lang="es">Con el tiempo, las sesiones acumuladas forman un repertorio vivo: la memoria colectiva de decisiones y patrones que el equipo reconoce como buenos. La señal de madurez es cuando el equipo aplica ese criterio en las revisiones del día a día — sin necesitar el ritual para activar el estándar.</span>
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- DINÂMICA -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-10">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Dinâmica</span>
+        <span lang="es">Dinámica</span>
+      </span>
+    </header>
+
+    <!-- Timeline -->
+    <div class="ritual-timeline" role="img" aria-label="Timeline Tasting">
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">01</div>
+        <span class="ritual-timeline-time">0–5 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Observação</span><span lang="es">Observación</span></span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">02</div>
+        <span class="ritual-timeline-time">5–15 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Reação individual</span><span lang="es">Reacción individual</span></span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">03</div>
+        <span class="ritual-timeline-time">15–30 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Discussão guiada</span><span lang="es">Discusión guiada</span></span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">04</div>
+        <span class="ritual-timeline-time">30–40 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Contextualização</span><span lang="es">Contextualización</span></span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">05</div>
+        <span class="ritual-timeline-time">40–45 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Síntese</span><span lang="es">Síntesis</span></span>
+      </div>
+    </div>
+
+    <!-- Etapas -->
+    <div class="ritual-step">
+      <span class="ritual-step-num">01</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Observação silenciosa</span><span lang="es">Observación silenciosa</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">0–5 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">A referência é exibida sem contexto. Todos olham sem falar. O silêncio é parte do protocolo — não uma formalidade.</span>
+          <span lang="es">La referencia se muestra sin contexto. Todos miran sin hablar. El silencio es parte del protocolo — no una formalidad.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">Não explique o que é. Não dê pistas sobre origem ou autor. Deixe o desconforto trabalhar — ele é quem revela o critério.</span>
+          <span lang="es">No expliques qué es. No des pistas sobre el origen o el autor. Dejá que el desconforto trabaje — él es quien revela el criterio.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">02</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Reação individual</span><span lang="es">Reacción individual</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">5–15 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Cada pessoa escreve o que observa — sem conversa, sem influência. O que você vê? O que chama atenção? O que incomoda? Não há resposta errada, mas há respostas vagas.</span>
+          <span lang="es">Cada persona escribe lo que observa — sin conversación, sin influencia. ¿Qué ves? ¿Qué llama la atención? ¿Qué molesta? No hay respuesta equivocada, pero sí respuestas vagas.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">Use um doc individual ou papel. Ninguém vê o que o outro escreve. O isolamento garante que cada voz chegue pura à discussão.</span>
+          <span lang="es">Usá un doc individual o papel. Nadie ve lo que el otro escribe. El aislamiento garantiza que cada voz llegue pura a la discusión.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">03</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Discussão guiada</span><span lang="es">Discusión guiada</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">15–30 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Cada pessoa compartilha sua leitura. A pergunta que organiza: <em>"O que isso revela sobre o critério de quem fez?"</em> Sem resposta certa — mas com rigor. Opinião sem hipótese de intenção não conta.</span>
+          <span lang="es">Cada persona comparte su lectura. La pregunta que organiza: <em>"¿Qué revela esto sobre el criterio de quien lo hizo?"</em> Sin respuesta correcta — pero con rigor. Opinión sin hipótesis de intención no cuenta.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">Empurre para o "por quê". Toda observação precisa de uma hipótese de intenção. Quando alguém disser "é bonito", pergunte: "o que a composição está fazendo para produzir esse efeito?"</span>
+          <span lang="es">Empujá hacia el "por qué". Toda observación necesita una hipótesis de intención. Cuando alguien diga "es bonito", preguntá: "¿qué está haciendo la composición para producir ese efecto?"</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">04</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Contextualização</span><span lang="es">Contextualización</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">30–40 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">A IA apresenta o contexto da referência: origem, intenção documentada, decisões por trás. O time confronta sua leitura com a realidade — o que acertou, o que interpretou errado, o que percebeu que o autor não viu.</span>
+          <span lang="es">La IA presenta el contexto de la referencia: origen, intención documentada, decisiones detrás. El equipo confronta su lectura con la realidad — qué acertó, qué interpretó mal, qué percibió que el autor no vio.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">Prepare o briefing da IA antes da sessão. Peça contexto histórico, contexto de mercado e intenção declarada do autor. Quanto mais rico o contexto, mais produtiva a confrontação.</span>
+          <span lang="es">Preparás el briefing de la IA antes de la sesión. Pedí contexto histórico, contexto de mercado e intención declarada del autor. Cuanto más rico el contexto, más productiva la confrontación.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">05</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Síntese de critério</span><span lang="es">Síntesis de criterio</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">40–45 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Uma frase por pessoa: o que aprendi sobre critério hoje. A mais precisa vai para o arquivo de repertório. Não é um resumo — é uma destilação. O que muda na forma de ver a partir de agora.</span>
+          <span lang="es">Una frase por persona: lo que aprendí sobre criterio hoy. La más precisa va al archivo de repertorio. No es un resumen — es una destilación. Lo que cambia en la forma de ver a partir de ahora.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">A frase precisa ser específica o suficiente para ser útil amanhã. "Aprendi sobre equilíbrio" não é síntese. "Tensão entre elementos gera hierarquia sem peso visual extra" é síntese.</span>
+          <span lang="es">La frase necesita ser específica para ser útil mañana. "Aprendí sobre equilibrio" no es síntesis. "La tensión entre elementos genera jerarquía sin peso visual extra" es síntesis.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- OUTPUT -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">Output</span>
+    </header>
+    <ul class="space-y-4">
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Registro estruturado no arquivo de repertório — referência catalogada com contexto e aprendizados da sessão.</span>
+          <span lang="es">Registro estructurado en el archivo de repertorio — referencia catalogada con contexto y aprendizajes de la sesión.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Uma frase de critério documentada por sessão — a memória coletiva que se acumula ao longo do tempo.</span>
+          <span lang="es">Una frase de criterio documentada por sesión — la memoria colectiva que se acumula con el tiempo.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Vocabulário visual calibrado — o time sai falando a mesma língua sobre decisões visuais.</span>
+          <span lang="es">Vocabulario visual calibrado — el equipo sale hablando el mismo idioma sobre decisiones visuales.</span>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- EVOLUÇÃO -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Como evoluir</span>
+        <span lang="es">Cómo evolucionar</span>
+      </span>
+    </header>
+    <ul class="space-y-6">
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>Trazer referências internas.</strong> Quando o time tiver maturidade de critério, use trabalhos do próprio time como referência — não só externos. A conversa fica mais honesta e mais difícil.</span>
+          <span lang="es"><strong>Traer referencias internas.</strong> Cuando el equipo tenga madurez de criterio, usá trabajos del propio equipo como referencia — no solo externos. La conversación se vuelve más honesta y más difícil.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>Criar um museu de critério.</strong> Arquivo visual das referências com as frases de cada sessão. Com 10 sessões acumuladas, o time consegue ver sua própria evolução de olhar.</span>
+          <span lang="es"><strong>Crear un museo de criterio.</strong> Archivo visual de las referencias con las frases de cada sesión. Con 10 sesiones acumuladas, el equipo puede ver su propia evolución de mirada.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>Usar como calibração pré-projeto.</strong> Antes de começar um projeto novo, uma sessão de Tasting com referências do universo do produto alinha o olhar do time antes de abrir o Figma.</span>
+          <span lang="es"><strong>Usar como calibración pre-proyecto.</strong> Antes de empezar un proyecto nuevo, una sesión de Tasting con referencias del universo del producto alinea la mirada del equipo antes de abrir Figma.</span>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-3xl mx-auto px-6 pt-8 pb-16 border-t border-faded-steel">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">© 2026 MPCraft · Mercado Pago</span>
+      <a href="../index.html#rituais" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">
+        <span lang="pt">← Todos os Rituais</span>
+        <span lang="es">← Todos los Rituales</span>
+      </a>
+    </div>
+  </footer>
+
+  <script src="../assets/theme.js"></script>
+</body>
+</html>

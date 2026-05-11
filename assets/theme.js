@@ -25,4 +25,42 @@
     });
   }
 
+  // Password gate — client-side (deterrent only, NOT real security)
+  const GATE = {
+    KEY: 'site-auth',
+    HASH: 'ca2939e54e8d2e4072813097a8fff904b9c9b804ba46b90e5fdc7c63ed5c9805', // mpcraft2026
+  };
+  if (html.classList.contains('authed')) return;
+
+  const form = document.getElementById('gate-form');
+  const input = document.getElementById('gate-input');
+  const errorEl = document.getElementById('gate-error');
+  if (!form || !input) return;
+
+  async function sha256(text) {
+    const buf = new TextEncoder().encode(text);
+    const hash = await crypto.subtle.digest('SHA-256', buf);
+    return Array.from(new Uint8Array(hash))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('');
+  }
+
+  setTimeout(() => input.focus(), 50);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const value = input.value.trim();
+    if (!value) return;
+    const hash = await sha256(value);
+    if (hash === GATE.HASH) {
+      try { localStorage.setItem(GATE.KEY, '1'); } catch (e) {}
+      html.classList.add('authed');
+    } else {
+      if (errorEl) errorEl.classList.add('show');
+      form.classList.add('shake');
+      setTimeout(() => form.classList.remove('shake'), 350);
+      input.select();
+    }
+  });
+
 })();

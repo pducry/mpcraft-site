@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Review — MPCraft</title>
+  <meta name="description" content="Mostrar o caminho, não só o destino. O processo como artefato transferível. Ritual mensal de 45 minutos do MPCraft.">
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem('lang');
+        if (lang === 'pt' || lang === 'es') {
+          document.documentElement.setAttribute('lang', lang);
+        }
+        if (localStorage.getItem('font') === 'serif') {
+          document.documentElement.classList.add('serif');
+        }
+        if (localStorage.getItem('site-auth') === '1') {
+          document.documentElement.classList.add('authed');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/theme.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-midnight': 'rgb(var(--canvas) / <alpha-value>)',
+            'faded-steel':   'rgb(var(--line)   / <alpha-value>)',
+            'frost-white':   'rgb(var(--fg)     / <alpha-value>)',
+            'muted-ash':     'rgb(var(--muted)  / <alpha-value>)',
+            'whisper-gray':  'rgb(var(--whisper) / <alpha-value>)',
+            'electric-blue': 'rgb(var(--accent) / <alpha-value>)',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+            'mono': ['"Space Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          fontSize: {
+            'caption':    ['11px', { lineHeight: '2',    letterSpacing: '0.1em' }],
+            'body-sm':    ['13px', { lineHeight: '1.43', letterSpacing: '0' }],
+            'body':       ['15px', { lineHeight: '1.5',  letterSpacing: '-0.005em' }],
+            'subheading': ['18px', { lineHeight: '1.4',  letterSpacing: '-0.005em' }],
+            'heading':    ['30px', { lineHeight: '1.2',  letterSpacing: '-0.005em' }],
+            'heading-lg': ['40px', { lineHeight: '1.11', letterSpacing: '-0.005em' }],
+            'display':    ['64px', { lineHeight: '1',    letterSpacing: '-0.005em' }],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-deep-midnight text-frost-white">
+
+  <!-- PASSWORD GATE -->
+  <div class="gate-overlay" id="gate-overlay">
+    <div class="gate-card">
+      <div class="gate-mark" aria-hidden="true"></div>
+      <p class="gate-caption">
+        <span lang="pt">MPCraft · Acesso restrito</span>
+        <span lang="es">MPCraft · Acceso restringido</span>
+      </p>
+      <p class="gate-title">
+        <span lang="pt">Digite a senha para continuar.</span>
+        <span lang="es">Ingresá la contraseña para continuar.</span>
+      </p>
+      <form id="gate-form" class="gate-form" autocomplete="off">
+        <input id="gate-input" type="password" class="gate-input" placeholder="••••••••" autocomplete="current-password" required aria-label="Senha">
+        <button type="submit" class="gate-submit">
+          <span lang="pt">Entrar</span>
+          <span lang="es">Entrar</span>
+        </button>
+      </form>
+      <p id="gate-error" class="gate-error" role="alert">
+        <span lang="pt">Senha incorreta.</span>
+        <span lang="es">Contraseña incorrecta.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" aria-label="MPCraft — home">
+        <img src="../assets/logo@2x.png" alt="MPCraft" class="h-6 w-auto block">
+      </a>
+      <div class="flex items-center gap-5 sm:gap-6">
+        <a href="../index.html#rituais" class="text-body text-frost-white/80 hover:text-frost-white transition">
+          <span lang="pt">← Rituais</span>
+          <span lang="es">← Rituales</span>
+        </a>
+        <button id="lang-toggle" type="button" class="toggle-btn lang-toggle" aria-label="Alternar idioma / Cambiar idioma">
+          <span class="lang-opt" data-lang="pt">PT</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-opt" data-lang="es">ES</span>
+        </button>
+        <button id="font-toggle" type="button" class="toggle-btn" aria-label="Alternar tipografia">
+          <span class="font-btn-label">Aa</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 md:pt-24 pb-12">
+    <div class="mb-6">
+      <span class="pill pill--tecnica">
+        <span lang="pt">Eixo · Técnica</span>
+        <span lang="es">Eje · Técnica</span>
+      </span>
+    </div>
+    <h1 class="text-heading text-frost-white">Build Review</h1>
+    <p class="mt-3 text-body text-muted-ash italic max-w-xl">
+      <span lang="pt">Mostrar o caminho, não só o destino. O processo como artefato.</span>
+      <span lang="es">Mostrar el camino, no solo el destino. El proceso como artefacto.</span>
+    </p>
+    <dl class="meta-grid grid grid-cols-2 sm:grid-cols-4 gap-y-4 gap-x-6 mt-10 pt-8 border-t border-faded-steel">
+      <div>
+        <dt><span lang="pt">Duração</span><span lang="es">Duración</span></dt>
+        <dd class="mt-1">45 min</dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Frequência</span><span lang="es">Frecuencia</span></dt>
+        <dd class="mt-1"><span lang="pt">Mensal</span><span lang="es">Mensual</span></dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Participantes</span><span lang="es">Participantes</span></dt>
+        <dd class="mt-1"><span lang="pt">Time de UX</span><span lang="es">Equipo de UX</span></dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Apresentador</span><span lang="es">Presentador</span></dt>
+        <dd class="mt-1"><span lang="pt">Rotativo</span><span lang="es">Rotativo</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- OBJETIVO -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Objetivo</span>
+        <span lang="es">Objetivo</span>
+      </span>
+    </header>
+    <p class="text-body text-frost-white max-w-2xl">
+      <span lang="pt">O Build Review torna o processo visível. O destino — o design final, o entregável — já está no Figma. O que ninguém vê são as decisões descartadas, os erros que ensinaram, os atalhos descobertos no caminho. O Build Review transforma esse percurso em artefato transferível.</span>
+      <span lang="es">El Build Review hace visible el proceso. El destino — el diseño final, el entregable — ya está en Figma. Lo que nadie ve son las decisiones descartadas, los errores que enseñaron, los atajos descubiertos en el camino. El Build Review transforma ese recorrido en artefacto transferible.</span>
+    </p>
+    <p class="mt-4 text-body text-muted-ash max-w-2xl">
+      <span lang="pt">O time aprende não só o que foi construído — mas como e por quê. Isso eleva o padrão coletivo de uma forma que nenhum framework consegue: pela transferência de julgamento, não de técnica. O sinal de maturidade é quando o time começa a documentar o próprio processo durante o projeto, não só depois.</span>
+      <span lang="es">El equipo aprende no solo qué fue construido — sino cómo y por qué. Eso eleva el estándar colectivo de una forma que ningún framework logra: por la transferencia de juicio, no de técnica. La señal de madurez es cuando el equipo empieza a documentar su propio proceso durante el proyecto, no solo después.</span>
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- DINÂMICA -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-10">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Dinâmica</span>
+        <span lang="es">Dinámica</span>
+      </span>
+    </header>
+
+    <!-- Timeline -->
+    <div class="ritual-timeline" role="img" aria-label="Timeline Build Review">
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">01</div>
+        <span class="ritual-timeline-time">0–5 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Contexto</span><span lang="es">Contexto</span></span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">02</div>
+        <span class="ritual-timeline-time">5–25 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Processo</span><span lang="es">Proceso</span></span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">03</div>
+        <span class="ritual-timeline-time">25–40 min</span>
+        <span class="ritual-timeline-label">Q&amp;A</span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">04</div>
+        <span class="ritual-timeline-time">40–45 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Síntese coletiva</span><span lang="es">Síntesis colectiva</span></span>
+      </div>
+    </div>
+
+    <!-- Etapas -->
+    <div class="ritual-step">
+      <span class="ritual-step-num">01</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Contexto do problema</span><span lang="es">Contexto del problema</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">0–5 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Quem apresenta explica o problema original, as restrições do projeto — tempo, tecnologia, negócio — e o que estava em jogo. O contexto determina se as decisões fazem sentido.</span>
+          <span lang="es">Quien presenta explica el problema original, las restricciones del proyecto — tiempo, tecnología, negocio — y lo que estaba en juego. El contexto determina si las decisiones tienen sentido.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">Peça a quem vai apresentar que escreva o contexto antes da sessão. Não deixe para improvisar — contexto mal dado invalida tudo que vem depois.</span>
+          <span lang="es">Pedile a quien va a presentar que escriba el contexto antes de la sesión. No dejes que lo improvise — contexto mal dado invalida todo lo que viene después.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">02</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Apresentação do processo</span><span lang="es">Presentación del proceso</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">5–25 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">O caminho: decisões tomadas, atalhos descobertos, erros cometidos, iterações descartadas. Não o resultado — o raciocínio. O que foi tentado antes de chegar aqui. O que não funcionou e por quê.</span>
+          <span lang="es">El camino: decisiones tomadas, atajos descubiertos, errores cometidos, iteraciones descartadas. No el resultado — el razonamiento. Lo que fue intentado antes de llegar aquí. Lo que no funcionó y por qué.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">Proíba o modo "portfólio". O objetivo não é impressionar — é ensinar. Quanto mais honesto sobre os erros, mais valioso para o time. Erro sem julgamento é aprendizado.</span>
+          <span lang="es">Prohibí el modo "portfolio". El objetivo no es impresionar — es enseñar. Cuanto más honesto sobre los errores, más valioso para el equipo. Error sin juicio es aprendizaje.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">03</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white">Q&amp;A</h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">25–40 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Perguntas abertas sobre o raciocínio, não sobre o resultado. O foco é entender o porquê das decisões — não avaliar se o produto ficou bom ou ruim.</span>
+          <span lang="es">Preguntas abiertas sobre el razonamiento, no sobre el resultado. El foco es entender el por qué de las decisiones — no evaluar si el producto quedó bien o mal.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">Direcione perguntas para o processo, não para o produto. "Por que você escolheu X?" é melhor do que "Você considerou Y?". Uma explora raciocínio. A outra substitui o raciocínio de quem fez.</span>
+          <span lang="es">Dirigí las preguntas al proceso, no al producto. "¿Por qué elegiste X?" es mejor que "¿Consideraste Y?". Una explora el razonamiento. La otra lo sustituye.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">04</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Síntese coletiva</span><span lang="es">Síntesis colectiva</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">40–45 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Uma decisão que vira repertório do time. Documentada pelo facilitador com contexto suficiente para ser útil para quem não estava na sessão. Não é um resumo da apresentação — é a destilação de um princípio.</span>
+          <span lang="es">Una decisión que se vuelve repertorio del equipo. Documentada por el facilitador con contexto suficiente para ser útil para quien no estaba en la sesión. No es un resumen de la presentación — es la destilación de un principio.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">A síntese deve ser aplicável em contextos diferentes do que foi apresentado. Se só faz sentido para esse projeto específico, ainda não é repertório — é nota de rodapé.</span>
+          <span lang="es">La síntesis debe ser aplicable en contextos diferentes al presentado. Si solo tiene sentido para ese proyecto específico, todavía no es repertorio — es nota al pie.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- OUTPUT -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">Output</span>
+    </header>
+    <ul class="space-y-4">
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Decisões compartilhadas que viram repertório — documentadas com contexto, não só com conclusão.</span>
+          <span lang="es">Decisiones compartidas que se vuelven repertorio — documentadas con contexto, no solo con conclusión.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Uma síntese documentada por sessão — transferível para quem não estava presente.</span>
+          <span lang="es">Una síntesis documentada por sesión — transferible para quien no estuvo presente.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Padrão de julgamento transferido pelo exemplo — mais duradouro do que qualquer framework.</span>
+          <span lang="es">Patrón de juicio transferido por el ejemplo — más duradero que cualquier framework.</span>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- EVOLUÇÃO -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Como evoluir</span>
+        <span lang="es">Cómo evolucionar</span>
+      </span>
+    </header>
+    <ul class="space-y-6">
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>Repositório de decisões.</strong> As sínteses de cada Build Review catalogadas por tema. Com o tempo, o time constrói um acervo de raciocínios que pode consultar em projetos futuros.</span>
+          <span lang="es"><strong>Repositorio de decisiones.</strong> Las síntesis de cada Build Review catalogadas por tema. Con el tiempo, el equipo construye un acervo de razonamientos que puede consultar en proyectos futuros.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>Build Reviews de projetos que deram errado.</strong> Os aprendizados de um projeto mal-sucedido valem mais do que os de um projeto bem-sucedido. A honestidade sobre o fracasso é o que diferencia um time que evolui.</span>
+          <span lang="es"><strong>Build Reviews de proyectos que salieron mal.</strong> Los aprendizajes de un proyecto fallido valen más que los de uno exitoso. La honestidad sobre el fracaso es lo que diferencia a un equipo que evoluciona.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>Convidar stakeholders.</strong> Quando PMs e líderes de negócio assistem ao processo de design sendo exposto com honestidade, a cultura de craft se espalha além do time de UX.</span>
+          <span lang="es"><strong>Invitar stakeholders.</strong> Cuando PMs y líderes de negocio ven el proceso de diseño expuesto con honestidad, la cultura de craft se expande más allá del equipo de UX.</span>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-3xl mx-auto px-6 pt-8 pb-16 border-t border-faded-steel">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">© 2026 MPCraft · Mercado Pago</span>
+      <a href="../index.html#rituais" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">
+        <span lang="pt">← Todos os Rituais</span>
+        <span lang="es">← Todos los Rituales</span>
+      </a>
+    </div>
+  </footer>
+
+  <script src="../assets/theme.js"></script>
+</body>
+</html>
