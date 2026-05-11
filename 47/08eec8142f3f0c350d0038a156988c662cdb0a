@@ -1,0 +1,30 @@
+assets/theme.js
+  s_b75914d77384a8::t_60ccdd37003763 28-65
+index.html
+  s_b75914d77384a8::t_1c51b2761b92ca 22-24
+  s_b75914d77384a8::t_0005d0a68337bd 68-93
+work/helix-design-system.html
+  s_b75914d77384a8::t_0d32ef83af506b 17-19
+  s_b75914d77384a8::t_d94c44636d1589 63-76
+assets/theme.css
+  s_b75914d77384a8::t_0354be456b8df5 143-234
+writing/the-shape-of-systems.html
+  s_b75914d77384a8::t_12536b2d7febc7 63-76
+  s_b75914d77384a8::t_82c58d1ad6e65f 17-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.6",
+  "base_commit_sha": "4708eec8142f3f0c350d0038a156988c662cdb0a",
+  "prompts": {},
+  "sessions": {
+    "s_b75914d77384a8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "724c850c-6717-455d-95a3-7ff7388240bf",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
