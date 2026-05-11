@@ -284,14 +284,14 @@ html.authed .gate-overlay { display: none; }
 
 .nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(-4px);
   min-width: 192px;
   background: rgb(var(--canvas));
   border: 1px solid rgb(var(--line));
   border-radius: 8px;
-  padding: 4px;
+  padding: 12px 4px 4px; /* 12px top padding bridges the visual gap while keeping hover area connected */
   opacity: 0;
   pointer-events: none;
   transition: opacity .12s ease, transform .12s ease;
@@ -320,11 +320,6 @@ html.authed .gate-overlay { display: none; }
   color: rgb(var(--fg));
 }
 
-.nav-dropdown-sep {
-  height: 1px;
-  background: rgb(var(--line));
-  margin: 3px 8px;
-}
 
 /* ============================================================
    Ritual pages — timeline + step cards
