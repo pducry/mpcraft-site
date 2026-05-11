@@ -1,0 +1,33 @@
+rituais/skill-drop.html
+  s_b75914d77384a8::t_d677b4200227d5 1-378
+assets/theme.css
+  s_b75914d77384a8::t_7b3a4d856adfbe 261-378
+rituais/tasting.html
+  s_b75914d77384a8::t_d27563ef9967ef 1-386
+index.html
+  s_b75914d77384a8::t_218940b7854f3c 404
+  s_b75914d77384a8::t_60522fd0b3e1b6 427-428,432
+  s_b75914d77384a8::t_44d15a0482031d 502-504
+  s_b75914d77384a8::t_7e4dd8f324a2fd 474-476
+  s_b75914d77384a8::t_92777e8e9ad148 402-403
+rituais/build-review.html
+  s_b75914d77384a8::t_1ba30499ba0740 1-362
+rituais/critique-com-criterio.html
+  s_b75914d77384a8::t_43070bcdd45b6b 1-419
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.6",
+  "base_commit_sha": "96a78bc83380a0785b1b3eabf0594e17bef502df",
+  "prompts": {},
+  "sessions": {
+    "s_b75914d77384a8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "724c850c-6717-455d-95a3-7ff7388240bf",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
