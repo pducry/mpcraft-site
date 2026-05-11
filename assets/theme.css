@@ -256,6 +256,10 @@ html.authed .gate-overlay { display: none; }
   background-color: rgba(79, 70, 229, 0.14);
   color: #3730a3;
 }
+.pill--craft {
+  background-color: rgba(22, 163, 74, 0.12);
+  color: #166534;
+}
 
 /* ============================================================
    Nav dropdown
