@@ -49,19 +49,19 @@ html.serif p {
 html.serif .font-mono { font-family: 'Space Mono', ui-monospace, monospace; letter-spacing: 0.1em; }
 
 /* Serif mode — scaled up font sizes for readability
-   Newsreader x-height is ~20% smaller than Inter at same px;
-   bumping ~20% restores comparable optical size. */
-html.serif .text-caption     { font-size: 13px; }
-html.serif .text-body-sm     { font-size: 16px; }
-html.serif .text-body        { font-size: 18px; }
-html.serif .text-subheading  { font-size: 22px; }
-html.serif .text-heading     { font-size: 36px; }
-html.serif .text-heading-lg  { font-size: 48px; }
-html.serif .text-display     { font-size: 76px; }
+   Newsreader x-height is significantly smaller than Inter;
+   bumping ~40% on body text restores comparable optical size. */
+html.serif .text-caption     { font-size: 14px; }
+html.serif .text-body-sm     { font-size: 18px; }
+html.serif .text-body        { font-size: 21px; }
+html.serif .text-subheading  { font-size: 25px; }
+html.serif .text-heading     { font-size: 38px; }
+html.serif .text-heading-lg  { font-size: 51px; }
+html.serif .text-display     { font-size: 80px; }
 
-html.serif .prose p          { font-size: 20px; }
-html.serif .prose h2         { font-size: 25px; }
-html.serif .meta-grid dd     { font-size: 16px; }
+html.serif .prose p          { font-size: 22px; }
+html.serif .prose h2         { font-size: 26px; }
+html.serif .meta-grid dd     { font-size: 18px; }
 
 /* ============================================================
    Links
