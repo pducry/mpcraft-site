@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Critique com Critério — MPCraft</title>
+  <meta name="description" content="Transformar feedback em diagnóstico. Ritual quinzenal de 45 minutos do MPCraft.">
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem('lang');
+        if (lang === 'pt' || lang === 'es') {
+          document.documentElement.setAttribute('lang', lang);
+        }
+        if (localStorage.getItem('font') === 'serif') {
+          document.documentElement.classList.add('serif');
+        }
+        if (localStorage.getItem('site-auth') === '1') {
+          document.documentElement.classList.add('authed');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/theme.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-midnight': 'rgb(var(--canvas) / <alpha-value>)',
+            'faded-steel':   'rgb(var(--line)   / <alpha-value>)',
+            'frost-white':   'rgb(var(--fg)     / <alpha-value>)',
+            'muted-ash':     'rgb(var(--muted)  / <alpha-value>)',
+            'whisper-gray':  'rgb(var(--whisper) / <alpha-value>)',
+            'electric-blue': 'rgb(var(--accent) / <alpha-value>)',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+            'mono': ['"Space Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          fontSize: {
+            'caption':    ['11px', { lineHeight: '2',    letterSpacing: '0.1em' }],
+            'body-sm':    ['13px', { lineHeight: '1.43', letterSpacing: '0' }],
+            'body':       ['15px', { lineHeight: '1.5',  letterSpacing: '-0.005em' }],
+            'subheading': ['18px', { lineHeight: '1.4',  letterSpacing: '-0.005em' }],
+            'heading':    ['30px', { lineHeight: '1.2',  letterSpacing: '-0.005em' }],
+            'heading-lg': ['40px', { lineHeight: '1.11', letterSpacing: '-0.005em' }],
+            'display':    ['64px', { lineHeight: '1',    letterSpacing: '-0.005em' }],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-deep-midnight text-frost-white">
+
+  <!-- PASSWORD GATE -->
+  <div class="gate-overlay" id="gate-overlay">
+    <div class="gate-card">
+      <div class="gate-mark" aria-hidden="true"></div>
+      <p class="gate-caption">
+        <span lang="pt">MPCraft · Acesso restrito</span>
+        <span lang="es">MPCraft · Acceso restringido</span>
+      </p>
+      <p class="gate-title">
+        <span lang="pt">Digite a senha para continuar.</span>
+        <span lang="es">Ingresá la contraseña para continuar.</span>
+      </p>
+      <form id="gate-form" class="gate-form" autocomplete="off">
+        <input id="gate-input" type="password" class="gate-input" placeholder="••••••••" autocomplete="current-password" required aria-label="Senha">
+        <button type="submit" class="gate-submit">
+          <span lang="pt">Entrar</span>
+          <span lang="es">Entrar</span>
+        </button>
+      </form>
+      <p id="gate-error" class="gate-error" role="alert">
+        <span lang="pt">Senha incorreta.</span>
+        <span lang="es">Contraseña incorrecta.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" aria-label="MPCraft — home">
+        <img src="../assets/logo@2x.png" alt="MPCraft" class="h-6 w-auto block">
+      </a>
+      <div class="flex items-center gap-5 sm:gap-6">
+        <a href="../index.html#rituais" class="text-body text-frost-white/80 hover:text-frost-white transition">
+          <span lang="pt">← Rituais</span>
+          <span lang="es">← Rituales</span>
+        </a>
+        <button id="lang-toggle" type="button" class="toggle-btn lang-toggle" aria-label="Alternar idioma / Cambiar idioma">
+          <span class="lang-opt" data-lang="pt">PT</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-opt" data-lang="es">ES</span>
+        </button>
+        <button id="font-toggle" type="button" class="toggle-btn" aria-label="Alternar tipografia">
+          <span class="font-btn-label">Aa</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 md:pt-24 pb-12">
+    <div class="mb-6">
+      <span class="pill pill--tasting">
+        <span lang="pt">Eixo · Tasting</span>
+        <span lang="es">Eje · Tasting</span>
+      </span>
+    </div>
+    <h1 class="text-heading text-frost-white">
+      <span lang="pt">Critique com Critério</span>
+      <span lang="es">Critique con Criterio</span>
+    </h1>
+    <p class="mt-3 text-body text-muted-ash italic max-w-xl">
+      <span lang="pt">A opinião vira análise. O feedback vira diagnóstico.</span>
+      <span lang="es">La opinión se vuelve análisis. El feedback se vuelve diagnóstico.</span>
+    </p>
+    <dl class="meta-grid grid grid-cols-2 sm:grid-cols-4 gap-y-4 gap-x-6 mt-10 pt-8 border-t border-faded-steel">
+      <div>
+        <dt><span lang="pt">Duração</span><span lang="es">Duración</span></dt>
+        <dd class="mt-1">45 min</dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Frequência</span><span lang="es">Frecuencia</span></dt>
+        <dd class="mt-1"><span lang="pt">Quinzenal</span><span lang="es">Quincenal</span></dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Participantes</span><span lang="es">Participantes</span></dt>
+        <dd class="mt-1"><span lang="pt">Time de UX</span><span lang="es">Equipo de UX</span></dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Facilitador</span><span lang="es">Facilitador</span></dt>
+        <dd class="mt-1"><span lang="pt">Rotativo</span><span lang="es">Rotativo</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- OBJETIVO -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Objetivo</span>
+        <span lang="es">Objetivo</span>
+      </span>
+    </header>
+    <p class="text-body text-frost-white max-w-2xl">
+      <span lang="pt">O Critique com Critério transforma feedback em diagnóstico. A diferença não é semântica — é estrutural. Um comentário sem categoria é uma opinião. Um comentário com categoria é uma análise: defensável, replicável e comparável ao longo do tempo.</span>
+      <span lang="es">El Critique con Criterio transforma el feedback en diagnóstico. La diferencia no es semántica — es estructural. Un comentario sin categoría es una opinión. Un comentario con categoría es un análisis: defendible, replicable y comparable a lo largo del tiempo.</span>
+    </p>
+    <p class="mt-4 text-body text-muted-ash max-w-2xl">
+      <span lang="pt">O ritual instala o hábito de categorizar antes de falar — e muda a qualidade de toda revisão que o time faz, dentro e fora da sessão formal. O sinal de maturidade é quando o time usa as categorias naturalmente em PRs, Figma comments e reuniões de alinhamento.</span>
+      <span lang="es">El ritual instala el hábito de categorizar antes de hablar — y cambia la calidad de toda revisión que el equipo hace, dentro y fuera de la sesión formal. La señal de madurez es cuando el equipo usa las categorías naturalmente en PRs, comentarios de Figma y reuniones de alineación.</span>
+    </p>
+
+    <!-- Categorias -->
+    <div class="mt-8 pt-6 border-t border-faded-steel">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">As 5 categorias</span>
+        <span lang="es">Las 5 categorías</span>
+      </span>
+      <dl class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+        <div>
+          <dt class="text-body-sm text-frost-white font-medium"><span lang="pt">Heurística</span><span lang="es">Heurística</span></dt>
+          <dd class="text-body-sm text-muted-ash mt-0.5"><span lang="pt">Princípio de usabilidade ou design verificável.</span><span lang="es">Principio de usabilidad o diseño verificable.</span></dd>
+        </div>
+        <div>
+          <dt class="text-body-sm text-frost-white font-medium">Benchmark</dt>
+          <dd class="text-body-sm text-muted-ash mt-0.5"><span lang="pt">Comparação com padrão do mercado ou concorrente.</span><span lang="es">Comparación con estándar del mercado o competidor.</span></dd>
+        </div>
+        <div>
+          <dt class="text-body-sm text-frost-white font-medium"><span lang="pt">Acessibilidade</span><span lang="es">Accesibilidad</span></dt>
+          <dd class="text-body-sm text-muted-ash mt-0.5"><span lang="pt">Contraste, legibilidade, navegação, inclusão.</span><span lang="es">Contraste, legibilidad, navegación, inclusión.</span></dd>
+        </div>
+        <div>
+          <dt class="text-body-sm text-frost-white font-medium"><span lang="pt">Negócio</span><span lang="es">Negocio</span></dt>
+          <dd class="text-body-sm text-muted-ash mt-0.5"><span lang="pt">Impacto em métrica, conversão ou objetivo do produto.</span><span lang="es">Impacto en métrica, conversión u objetivo del producto.</span></dd>
+        </div>
+        <div>
+          <dt class="text-body-sm text-frost-white font-medium"><span lang="pt">Suposição</span><span lang="es">Suposición</span></dt>
+          <dd class="text-body-sm text-muted-ash mt-0.5"><span lang="pt">Hipótese sem evidência — honestidade, não fraqueza.</span><span lang="es">Hipótesis sin evidencia — honestidad, no debilidad.</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- DINÂMICA -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-10">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Dinâmica</span>
+        <span lang="es">Dinámica</span>
+      </span>
+    </header>
+
+    <!-- Timeline -->
+    <div class="ritual-timeline" role="img" aria-label="Timeline Critique com Critério">
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">01</div>
+        <span class="ritual-timeline-time">0–5 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Briefing</span><span lang="es">Briefing</span></span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">02</div>
+        <span class="ritual-timeline-time">5–20 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Revisão silenciosa</span><span lang="es">Revisión silenciosa</span></span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">03</div>
+        <span class="ritual-timeline-time">20–35 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Rodada de feedback</span><span lang="es">Ronda de feedback</span></span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">04</div>
+        <span class="ritual-timeline-time">35–42 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Relatório da IA</span><span lang="es">Reporte de IA</span></span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">05</div>
+        <span class="ritual-timeline-time">42–45 min</span>
+        <span class="ritual-timeline-label"><span lang="pt">Síntese</span><span lang="es">Síntesis</span></span>
+      </div>
+    </div>
+
+    <!-- Etapas -->
+    <div class="ritual-step">
+      <span class="ritual-step-num">01</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white">Briefing</h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">0–5 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Quem apresenta explica o problema que estava resolvendo, as restrições do projeto e a pergunta específica que quer responder com o feedback.</span>
+          <span lang="es">Quien presenta explica el problema que estaba resolviendo, las restricciones del proyecto y la pregunta específica que quiere responder con el feedback.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">A pergunta deve ser específica. "O que acham?" não é uma pergunta. "O fluxo de onboarding está comunicando urgência suficiente na tela 3?" é uma pergunta.</span>
+          <span lang="es">"¿Qué les parece?" no es una pregunta. "¿El flujo de onboarding está comunicando suficiente urgencia en la pantalla 3?" sí lo es.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">02</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Revisão silenciosa</span><span lang="es">Revisión silenciosa</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">5–20 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Todos analisam o material de forma independente e registram comentários com categoria obrigatória: heurística, benchmark, acessibilidade, negócio ou suposição.</span>
+          <span lang="es">Todos analizan el material de forma independiente y registran comentarios con categoría obligatoria: heurística, benchmark, accesibilidad, negocio o suposición.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">Use um template compartilhado com as 5 categorias. Quem não consegue categorizar um comentário, anota como "suposição" — isso é honestidade, não fraqueza.</span>
+          <span lang="es">Usá un template compartido con las 5 categorías. Quien no puede categorizar un comentario, lo anota como "suposición" — eso es honestidad, no debilidad.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">03</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Rodada de feedback</span><span lang="es">Ronda de feedback</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">20–35 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Cada pessoa compartilha comentários, sempre com a categoria declarada. Sem "eu acho" sem categoria. Quem apresenta não defende — anota.</span>
+          <span lang="es">Cada persona comparte comentarios, siempre con la categoría declarada. Sin "yo creo" sin categoría. Quien presenta no defiende — anota.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">Se alguém der feedback sem categoria, pause e pergunte: "isso é uma heurística, um benchmark ou uma suposição?" Não é hostil — é o padrão do ritual.</span>
+          <span lang="es">Si alguien da feedback sin categoría, pausá y preguntá: "¿eso es una heurística, un benchmark o una suposición?" No es hostil — es el estándar del ritual.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">04</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Relatório da IA</span><span lang="es">Reporte de IA</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">35–42 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">A IA apresenta padrões por categoria: quais categorias dominaram, quais decisões geraram mais divergência, o que os benchmarks sugerem sobre o contexto do produto.</span>
+          <span lang="es">La IA presenta patrones por categoría: qué categorías dominaron, qué decisiones generaron más divergencia, qué sugieren los benchmarks sobre el contexto del producto.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">Prepare o Painel antes da sessão. Compartilhe o material com a IA e peça análise por categoria com benchmarks relevantes do mercado.</span>
+          <span lang="es">Preparás el Panel antes de la sesión. Compartí el material con la IA y pedí análisis por categoría con benchmarks relevantes del mercado.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">05</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white"><span lang="pt">Síntese</span><span lang="es">Síntesis</span></h3>
+          <span class="font-mono text-caption text-muted-ash uppercase">42–45 min</span>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Padrões identificados, decisões tomadas, próximos passos documentados. O que muda no trabalho a partir dessa sessão.</span>
+          <span lang="es">Patrones identificados, decisiones tomadas, próximos pasos documentados. Lo que cambia en el trabajo a partir de esta sesión.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como facilitar</span><span lang="es">Cómo facilitar</span></strong>
+          <span lang="pt">Foque em decisões, não em tarefas. "Simplificar a tela 3" é uma tarefa. "Priorizar urgência sobre completude de informação nesse fluxo" é uma decisão.</span>
+          <span lang="es">Enfocate en decisiones, no en tareas. "Simplificar la pantalla 3" es una tarea. "Priorizar urgencia sobre completitud de información en este flujo" es una decisión.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- OUTPUT -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">Output</span>
+    </header>
+    <ul class="space-y-4">
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Comentários documentados por categoria — rastreáveis e comparáveis entre sessões.</span>
+          <span lang="es">Comentarios documentados por categoría — rastreables y comparables entre sesiones.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Relatório de padrões da sessão — o que o time continua vendo como problema, o que evoluiu.</span>
+          <span lang="es">Reporte de patrones de la sesión — qué el equipo sigue viendo como problema, qué evolucionó.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Decisões de design documentadas — defensáveis com racional, não com gosto.</span>
+          <span lang="es">Decisiones de diseño documentadas — defendibles con racional, no con gusto.</span>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- EVOLUÇÃO -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Como evoluir</span>
+        <span lang="es">Cómo evolucionar</span>
+      </span>
+    </header>
+    <ul class="space-y-6">
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>Cruzar padrões entre sessões.</strong> O que o time continua errando? O que evoluiu? A comparação entre sessões revela onde o padrão realmente mudou — e onde só pareceu mudar.</span>
+          <span lang="es"><strong>Cruzar patrones entre sesiones.</strong> ¿Qué el equipo sigue fallando? ¿Qué evolucionó? La comparación entre sesiones revela dónde el estándar realmente cambió — y dónde solo pareció cambiar.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>Usar as categorias fora do ritual.</strong> Em PRs, Figma comments, reuniões de alinhamento. Quando o time internaliza o vocabulário, a qualidade do feedback sobe em todos os contextos.</span>
+          <span lang="es"><strong>Usar las categorías fuera del ritual.</strong> En PRs, comentarios de Figma, reuniones de alineación. Cuando el equipo internaliza el vocabulario, la calidad del feedback sube en todos los contextos.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>Criar um léxico de critério.</strong> As heurísticas que o time mais usa, definidas com as próprias palavras do time. Um vocabulário comum que torna o feedback mais rápido e mais preciso.</span>
+          <span lang="es"><strong>Crear un léxico de criterio.</strong> Las heurísticas que el equipo más usa, definidas con las propias palabras del equipo. Un vocabulario común que hace el feedback más rápido y más preciso.</span>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-3xl mx-auto px-6 pt-8 pb-16 border-t border-faded-steel">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">© 2026 MPCraft · Mercado Pago</span>
+      <a href="../index.html#rituais" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">
+        <span lang="pt">← Todos os Rituais</span>
+        <span lang="es">← Todos los Rituales</span>
+      </a>
+    </div>
+  </footer>
+
+  <script src="../assets/theme.js"></script>
+</body>
+</html>
