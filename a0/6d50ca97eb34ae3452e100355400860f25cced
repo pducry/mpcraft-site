@@ -1,0 +1,24 @@
+projetos/skillflix.html
+  s_b75914d77384a8::t_bf37f2decce2b8 1-382
+index.html
+  s_b75914d77384a8::t_941562d47e045d 335
+  s_b75914d77384a8::t_60998aa3f910b2 306
+projetos/aiad.html
+  s_b75914d77384a8::t_c58b4248ffb4ba 1-382
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.6",
+  "base_commit_sha": "a06d50ca97eb34ae3452e100355400860f25cced",
+  "prompts": {},
+  "sessions": {
+    "s_b75914d77384a8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "724c850c-6717-455d-95a3-7ff7388240bf",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
