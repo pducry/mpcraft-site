@@ -1,0 +1,29 @@
+rituais/tasting.html
+  s_a954f3767221f9::t_cafb1fbab7a2d4 355-361
+  s_a954f3767221f9::t_cb0a2412639ef1 180-209
+rituais/skill-drop.html
+  s_a954f3767221f9::t_07ebec34969f15 200-229
+  s_a954f3767221f9::t_0212ceea6eb9e4 353-359
+rituais/critique-com-criterio.html
+  s_a954f3767221f9::t_09e7ac497c12f8 213-242
+  s_a954f3767221f9::t_511ec915827f89 388-394
+rituais/build-review.html
+  s_a954f3767221f9::t_736907ed7be1d3 180-209
+  s_a954f3767221f9::t_582526dba8d322 333-339
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "fbe42f2a6224671353905e45e1a14c64e26a7c79",
+  "prompts": {},
+  "sessions": {
+    "s_a954f3767221f9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "829f8d66-749e-4577-919c-9f3af2021866",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
