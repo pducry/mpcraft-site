@@ -1,0 +1,23 @@
+index.html
+  s_a954f3767221f9::t_debb89275ec609 345-372
+  s_a954f3767221f9::t_eda4abda44237a 310-311
+  s_a954f3767221f9::t_04e7b86e2669d6 116
+projetos/aiud.html
+  s_a954f3767221f9::t_a590f5fb7e7a38 1-389
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "abb3925c350135b1b55231ee6135bfd5b6dad350",
+  "prompts": {},
+  "sessions": {
+    "s_a954f3767221f9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "829f8d66-749e-4577-919c-9f3af2021866",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
