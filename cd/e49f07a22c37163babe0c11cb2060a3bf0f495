@@ -1,0 +1,21 @@
+rituais/skill-drop.html
+  s_a954f3767221f9::t_db2fdfe729193d 179-184
+assets/theme.css
+  s_a954f3767221f9::t_c1a62a0b98297b 95-97
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "cde49f07a22c37163babe0c11cb2060a3bf0f495",
+  "prompts": {},
+  "sessions": {
+    "s_a954f3767221f9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "829f8d66-749e-4577-919c-9f3af2021866",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
