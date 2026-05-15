@@ -92,9 +92,9 @@ html.serif .meta-grid dd     { font-size: 14px; }
    ============================================================ */
 
 .nav-blur {
-  background: rgb(var(--canvas) / 0.72);
-  backdrop-filter: saturate(180%) blur(12px);
-  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  background: rgb(var(--canvas) / 0.55);
+  backdrop-filter: saturate(200%) blur(24px);
+  -webkit-backdrop-filter: saturate(200%) blur(24px);
 }
 
 /* ============================================================
@@ -242,7 +242,6 @@ html.authed .gate-overlay { display: none; }
   display: inline-flex;
   align-items: center;
   padding: 4px 10px;
-  border-radius: 9999px;
   font-family: 'Space Mono', ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.1em;
