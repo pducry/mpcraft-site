@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIUD — MPCraft</title>
+  <meta name="description" content="IA como co-piloto em cada etapa do User Day. Do roteiro ao mapa de oportunidades — pesquisa integrada, não adicionada. Framework do MPCraft.">
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem('lang');
+        if (lang === 'pt' || lang === 'es') {
+          document.documentElement.setAttribute('lang', lang);
+        }
+        if (localStorage.getItem('font') === 'serif') {
+          document.documentElement.classList.add('serif');
+        }
+        if (localStorage.getItem('site-auth') === '1') {
+          document.documentElement.classList.add('authed');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/theme.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-midnight': 'rgb(var(--canvas) / <alpha-value>)',
+            'faded-steel':   'rgb(var(--line)   / <alpha-value>)',
+            'frost-white':   'rgb(var(--fg)     / <alpha-value>)',
+            'muted-ash':     'rgb(var(--muted)  / <alpha-value>)',
+            'whisper-gray':  'rgb(var(--whisper) / <alpha-value>)',
+            'electric-blue': 'rgb(var(--accent) / <alpha-value>)',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+            'mono': ['"Space Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          fontSize: {
+            'caption':    ['11px', { lineHeight: '2',    letterSpacing: '0.1em' }],
+            'body-sm':    ['13px', { lineHeight: '1.43', letterSpacing: '0' }],
+            'body':       ['15px', { lineHeight: '1.5',  letterSpacing: '-0.005em' }],
+            'subheading': ['18px', { lineHeight: '1.4',  letterSpacing: '-0.005em' }],
+            'heading':    ['30px', { lineHeight: '1.2',  letterSpacing: '-0.005em' }],
+            'heading-lg': ['40px', { lineHeight: '1.11', letterSpacing: '-0.005em' }],
+            'display':    ['64px', { lineHeight: '1',    letterSpacing: '-0.005em' }],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-deep-midnight text-frost-white">
+
+  <!-- PASSWORD GATE -->
+  <div class="gate-overlay" id="gate-overlay">
+    <div class="gate-card">
+      <div class="gate-mark" aria-hidden="true"></div>
+      <p class="gate-caption">
+        <span lang="pt">MPCraft · Acesso restrito</span>
+        <span lang="es">MPCraft · Acceso restringido</span>
+      </p>
+      <p class="gate-title">
+        <span lang="pt">Digite a senha para continuar.</span>
+        <span lang="es">Ingresá la contraseña para continuar.</span>
+      </p>
+      <form id="gate-form" class="gate-form" autocomplete="off">
+        <input id="gate-input" type="password" class="gate-input" placeholder="••••••••" autocomplete="current-password" required aria-label="Senha">
+        <button type="submit" class="gate-submit">
+          <span lang="pt">Entrar</span>
+          <span lang="es">Entrar</span>
+        </button>
+      </form>
+      <p id="gate-error" class="gate-error" role="alert">
+        <span lang="pt">Senha incorreta.</span>
+        <span lang="es">Contraseña incorrecta.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" aria-label="MPCraft — home">
+        <img src="../assets/logo@2x.png" alt="MPCraft" class="h-6 w-auto block">
+      </a>
+      <div class="flex items-center gap-5 sm:gap-6">
+        <a href="../index.html#projetos" class="text-body text-frost-white/80 hover:text-frost-white transition">
+          <span lang="pt">← Projetos</span>
+          <span lang="es">← Proyectos</span>
+        </a>
+        <button id="lang-toggle" type="button" class="toggle-btn lang-toggle" aria-label="Alternar idioma / Cambiar idioma">
+          <span class="lang-opt" data-lang="pt">PT</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-opt" data-lang="es">ES</span>
+        </button>
+        <button id="font-toggle" type="button" class="toggle-btn" aria-label="Alternar tipografia">
+          <span class="font-btn-label">Aa</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 md:pt-24 pb-12">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="pill pill--tecnica">Grow the craft</span>
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Ativo</span><span lang="es">Activo</span>
+      </span>
+    </div>
+    <h1 class="text-heading text-frost-white">AIUD</h1>
+    <p class="mt-3 text-body text-muted-ash italic max-w-xl">
+      <span lang="pt">IA como co-piloto em cada etapa do User Day. Do roteiro ao mapa de oportunidades.</span>
+      <span lang="es">IA como co-piloto en cada etapa del User Day. Del guion al mapa de oportunidades.</span>
+    </p>
+    <dl class="meta-grid grid grid-cols-2 sm:grid-cols-4 gap-y-4 gap-x-6 mt-10 pt-8 border-t border-faded-steel">
+      <div>
+        <dt><span lang="pt">Projeto</span><span lang="es">Proyecto</span></dt>
+        <dd class="mt-1">03 · AIUD</dd>
+      </div>
+      <div>
+        <dt>Status</dt>
+        <dd class="mt-1"><span lang="pt">Ativo</span><span lang="es">Activo</span></dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Formato</span><span lang="es">Formato</span></dt>
+        <dd class="mt-1"><span lang="pt">Framework</span><span lang="es">Framework</span></dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Time</span><span lang="es">Equipo</span></dt>
+        <dd class="mt-1">MP Cross</dd>
+      </div>
+    </dl>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- SOBRE O PROJETO -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Sobre o projeto</span>
+        <span lang="es">Sobre el proyecto</span>
+      </span>
+    </header>
+    <p class="text-body text-frost-white max-w-2xl">
+      <span lang="pt">O AIUD integra IA como co-piloto em todas as etapas do User Day — desde a preparação do roteiro até a geração do mapa de oportunidades. A IA não substitui o pesquisador: ela amplifica a capacidade de capturar, organizar e sintetizar o que acontece em campo.</span>
+      <span lang="es">El AIUD integra IA como co-piloto en todas las etapas del User Day — desde la preparación del guion hasta la generación del mapa de oportunidades. La IA no reemplaza al investigador: amplifica la capacidad de capturar, organizar y sintetizar lo que sucede en campo.</span>
+    </p>
+    <p class="mt-4 text-body text-muted-ash max-w-2xl">
+      <span lang="pt">O problema que resolve: User Days geram muito dado bruto e pouco insight estruturado. A síntese demora, padrões se perdem e a distância entre o campo e a decisão de design é grande demais. O AIUD comprime esse ciclo — o insight está disponível enquanto a pesquisa ainda acontece.</span>
+      <span lang="es">El problema que resuelve: los User Days generan muchos datos brutos y pocos insights estructurados. La síntesis tarda, los patrones se pierden y la distancia entre el campo y la decisión de diseño es demasiado grande. El AIUD comprime ese ciclo — el insight está disponible mientras la investigación aún sucede.</span>
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- FRAMEWORK -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-10">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Framework · 4 etapas</span>
+        <span lang="es">Framework · 4 etapas</span>
+      </span>
+    </header>
+
+    <!-- Timeline -->
+    <div class="ritual-timeline" role="img" aria-label="Framework AIUD — 4 etapas">
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">01</div>
+        <span class="ritual-timeline-time">Etapa 1</span>
+        <span class="ritual-timeline-label">
+          <span lang="pt">Preparação guiada</span>
+          <span lang="es">Preparación guiada</span>
+        </span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">02</div>
+        <span class="ritual-timeline-time">Etapa 2</span>
+        <span class="ritual-timeline-label">
+          <span lang="pt">Campo com co-piloto</span>
+          <span lang="es">Campo con co-piloto</span>
+        </span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">03</div>
+        <span class="ritual-timeline-time">Etapa 3</span>
+        <span class="ritual-timeline-label">
+          <span lang="pt">Síntese em tempo real</span>
+          <span lang="es">Síntesis en tiempo real</span>
+        </span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">04</div>
+        <span class="ritual-timeline-time">Etapa 4</span>
+        <span class="ritual-timeline-label">
+          <span lang="pt">Mapa de oportunidades</span>
+          <span lang="es">Mapa de oportunidades</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Etapas -->
+    <div class="ritual-step">
+      <span class="ritual-step-num">01</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white">
+            <span lang="pt">Preparação guiada</span>
+            <span lang="es">Preparación guiada</span>
+          </h3>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">A IA ajuda a estruturar o User Day antes de chegar em campo: define o objetivo da pesquisa, gera o screener com critérios de recrutamento, propõe o roteiro de entrevista e antecipa hipóteses a validar. A preparação deixa de ser intuitiva e passa a ser documentada.</span>
+          <span lang="es">La IA ayuda a estructurar el User Day antes de llegar al campo: define el objetivo de la investigación, genera el screener con criterios de reclutamiento, propone el guion de entrevista y anticipa hipótesis a validar. La preparación deja de ser intuitiva y pasa a ser documentada.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como aplicar</span><span lang="es">Cómo aplicar</span></strong>
+          <span lang="pt">Compartilhe com a IA o problema de design que motivou o User Day e peça o roteiro completo. Revise com o time antes de ir a campo — o roteiro é um ponto de partida, não um script.</span>
+          <span lang="es">Compartí con la IA el problema de diseño que motivó el User Day y pedí el guion completo. Revisalo con el equipo antes de ir al campo — el guion es un punto de partida, no un script.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">02</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white">
+            <span lang="pt">Campo com co-piloto</span>
+            <span lang="es">Campo con co-piloto</span>
+          </h3>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Durante as sessões, a IA atua como co-piloto: transcreve em tempo real, sinaliza padrões emergentes entre entrevistas e sugere perguntas de aprofundamento baseadas no que já foi dito. O pesquisador mantém o foco na pessoa — a IA cuida do registro.</span>
+          <span lang="es">Durante las sesiones, la IA actúa como co-piloto: transcribe en tiempo real, señala patrones emergentes entre entrevistas y sugiere preguntas de profundización basadas en lo que ya fue dicho. El investigador mantiene el foco en la persona — la IA se ocupa del registro.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como aplicar</span><span lang="es">Cómo aplicar</span></strong>
+          <span lang="pt">Use a transcrição em tempo real para marcar momentos de alta carga emocional ou contradição — esses são os dados mais valiosos. Não espere o fim do dia para revisar.</span>
+          <span lang="es">Usá la transcripción en tiempo real para marcar momentos de alta carga emocional o contradicción — esos son los datos más valiosos. No esperes el final del día para revisar.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">03</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white">
+            <span lang="pt">Síntese em tempo real</span>
+            <span lang="es">Síntesis en tiempo real</span>
+          </h3>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Ao fim de cada bloco de sessões, a IA agrega as observações de todos os pesquisadores e identifica convergências, tensões e outliers. O debriefing do time parte de padrões já visíveis — não de impressões individuais brutas. A síntese acontece enquanto o contexto ainda está fresco.</span>
+          <span lang="es">Al final de cada bloque de sesiones, la IA agrega las observaciones de todos los investigadores e identifica convergencias, tensiones y outliers. El debriefing del equipo parte de patrones ya visibles — no de impresiones individuales brutas. La síntesis sucede mientras el contexto todavía está fresco.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como aplicar</span><span lang="es">Cómo aplicar</span></strong>
+          <span lang="pt">Alimente a IA com as notas de todos os pesquisadores antes do debriefing — não depois. O valor está em confrontar a síntese da IA com a memória fresca do time, não em confirmar impressões já consolidadas.</span>
+          <span lang="es">Alimentá la IA con las notas de todos los investigadores antes del debriefing — no después. El valor está en confrontar la síntesis de la IA con la memoria fresca del equipo, no en confirmar impresiones ya consolidadas.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-step">
+      <span class="ritual-step-num">04</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h3 class="text-subheading text-frost-white">
+            <span lang="pt">Mapa de oportunidades</span>
+            <span lang="es">Mapa de oportunidades</span>
+          </h3>
+        </div>
+        <p class="text-body text-frost-white">
+          <span lang="pt">A IA traduz os dados do campo em oportunidades de design priorizadas — cada uma com evidências vinculadas a quotes reais e frequência de ocorrência. O mapa não é uma lista de achados: é a ponte entre o que o usuário disse e o que o time vai decidir.</span>
+          <span lang="es">La IA traduce los datos del campo en oportunidades de diseño priorizadas — cada una con evidencias vinculadas a quotes reales y frecuencia de ocurrencia. El mapa no es una lista de hallazgos: es el puente entre lo que el usuario dijo y lo que el equipo va a decidir.</span>
+        </p>
+        <div class="ritual-step-tip">
+          <strong><span lang="pt">Como aplicar</span><span lang="es">Cómo aplicar</span></strong>
+          <span lang="pt">Revise o mapa com o time antes de apresentar para stakeholders. A IA prioriza por frequência — o time prioriza por impacto estratégico. As duas perspectivas juntas geram o mapa mais útil.</span>
+          <span lang="es">Revisá el mapa con el equipo antes de presentar a stakeholders. La IA prioriza por frecuencia — el equipo prioriza por impacto estratégico. Las dos perspectivas juntas generan el mapa más útil.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- OUTPUT -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">Output</span>
+    </header>
+    <ul class="space-y-4">
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Roteiro e screener estruturados antes de ir a campo — preparação documentada, não improvisada.</span>
+          <span lang="es">Guion y screener estructurados antes de ir al campo — preparación documentada, no improvisada.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Síntese disponível no mesmo dia do User Day — sem esperar dias para ter os primeiros insights.</span>
+          <span lang="es">Síntesis disponible el mismo día del User Day — sin esperar días para tener los primeros insights.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Mapa de oportunidades com evidências rastreáveis — cada decisão de design vinculada ao que o usuário disse.</span>
+          <span lang="es">Mapa de oportunidades con evidencias rastreables — cada decisión de diseño vinculada a lo que el usuario dijo.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt">Repositório de pesquisa estruturado — acervo consultável em projetos futuros, não um doc que ninguém abre.</span>
+          <span lang="es">Repositorio de investigación estructurado — acervo consultable en proyectos futuros, no un doc que nadie abre.</span>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- EVOLUÇÃO -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">
+        <span lang="pt">Como evoluir</span>
+        <span lang="es">Cómo evolucionar</span>
+      </span>
+    </header>
+    <ul class="space-y-6">
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>Biblioteca de User Days.</strong> Mapas de oportunidade arquivados por produto e período. Com o tempo, o time consegue cruzar dados de diferentes User Days e identificar padrões que transcendem projetos individuais.</span>
+          <span lang="es"><strong>Biblioteca de User Days.</strong> Mapas de oportunidad archivados por producto y período. Con el tiempo, el equipo puede cruzar datos de diferentes User Days e identificar patrones que trascienden proyectos individuales.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>AIUD como input para o Critique com Critério.</strong> Usar quotes e padrões do User Day como evidências nas sessões de critique — o feedback deixa de ser suposição e passa a ser ancorado em dados reais de usuário.</span>
+          <span lang="es"><strong>AIUD como input para el Critique con Criterio.</strong> Usar quotes y patrones del User Day como evidencias en las sesiones de critique — el feedback deja de ser suposición y pasa a estar anclado en datos reales de usuario.</span>
+        </p>
+      </li>
+      <li class="flex gap-3">
+        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
+        <p class="text-body text-frost-white">
+          <span lang="pt"><strong>Expandir para outros formatos de pesquisa.</strong> O framework do AIUD se aplica a guerrilha, teste de usabilidade e entrevistas avulsas — não só ao User Day. O co-piloto de IA funciona em qualquer contexto onde há dado qualitativo para sintetizar.</span>
+          <span lang="es"><strong>Expandir a otros formatos de investigación.</strong> El framework del AIUD se aplica a guerrilla, test de usabilidad y entrevistas sueltas — no solo al User Day. El co-piloto de IA funciona en cualquier contexto donde hay datos cualitativos para sintetizar.</span>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-3xl mx-auto px-6 pt-8 pb-16 border-t border-faded-steel">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">© 2026 MPCraft · Mercado Pago</span>
+      <a href="../index.html#projetos" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">
+        <span lang="pt">← Todos os Projetos</span>
+        <span lang="es">← Todos los Proyectos</span>
+      </a>
+    </div>
+  </footer>
+
+  <script src="../assets/theme.js"></script>
+</body>
+</html>
