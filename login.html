@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MPCraft — Acesso</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('site-auth') === '1') {
+          window.location.replace('index.html');
+        }
+        if (localStorage.getItem('font') === 'serif') {
+          document.documentElement.classList.add('serif');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/theme.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: rgb(var(--canvas));
+      color: rgb(var(--fg));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 32px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Dot grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgb(var(--line) / 0.6) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Vignette */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 40%, rgb(var(--canvas) / 0.85) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .login-wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Logo */
+    .login-logo {
+      height: 28px;
+      width: auto;
+      display: block;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeUp 0.5s ease forwards 0.1s;
+    }
+
+    /* Divider */
+    .login-rule {
+      width: 1px;
+      height: 48px;
+      background: rgb(var(--line));
+      margin: 28px 0;
+      opacity: 0;
+      animation: fadeIn 0.4s ease forwards 0.25s;
+    }
+
+    /* Label */
+    .login-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgb(var(--muted));
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards 0.35s;
+    }
+
+    /* Form */
+    .login-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards 0.45s;
+    }
+
+    .login-input-wrap {
+      width: 100%;
+      position: relative;
+      border-bottom: 1px solid rgb(var(--line));
+      transition: border-color 0.2s;
+    }
+
+    .login-input-wrap:focus-within {
+      border-color: rgb(var(--fg));
+    }
+
+    .login-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Space Mono', monospace;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      color: rgb(var(--fg));
+      padding: 8px 0 12px;
+      text-align: center;
+      caret-color: rgb(var(--accent));
+    }
+
+    .login-input::placeholder {
+      color: rgb(var(--muted));
+      letter-spacing: 0.2em;
+    }
+
+    .login-error {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgb(var(--muted));
+      margin-top: 14px;
+      height: 14px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .login-error.visible {
+      opacity: 1;
+    }
+
+    .login-submit {
+      margin-top: 32px;
+      background: transparent;
+      border: 1px solid rgb(var(--line));
+      color: rgb(var(--fg));
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 10px 28px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .login-submit:hover {
+      background: rgb(var(--fg));
+      color: rgb(var(--canvas));
+      border-color: rgb(var(--fg));
+    }
+
+    /* Footer */
+    .login-footer {
+      position: fixed;
+      bottom: 24px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgb(var(--muted));
+      z-index: 1;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards 0.7s;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%       { transform: translateX(-6px); }
+      40%       { transform: translateX(6px); }
+      60%       { transform: translateX(-4px); }
+      80%       { transform: translateX(4px); }
+    }
+
+    .shake {
+      animation: shake 0.35s ease;
+    }
+
+    /* Success fade */
+    .fade-out {
+      animation: fadeOut 0.45s ease forwards;
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-wrap">
+
+    <img src="assets/logo@2x.png" alt="MPCraft" class="login-logo">
+
+    <div class="login-rule" aria-hidden="true"></div>
+
+    <p class="login-label">Acesso restrito</p>
+
+    <form class="login-form" id="login-form" autocomplete="off">
+      <div class="login-input-wrap" id="input-wrap">
+        <input
+          id="login-input"
+          type="password"
+          class="login-input"
+          placeholder="••••••••"
+          autocomplete="current-password"
+          required
+          aria-label="Senha de acesso"
+          autofocus
+        >
+      </div>
+
+      <p class="login-error" id="login-error" role="alert" aria-live="polite">
+        Senha incorreta
+      </p>
+
+      <button type="submit" class="login-submit">Entrar</button>
+    </form>
+
+  </div>
+
+  <footer class="login-footer">© 2026 MPCraft · Mercado Pago</footer>
+
+  <script>
+    const HASH = '1372b011bd1ac1f9b2eca9d84657fe47edfe72384e400d446d05884ae83b47ac';
+
+    async function sha256(text) {
+      const buf = new TextEncoder().encode(text);
+      const hash = await crypto.subtle.digest('SHA-256', buf);
+      return Array.from(new Uint8Array(hash))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+
+    const form = document.getElementById('login-form');
+    const input = document.getElementById('login-input');
+    const error = document.getElementById('login-error');
+    const wrap = document.getElementById('input-wrap');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const hash = await sha256(input.value.trim());
+
+      if (hash === HASH) {
+        try { localStorage.setItem('site-auth', '1'); } catch (_) {}
+        document.body.classList.add('fade-out');
+        setTimeout(() => window.location.replace('index.html'), 450);
+      } else {
+        error.classList.add('visible');
+        wrap.classList.add('shake');
+        input.value = '';
+        input.focus();
+        wrap.addEventListener('animationend', () => wrap.classList.remove('shake'), { once: true });
+      }
+    });
+
+    input.addEventListener('input', () => error.classList.remove('visible'));
+  </script>
+
+</body>
+</html>
