@@ -39,7 +39,7 @@
       show(idx);
       const slide = slides[idx];
       if (slide.tagName === 'VIDEO') {
-        setTimeout(next, 900);
+        setTimeout(next, 1200);
       } else {
         setTimeout(next, 550);
       }
