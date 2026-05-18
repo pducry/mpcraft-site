@@ -1,0 +1,21 @@
+assets/theme.js
+  s_7cbfb8c8762bc6::t_a35047b0ce7e4b 42
+index.html
+  s_7cbfb8c8762bc6::t_7b21eb48710c3d 203,213-214
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "cf4000ee5d111206f913c630f82860de9fa9134c",
+  "prompts": {},
+  "sessions": {
+    "s_7cbfb8c8762bc6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "893320cf-22e7-48c3-aff2-d4087125bf5d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
