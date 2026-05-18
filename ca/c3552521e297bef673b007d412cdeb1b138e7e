@@ -1,0 +1,41 @@
+rituais/critique-com-criterio.html
+  s_a954f3767221f9::t_801b6022288134 21
+writing/the-shape-of-systems.html
+  s_a954f3767221f9::t_801b6022288134 17
+login.html
+  s_a954f3767221f9::t_801b6022288134 13,294
+projetos/skillflix.html
+  s_a954f3767221f9::t_801b6022288134 21
+assets/theme.js
+  s_a954f3767221f9::t_801b6022288134 65
+rituais/skill-drop.html
+  s_a954f3767221f9::t_801b6022288134 21
+index.html
+  s_a954f3767221f9::t_801b6022288134 15
+rituais/tasting.html
+  s_a954f3767221f9::t_801b6022288134 21
+work/helix-design-system.html
+  s_a954f3767221f9::t_801b6022288134 17
+projetos/aiud.html
+  s_a954f3767221f9::t_801b6022288134 21
+rituais/build-review.html
+  s_a954f3767221f9::t_801b6022288134 21
+projetos/aiad.html
+  s_a954f3767221f9::t_801b6022288134 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "cac3552521e297bef673b007d412cdeb1b138e7e",
+  "prompts": {},
+  "sessions": {
+    "s_a954f3767221f9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "829f8d66-749e-4577-919c-9f3af2021866",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
