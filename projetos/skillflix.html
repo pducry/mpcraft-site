@@ -18,7 +18,7 @@
         if (localStorage.getItem('font') === 'serif') {
           document.documentElement.classList.add('serif');
         }
-        if (localStorage.getItem('site-auth') !== '1') { window.location.replace('../login.html'); } else {
+        if (localStorage.getItem('site-auth-v2') !== '1') { window.location.replace('../login.html'); } else {
           document.documentElement.classList.add('authed');
         }
       } catch (e) {}

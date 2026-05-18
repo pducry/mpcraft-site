@@ -62,7 +62,7 @@
 
   // Password gate — client-side (deterrent only, NOT real security)
   const GATE = {
-    KEY: 'site-auth',
+    KEY: 'site-auth-v2',
     HASH: '1372b011bd1ac1f9b2eca9d84657fe47edfe72384e400d446d05884ae83b47ac', // mpcraft
   };
   if (html.classList.contains('authed')) return;
