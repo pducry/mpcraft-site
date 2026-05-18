@@ -1,0 +1,37 @@
+login.html
+  s_a954f3767221f9::t_1c719c3193e305 1-310
+projetos/aiad.html
+  s_a954f3767221f9::t_8df3d27fb8de18 1-20,22-382
+  s_a954f3767221f9::t_b4f5db2666b77c 21
+rituais/critique-com-criterio.html
+  s_a954f3767221f9::t_b4f5db2666b77c 21
+rituais/build-review.html
+  s_a954f3767221f9::t_b4f5db2666b77c 21
+rituais/tasting.html
+  s_a954f3767221f9::t_b4f5db2666b77c 21
+projetos/skillflix.html
+  s_a954f3767221f9::t_b4f5db2666b77c 21
+  s_a954f3767221f9::t_8df3d27fb8de18 1-20,22-382
+index.html
+  s_a954f3767221f9::t_467129dd0c14ca 15-17,25
+rituais/skill-drop.html
+  s_a954f3767221f9::t_b4f5db2666b77c 21
+projetos/aiud.html
+  s_a954f3767221f9::t_b4f5db2666b77c 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "cbe6ef93dfdc9855dd808632627c501ed5c58b29",
+  "prompts": {},
+  "sessions": {
+    "s_a954f3767221f9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "829f8d66-749e-4577-919c-9f3af2021866",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
