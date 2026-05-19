@@ -61,6 +61,45 @@
       }
     }
   </script>
+
+  <style>
+    .case-image {
+      width: 100%;
+      display: block;
+      border-radius: 6px;
+    }
+    .case-rational {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    @media (min-width: 640px) {
+      .case-rational {
+        grid-template-columns: 1fr 1fr;
+        gap: 0 3rem;
+        align-items: start;
+      }
+    }
+    .rational-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgb(var(--muted));
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .step-compact {
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      gap: 0 1rem;
+      padding: 1rem 0;
+      border-top: 1px solid rgb(var(--line) / 0.6);
+    }
+    .step-compact:last-child {
+      border-bottom: 1px solid rgb(var(--line) / 0.6);
+    }
+  </style>
 </head>
 <body class="bg-deep-midnight text-frost-white">
 
@@ -114,7 +153,7 @@
   </nav>
 
   <!-- HERO -->
-  <section class="max-w-3xl mx-auto px-6 pt-16 md:pt-24 pb-12">
+  <section class="max-w-3xl mx-auto px-6 pt-12 md:pt-16 pb-10">
     <div class="flex items-center gap-3 mb-6">
       <span class="pill pill--tasting">Develop the taste</span>
       <span class="font-mono text-caption text-muted-ash uppercase">
@@ -126,244 +165,233 @@
       <span lang="pt">Direção de arte com fundamentação racional. IA como meio, não como fim.</span>
       <span lang="es">Dirección de arte con fundamentación racional. IA como medio, no como fin.</span>
     </p>
-    <dl class="meta-grid grid grid-cols-2 sm:grid-cols-4 gap-y-4 gap-x-6 mt-10 pt-8 border-t border-faded-steel">
-      <div>
-        <dt><span lang="pt">Projeto</span><span lang="es">Proyecto</span></dt>
-        <dd class="mt-1">01 · AIAD</dd>
-      </div>
-      <div>
-        <dt>Status</dt>
-        <dd class="mt-1"><span lang="pt">Ativo</span><span lang="es">Activo</span></dd>
-      </div>
-      <div>
-        <dt><span lang="pt">Formato</span><span lang="es">Formato</span></dt>
-        <dd class="mt-1"><span lang="pt">Framework</span><span lang="es">Framework</span></dd>
-      </div>
-      <div>
-        <dt><span lang="pt">Time</span><span lang="es">Equipo</span></dt>
-        <dd class="mt-1">MP Cross</dd>
-      </div>
-    </dl>
   </section>
 
-  <hr class="section-divider">
+  <!-- HERO IMAGE — full bleed portrait -->
+  <div class="max-w-5xl mx-auto px-6 pb-4">
+    <img src="../assets/ImagensAIAD/AIAD06-1.png" alt="Resultado AIAD — retrato produto" class="case-image">
+  </div>
 
-  <!-- OBJETIVO -->
-  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
-    <header class="mb-6">
-      <span class="font-mono text-caption text-muted-ash uppercase">
-        <span lang="pt">Sobre o projeto</span>
-        <span lang="es">Sobre el proyecto</span>
-      </span>
-    </header>
+  <!-- INTRO -->
+  <section class="max-w-3xl mx-auto px-6 pt-10 pb-12">
     <p class="text-body text-frost-white max-w-2xl">
-      <span lang="pt">O AIAD instala um framework que garante que toda decisão visual gerada com IA parte de intenção documentada — não de experimentação aleatória. O resultado não é uma imagem bonita. É uma imagem com racional defensável.</span>
-      <span lang="es">El AIAD instala un framework que garantiza que toda decisión visual generada con IA parte de intención documentada — no de experimentación aleatoria. El resultado no es una imagen bonita. Es una imagen con racional defendible.</span>
-    </p>
-    <p class="mt-4 text-body text-muted-ash max-w-2xl">
-      <span lang="pt">O problema que resolve: times usam IA generativa para criar visual sem fundamentação. O output varia, o critério não fica documentado e ninguém consegue replicar ou explicar a decisão. O AIAD transforma esse processo em uma disciplina rastreável — direção de arte como decisão, não decoração.</span>
-      <span lang="es">El problema que resuelve: equipos usan IA generativa para crear visual sin fundamentación. El output varía, el criterio no queda documentado y nadie puede replicar o explicar la decisión. El AIAD transforma ese proceso en una disciplina rastreable — dirección de arte como decisión, no decoración.</span>
+      <span lang="pt">O problema não é falta de ferramenta — é falta de critério antes de usar a ferramenta. Times geram imagem com IA sem saber o que a imagem precisa comunicar. O AIAD resolve isso: toda decisão visual parte de intenção documentada. O que muda? O resultado é defensável, replicável e não depende de quem criou.</span>
+      <span lang="es">El problema no es falta de herramienta — es falta de criterio antes de usarla. Los equipos generan imagen con IA sin saber qué necesita comunicar. El AIAD resuelve esto: toda decisión visual parte de intención documentada. ¿Qué cambia? El resultado es defendible, replicable y no depende de quién lo creó.</span>
     </p>
   </section>
 
   <hr class="section-divider">
 
-  <!-- FRAMEWORK -->
-  <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
-    <header class="mb-10">
-      <span class="font-mono text-caption text-muted-ash uppercase">
-        <span lang="pt">Framework · 4 etapas</span>
-        <span lang="es">Framework · 4 etapas</span>
-      </span>
-    </header>
-
-    <!-- Timeline -->
-    <div class="ritual-timeline" role="img" aria-label="Framework AIAD — 4 etapas">
-      <div class="ritual-timeline-step">
-        <div class="ritual-timeline-dot">01</div>
-        <span class="ritual-timeline-time">Etapa 1</span>
-        <span class="ritual-timeline-label">
-          <span lang="pt">Briefing estruturado</span>
-          <span lang="es">Briefing estructurado</span>
-        </span>
-      </div>
-      <div class="ritual-timeline-step">
-        <div class="ritual-timeline-dot">02</div>
-        <span class="ritual-timeline-time">Etapa 2</span>
-        <span class="ritual-timeline-label">
-          <span lang="pt">Mapa de referências</span>
-          <span lang="es">Mapa de referencias</span>
-        </span>
-      </div>
-      <div class="ritual-timeline-step">
-        <div class="ritual-timeline-dot">03</div>
-        <span class="ritual-timeline-time">Etapa 3</span>
-        <span class="ritual-timeline-label">
-          <span lang="pt">Prompt com intenção</span>
-          <span lang="es">Prompt con intención</span>
-        </span>
-      </div>
-      <div class="ritual-timeline-step">
-        <div class="ritual-timeline-dot">04</div>
-        <span class="ritual-timeline-time">Etapa 4</span>
-        <span class="ritual-timeline-label">
-          <span lang="pt">Validação racional</span>
-          <span lang="es">Validación racional</span>
-        </span>
-      </div>
-    </div>
-
-    <!-- Etapas -->
-    <div class="ritual-step">
-      <span class="ritual-step-num">01</span>
-      <div>
-        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
-          <h3 class="text-subheading text-frost-white">
-            <span lang="pt">Briefing estruturado</span>
-            <span lang="es">Briefing estructurado</span>
-          </h3>
-        </div>
-        <p class="text-body text-frost-white">
-          <span lang="pt">Antes de gerar qualquer imagem, documentar: o que esse visual precisa comunicar? Qual é o contexto de uso? Quais restrições existem? Quem é o público? Sem essas respostas, não há intenção — há ruído.</span>
-          <span lang="es">Antes de generar cualquier imagen, documentar: ¿qué necesita comunicar este visual? ¿Cuál es el contexto de uso? ¿Qué restricciones existen? ¿Quién es el público? Sin estas respuestas, no hay intención — hay ruido.</span>
-        </p>
-        <div class="ritual-step-tip">
-          <strong><span lang="pt">Como aplicar</span><span lang="es">Cómo aplicar</span></strong>
-          <span lang="pt">Use um template com campos obrigatórios. Um briefing sem resposta para "o que esse visual comunica?" não está pronto — independente do prazo.</span>
-          <span lang="es">Usá un template con campos obligatorios. Un briefing sin respuesta a "¿qué comunica este visual?" no está listo — independientemente del plazo.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="ritual-step">
-      <span class="ritual-step-num">02</span>
-      <div>
-        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
-          <h3 class="text-subheading text-frost-white">
-            <span lang="pt">Mapa de referências</span>
-            <span lang="es">Mapa de referencias</span>
-          </h3>
-        </div>
-        <p class="text-body text-frost-white">
-          <span lang="pt">Coletar e organizar referências visuais com anotações de critério. Não "gostei dessa imagem" — "essa imagem usa contraste de escala para criar hierarquia". A referência sem análise é decoração. Com análise, é decisão.</span>
-          <span lang="es">Recopilar y organizar referencias visuales con anotaciones de criterio. No "me gustó esta imagen" — "esta imagen usa contraste de escala para crear jerarquía". La referencia sin análisis es decoración. Con análisis, es decisión.</span>
-        </p>
-        <div class="ritual-step-tip">
-          <strong><span lang="pt">Como aplicar</span><span lang="es">Cómo aplicar</span></strong>
-          <span lang="pt">Organize as referências por princípio visual, não por estética. O mapa deve responder: quais decisões de composição, cor e tipografia você está tomando como referência — e por quê.</span>
-          <span lang="es">Organizá las referencias por principio visual, no por estética. El mapa debe responder: qué decisiones de composición, color y tipografía estás tomando como referencia — y por qué.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="ritual-step">
-      <span class="ritual-step-num">03</span>
-      <div>
-        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
-          <h3 class="text-subheading text-frost-white">
-            <span lang="pt">Prompt com intenção</span>
-            <span lang="es">Prompt con intención</span>
-          </h3>
-        </div>
-        <p class="text-body text-frost-white">
-          <span lang="pt">Construir o prompt a partir do briefing e do mapa — não do zero. Cada elemento do prompt deve ter justificativa rastreável. O prompt é a síntese da intenção, não uma lista de adjetivos bonitos.</span>
-          <span lang="es">Construir el prompt a partir del briefing y del mapa — no desde cero. Cada elemento del prompt debe tener justificación rastreable. El prompt es la síntesis de la intención, no una lista de adjetivos bonitos.</span>
-        </p>
-        <div class="ritual-step-tip">
-          <strong><span lang="pt">Como aplicar</span><span lang="es">Cómo aplicar</span></strong>
-          <span lang="pt">Se você não consegue explicar por que colocou um termo no prompt, tire. A IA amplifica intenção — se a intenção não está clara no prompt, o output não vai ser melhor que o acaso.</span>
-          <span lang="es">Si no podés explicar por qué pusiste un término en el prompt, sacálo. La IA amplifica intención — si la intención no está clara en el prompt, el output no va a ser mejor que el azar.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="ritual-step">
-      <span class="ritual-step-num">04</span>
-      <div>
-        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
-          <h3 class="text-subheading text-frost-white">
-            <span lang="pt">Validação racional</span>
-            <span lang="es">Validación racional</span>
-          </h3>
-        </div>
-        <p class="text-body text-frost-white">
-          <span lang="pt">Antes de aprovar o output, documentar: esse resultado atende ao briefing? Onde diverge das referências? O que você escolheria diferente — e por quê? A validação fecha o ciclo e torna a decisão defensável.</span>
-          <span lang="es">Antes de aprobar el output, documentar: ¿este resultado atiende al briefing? ¿Dónde diverge de las referencias? ¿Qué elegirías diferente — y por qué? La validación cierra el ciclo y hace la decisión defendible.</span>
-        </p>
-        <div class="ritual-step-tip">
-          <strong><span lang="pt">Como aplicar</span><span lang="es">Cómo aplicar</span></strong>
-          <span lang="pt">A validação não é "gostei ou não gostei". É a pergunta: esse visual serve ao propósito documentado no briefing? Se a resposta for "acho que sim", o briefing não estava claro o suficiente.</span>
-          <span lang="es">La validación no es "me gustó o no me gustó". Es la pregunta: ¿este visual sirve al propósito documentado en el briefing? Si la respuesta es "creo que sí", el briefing no estaba lo suficientemente claro.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider">
-
-  <!-- OUTPUT -->
+  <!-- BLOCO 1 — REFERÊNCIAS -->
   <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
-    <header class="mb-6">
-      <span class="font-mono text-caption text-muted-ash uppercase">Output</span>
-    </header>
-    <ul class="space-y-4">
-      <li class="flex gap-3">
-        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
-        <p class="text-body text-frost-white">
-          <span lang="pt">Decisão visual documentada e rastreável — o racional existe independente de quem criou.</span>
-          <span lang="es">Decisión visual documentada y rastreable — el racional existe independientemente de quién la creó.</span>
+    <div class="case-rational mb-8">
+      <div>
+        <span class="rational-label">
+          <span lang="pt">01 · Referências com critério</span>
+          <span lang="es">01 · Referencias con criterio</span>
+        </span>
+        <h2 class="text-subheading text-frost-white mb-3">
+          <span lang="pt">Referência não é inspiração. É argumento.</span>
+          <span lang="es">Referencia no es inspiración. Es argumento.</span>
+        </h2>
+        <p class="text-body text-muted-ash">
+          <span lang="pt">Cada imagem desse mapa foi escolhida por um princípio visual — não por estética. Amarelo como âncora de identidade. Produto com toque humano, nunca em flat isolado. Expressão natural: a pessoa parece de verdade, não parece modelo. Isso virou o filtro para cada decisão depois.</span>
+          <span lang="es">Cada imagen de este mapa fue elegida por un principio visual — no por estética. Amarillo como ancla de identidad. Producto con toque humano, nunca en flat aislado. Expresión natural: la persona parece real, no parece modelo. Eso se volvió el filtro para cada decisión posterior.</span>
         </p>
-      </li>
-      <li class="flex gap-3">
-        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
-        <p class="text-body text-frost-white">
-          <span lang="pt">Racional estético que pode ser apresentado e defendido em qualquer contexto de revisão.</span>
-          <span lang="es">Racional estético que puede ser presentado y defendido en cualquier contexto de revisión.</span>
+      </div>
+      <div class="mt-6 sm:mt-0">
+        <p class="text-body-sm text-muted-ash">
+          <span lang="pt"><strong class="text-frost-white">Cor:</strong> amarelo como sistema, não como detalhe — ancora a marca sem precisar de logo.</span>
+          <span lang="es"><strong class="text-frost-white">Color:</strong> amarillo como sistema, no como detalle — ancla la marca sin necesidad de logo.</span>
         </p>
-      </li>
-      <li class="flex gap-3">
-        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
-        <p class="text-body text-frost-white">
-          <span lang="pt">Processo replicável por qualquer pessoa do time — sem depender do perfil individual de quem criou.</span>
-          <span lang="es">Proceso replicable por cualquier persona del equipo — sin depender del perfil individual de quien lo creó.</span>
+        <p class="text-body-sm text-muted-ash mt-3">
+          <span lang="pt"><strong class="text-frost-white">Produto:</strong> sempre com presença humana — a mão, o olhar, o contexto de uso.</span>
+          <span lang="es"><strong class="text-frost-white">Producto:</strong> siempre con presencia humana — la mano, la mirada, el contexto de uso.</span>
         </p>
-      </li>
-    </ul>
+        <p class="text-body-sm text-muted-ash mt-3">
+          <span lang="pt"><strong class="text-frost-white">Enquadramento:</strong> diversidade de composição — close, plano aberto, ângulo — sem monotonia.</span>
+          <span lang="es"><strong class="text-frost-white">Encuadre:</strong> diversidad de composición — close, plano abierto, ángulo — sin monotonía.</span>
+        </p>
+      </div>
+    </div>
+    <img src="../assets/ImagensAIAD/AIAD02.png" alt="Mapa de referências visuais AIAD" class="case-image">
   </section>
 
   <hr class="section-divider">
 
-  <!-- EVOLUÇÃO -->
+  <!-- BLOCO 2 — VARIANTES -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <div class="case-rational mb-8">
+      <div>
+        <span class="rational-label">
+          <span lang="pt">02 · Seleção de variantes</span>
+          <span lang="es">02 · Selección de variantes</span>
+        </span>
+        <h2 class="text-subheading text-frost-white mb-3">
+          <span lang="pt">8 frames. A decisão não é intuitiva — é qual cumpre o briefing.</span>
+          <span lang="es">8 frames. La decisión no es intuitiva — es cuál cumple el brief.</span>
+        </h2>
+        <p class="text-body text-muted-ash">
+          <span lang="pt">Mesmo cenário, mesma pessoa, mesma luz. O que muda é o que cada frame comunica. Sem critério explícito, a escolha vira preferência pessoal. Com critério, a escolha vira decisão — e qualquer pessoa do time chega no mesmo resultado.</span>
+          <span lang="es">Mismo escenario, misma persona, misma luz. Lo que cambia es lo que cada frame comunica. Sin criterio explícito, la elección se vuelve preferencia personal. Con criterio, la elección se vuelve decisión — y cualquier persona del equipo llega al mismo resultado.</span>
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-0">
+        <p class="text-body-sm text-muted-ash">
+          <span lang="pt"><strong class="text-frost-white">O que elimina:</strong> frames onde o cartão fica ilegível, expressão encenada ou horizonte desbalanceado.</span>
+          <span lang="es"><strong class="text-frost-white">Lo que elimina:</strong> frames donde la tarjeta queda ilegible, expresión actuada u horizonte desbalanceado.</span>
+        </p>
+        <p class="text-body-sm text-muted-ash mt-3">
+          <span lang="pt"><strong class="text-frost-white">O que seleciona:</strong> expressão natural + cartão com leitura clara + luz dourada sem queimar o rosto.</span>
+          <span lang="es"><strong class="text-frost-white">Lo que selecciona:</strong> expresión natural + tarjeta con lectura clara + luz dorada sin quemar el rostro.</span>
+        </p>
+        <p class="text-body-sm text-muted-ash mt-3">
+          <span lang="pt"><strong class="text-frost-white">O ganho:</strong> a decisão pode ser explicada em uma frase — e documentada para o próximo projeto.</span>
+          <span lang="es"><strong class="text-frost-white">La ganancia:</strong> la decisión puede explicarse en una frase — y documentarse para el próximo proyecto.</span>
+        </p>
+      </div>
+    </div>
+    <img src="../assets/ImagensAIAD/AIAD01.png" alt="Grid de variantes — seleção de frame AIAD" class="case-image">
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- BLOCO 3 — PRODUTO COMO PROTAGONISTA -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <div class="case-rational mb-8">
+      <div>
+        <span class="rational-label">
+          <span lang="pt">03 · Hierarquia visual</span>
+          <span lang="es">03 · Jerarquía visual</span>
+        </span>
+        <h2 class="text-subheading text-frost-white mb-3">
+          <span lang="pt">Quando o briefing muda, a composição muda com ele.</span>
+          <span lang="es">Cuando el brief cambia, la composición cambia con él.</span>
+        </h2>
+        <p class="text-body text-muted-ash">
+          <span lang="pt">Aqui o briefing pediu produto como protagonista absoluto — sem contexto humano competindo. A decisão foi: céu limpo como fundo, cartão no centro óptico, mão como ancoragem mínima. Nenhum elemento decorativo. A imagem funciona porque o critério estava claro antes do clique.</span>
+          <span lang="es">Aquí el brief pedía producto como protagonista absoluto — sin contexto humano compitiendo. La decisión fue: cielo limpio como fondo, tarjeta en el centro óptico, mano como anclaje mínimo. Ningún elemento decorativo. La imagen funciona porque el criterio estaba claro antes del clic.</span>
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-0">
+        <p class="text-body-sm text-muted-ash">
+          <span lang="pt"><strong class="text-frost-white">Fundo:</strong> azul uniforme elimina distração — o olho vai direto ao produto.</span>
+          <span lang="es"><strong class="text-frost-white">Fondo:</strong> azul uniforme elimina distracción — el ojo va directo al producto.</span>
+        </p>
+        <p class="text-body-sm text-muted-ash mt-3">
+          <span lang="pt"><strong class="text-frost-white">Posição:</strong> cartão elevado e centralizado — leitura imediata do nome da marca.</span>
+          <span lang="es"><strong class="text-frost-white">Posición:</strong> tarjeta elevada y centrada — lectura inmediata del nombre de la marca.</span>
+        </p>
+        <p class="text-body-sm text-muted-ash mt-3">
+          <span lang="pt"><strong class="text-frost-white">Tensão:</strong> pulseira amarela na mão mantém a cor de identidade sem disputar o foco.</span>
+          <span lang="es"><strong class="text-frost-white">Tensión:</strong> pulsera amarilla en la mano mantiene el color de identidad sin disputar el foco.</span>
+        </p>
+      </div>
+    </div>
+    <img src="../assets/ImagensAIAD/AIAD03.png" alt="Produto como protagonista — cartão MP contra o céu" class="case-image">
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- BLOCO 4 — CONTEXTOS -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <div class="case-rational mb-8">
+      <div>
+        <span class="rational-label">
+          <span lang="pt">04 · Contextos diferentes, critério idêntico</span>
+          <span lang="es">04 · Contextos distintos, criterio idéntico</span>
+        </span>
+        <h2 class="text-subheading text-frost-white mb-3">
+          <span lang="pt">O produto aparece sem parecer que aparece.</span>
+          <span lang="es">El producto aparece sin parecer que aparece.</span>
+        </h2>
+        <p class="text-body text-muted-ash">
+          <span lang="pt">Dois cenários opostos — interior aconchegante e exterior urbano — mas o mesmo critério: naturalidade como requisito, não como estética. A pessoa não está posando com o produto. Está usando o produto. Essa distinção é o que separa imagem de campanha de foto de catálogo.</span>
+          <span lang="es">Dos escenarios opuestos — interior acogedor y exterior urbano — pero el mismo criterio: naturalidad como requisito, no como estética. La persona no está posando con el producto. Está usando el producto. Esa distinción es lo que separa imagen de campaña de foto de catálogo.</span>
+        </p>
+      </div>
+      <div class="mt-6 sm:mt-0">
+        <p class="text-body-sm text-muted-ash">
+          <span lang="pt"><strong class="text-frost-white">Interior:</strong> luz quente, posição relaxada, produto como extensão do momento — não como motivo dele.</span>
+          <span lang="es"><strong class="text-frost-white">Interior:</strong> luz cálida, posición relajada, producto como extensión del momento — no como motivo.</span>
+        </p>
+        <p class="text-body-sm text-muted-ash mt-3">
+          <span lang="pt"><strong class="text-frost-white">Exterior:</strong> plano aberto, postura natural, produto visível sem destaque forçado.</span>
+          <span lang="es"><strong class="text-frost-white">Exterior:</strong> plano abierto, postura natural, producto visible sin destaque forzado.</span>
+        </p>
+      </div>
+    </div>
+    <img src="../assets/ImagensAIAD/AIAD06.png" alt="Dois contextos — critério idêntico" class="case-image">
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- BLOCO 5 — OUTPUTS FINAIS -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-6">
+    <span class="rational-label mb-6 block">
+      <span lang="pt">05 · Outputs finais</span>
+      <span lang="es">05 · Outputs finales</span>
+    </span>
+    <p class="text-body text-muted-ash max-w-2xl mb-8">
+      <span lang="pt">As peças finais não são o começo do processo — são a consequência dele. A cor, o recorte, a hierarquia tipográfica: tudo tem racional que remonta ao briefing. O resultado é uma entrega que qualquer pessoa do time consegue defender — não só quem criou.</span>
+      <span lang="es">Las piezas finales no son el inicio del proceso — son su consecuencia. El color, el recorte, la jerarquía tipográfica: todo tiene racional que remonta al brief. El resultado es una entrega que cualquier persona del equipo puede defender — no solo quien la creó.</span>
+    </p>
+  </section>
+
+  <div class="max-w-5xl mx-auto px-6 pb-4">
+    <img src="../assets/ImagensAIAD/AIAD04.png" alt="Output final — banner Seguros MP" class="case-image mb-4">
+    <img src="../assets/ImagensAIAD/AIAD05.png" alt="Output final — banner Negócio MP" class="case-image">
+  </div>
+
+  <hr class="section-divider mt-12">
+
+  <!-- MÉTODO COMPACTO -->
   <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
-    <header class="mb-6">
+    <header class="mb-8">
       <span class="font-mono text-caption text-muted-ash uppercase">
-        <span lang="pt">Como evoluir</span>
-        <span lang="es">Cómo evolucionar</span>
+        <span lang="pt">O método em 4 linhas</span>
+        <span lang="es">El método en 4 líneas</span>
       </span>
     </header>
-    <ul class="space-y-6">
-      <li class="flex gap-3">
-        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
-        <p class="text-body text-frost-white">
-          <span lang="pt"><strong>Biblioteca de briefings e prompts validados.</strong> Referência para projetos futuros. Com o tempo, o time acumula um acervo de decisões visuais documentadas que acelera cada novo projeto.</span>
-          <span lang="es"><strong>Biblioteca de briefings y prompts validados.</strong> Referencia para proyectos futuros. Con el tiempo, el equipo acumula un acervo de decisiones visuales documentadas que acelera cada nuevo proyecto.</span>
-        </p>
-      </li>
-      <li class="flex gap-3">
-        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
-        <p class="text-body text-frost-white">
-          <span lang="pt"><strong>AIAD como padrão em toda entrega com IA.</strong> Quando o framework vira obrigatório — não opcional — a qualidade do output sobe de forma consistente em todo o time.</span>
-          <span lang="es"><strong>AIAD como estándar en toda entrega con IA.</strong> Cuando el framework se vuelve obligatorio — no opcional — la calidad del output sube de forma consistente en todo el equipo.</span>
-        </p>
-      </li>
-      <li class="flex gap-3">
-        <span class="font-mono text-caption text-muted-ash mt-0.5 shrink-0">—</span>
-        <p class="text-body text-frost-white">
-          <span lang="pt"><strong>Integrar outputs validados ao Tasting.</strong> Usar os resultados do AIAD como referências em sessões de Tasting — o framework alimenta o repertório visual do time de forma contínua.</span>
-          <span lang="es"><strong>Integrar outputs validados al Tasting.</strong> Usar los resultados del AIAD como referencias en sesiones de Tasting — el framework alimenta el repertorio visual del equipo de forma continua.</span>
-        </p>
-      </li>
-    </ul>
+
+    <div>
+      <div class="step-compact">
+        <span class="font-mono text-caption text-muted-ash pt-0.5">01</span>
+        <div>
+          <p class="text-body text-frost-white">
+            <strong><span lang="pt">Briefing com intenção</span><span lang="es">Briefing con intención</span></strong>
+            <span class="text-muted-ash"> — <span lang="pt">o que esse visual precisa comunicar? Sem resposta clara, não se avança.</span><span lang="es">¿qué necesita comunicar este visual? Sin respuesta clara, no se avanza.</span></span>
+          </p>
+        </div>
+      </div>
+      <div class="step-compact">
+        <span class="font-mono text-caption text-muted-ash pt-0.5">02</span>
+        <div>
+          <p class="text-body text-frost-white">
+            <strong><span lang="pt">Referências com argumento</span><span lang="es">Referencias con argumento</span></strong>
+            <span class="text-muted-ash"> — <span lang="pt">cada referência anotada por princípio visual, não por estética.</span><span lang="es">cada referencia anotada por principio visual, no por estética.</span></span>
+          </p>
+        </div>
+      </div>
+      <div class="step-compact">
+        <span class="font-mono text-caption text-muted-ash pt-0.5">03</span>
+        <div>
+          <p class="text-body text-frost-white">
+            <strong><span lang="pt">Prompt rastreável</span><span lang="es">Prompt rastreable</span></strong>
+            <span class="text-muted-ash"> — <span lang="pt">cada termo do prompt tem justificativa no briefing. Se não tem, sai.</span><span lang="es">cada término del prompt tiene justificación en el brief. Si no la tiene, se saca.</span></span>
+          </p>
+        </div>
+      </div>
+      <div class="step-compact">
+        <span class="font-mono text-caption text-muted-ash pt-0.5">04</span>
+        <div>
+          <p class="text-body text-frost-white">
+            <strong><span lang="pt">Validação objetiva</span><span lang="es">Validación objetiva</span></strong>
+            <span class="text-muted-ash"> — <span lang="pt">o resultado serve ao propósito do briefing? "Acho que sim" não é resposta.</span><span lang="es">¿el resultado sirve al propósito del brief? "Creo que sí" no es respuesta.</span></span>
+          </p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- FOOTER -->
