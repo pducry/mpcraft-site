@@ -455,6 +455,8 @@ html.authed .gate-overlay { display: none; }
   aspect-ratio: 16 / 9;
   background: rgb(var(--canvas));
   overflow: hidden;
+  border: 1px solid rgb(var(--line) / 0.4);
+  border-radius: 6px;
 }
 .slideshow img,
 .slideshow video {
