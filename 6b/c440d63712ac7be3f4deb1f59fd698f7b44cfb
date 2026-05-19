@@ -1,0 +1,19 @@
+projetos/aiad.html
+  s_7cbfb8c8762bc6::t_1f9832fa2f2a82 64-102,156,170-173,175-176,178-179,185-191,193-200,202-214,217-218,220-224,226-236,239-250,254-257,259-261,263-273,276-287,291,296,298-310,312-316,318-320,322-324,329-348,350,352-353,356-394
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "6bc440d63712ac7be3f4deb1f59fd698f7b44cfb",
+  "prompts": {},
+  "sessions": {
+    "s_7cbfb8c8762bc6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "893320cf-22e7-48c3-aff2-d4087125bf5d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
