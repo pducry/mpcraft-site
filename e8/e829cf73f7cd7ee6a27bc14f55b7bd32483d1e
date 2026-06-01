@@ -1,0 +1,19 @@
+rituais/tasting.html
+  s_385119d744440a::t_9d7647cfec07ef 7,21,136,171-220,230-259,405-409
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "e8e829cf73f7cd7ee6a27bc14f55b7bd32483d1e",
+  "prompts": {},
+  "sessions": {
+    "s_385119d744440a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ac82a8cb-18b1-4cad-859f-b4e3ff8affad",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
