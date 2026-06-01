@@ -1,0 +1,39 @@
+projetos/aiad.html
+  s_385119d744440a::t_4d0ab93b935f82 109
+rituais/tasting.html
+  s_385119d744440a::t_4d0ab93b935f82 70
+projetos/skillflix.html
+  s_385119d744440a::t_4d0ab93b935f82 70
+rituais/skill-drop.html
+  s_385119d744440a::t_4d0ab93b935f82 70
+index.html
+  s_385119d744440a::t_4d0ab93b935f82 72
+projetos/aiud.html
+  s_385119d744440a::t_4d0ab93b935f82 70
+rituais/critique-com-criterio.html
+  s_385119d744440a::t_4d0ab93b935f82 70
+writing/the-shape-of-systems.html
+  s_385119d744440a::t_4d0ab93b935f82 66
+rituais/build-review.html
+  s_385119d744440a::t_4d0ab93b935f82 70
+assets/theme.css
+  s_385119d744440a::t_dfb3b3f179b482 167-168
+work/helix-design-system.html
+  s_385119d744440a::t_4d0ab93b935f82 66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "0031ce224ad7e7a624c0f94d1474d11273ed6048",
+  "prompts": {},
+  "sessions": {
+    "s_385119d744440a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ac82a8cb-18b1-4cad-859f-b4e3ff8affad",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
