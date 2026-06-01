@@ -1,0 +1,19 @@
+assets/theme.js
+  s_385119d744440a::t_e13e34c8b3cf62 17-18,21-22,24-27,29-37,39-47,50-52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "6f93584656ebbfa434715bd7c2422b5adc65e184",
+  "prompts": {},
+  "sessions": {
+    "s_385119d744440a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ac82a8cb-18b1-4cad-859f-b4e3ff8affad",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
