@@ -14,39 +14,42 @@
 
   bind('font-toggle', 'serif', 'font');
 
-  // Slideshow controller — supports mixed images + video
-  // Images: 0.55s each. Video: plays to end (max 30s), then advances.
+  // Slideshow controller — supports mixed images + video, multiple instances per page
+  // Images: 0.55s each. Video: plays to end (max 0.9s), then advances.
   (function () {
-    const ss = document.querySelector('.slideshow');
-    if (!ss) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const slideshows = document.querySelectorAll('.slideshow');
+    if (!slideshows.length) return;
 
-    const slides = Array.from(ss.children);
-    let idx = 0;
+    slideshows.forEach((ss) => {
+      const slides = Array.from(ss.children);
+      if (!slides.length) return;
+      let idx = 0;
 
-    function show(i) {
-      slides.forEach((s, n) => {
-        s.style.opacity = n === i ? '1' : '0';
-        if (s.tagName === 'VIDEO') {
-          if (n === i) { s.currentTime = 0; s.play().catch(() => {}); }
-          else s.pause();
-        }
-      });
-    }
-
-    function next() {
-      idx = (idx + 1) % slides.length;
-      show(idx);
-      const slide = slides[idx];
-      if (slide.tagName === 'VIDEO') {
-        setTimeout(next, 1200);
-      } else {
-        setTimeout(next, 550);
+      function show(i) {
+        slides.forEach((s, n) => {
+          s.style.opacity = n === i ? '1' : '0';
+          if (s.tagName === 'VIDEO') {
+            if (n === i) { s.currentTime = 0; s.play().catch(() => {}); }
+            else s.pause();
+          }
+        });
       }
-    }
 
-    show(0);
-    setTimeout(next, 550);
+      function next() {
+        idx = (idx + 1) % slides.length;
+        show(idx);
+        const slide = slides[idx];
+        if (slide.tagName === 'VIDEO') {
+          setTimeout(next, 900);
+        } else {
+          setTimeout(next, 550);
+        }
+      }
+
+      show(0);
+      setTimeout(next, 550);
+    });
   })();
 
   // Lang toggle — pt <-> es, persisted in localStorage

@@ -163,10 +163,9 @@ html.authed .gate-overlay { display: none; }
   text-align: center;
 }
 .gate-mark {
-  width: 32px;
   height: 32px;
-  border-radius: 9999px;
-  background: rgb(var(--accent));
+  width: auto;
+  display: block;
   margin: 0 auto 28px;
 }
 .gate-caption {
