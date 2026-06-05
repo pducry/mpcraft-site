@@ -1,0 +1,40 @@
+index.html
+  s_a39598a0a9c100::t_f28193ea552e7b 129
+  s_a39598a0a9c100::t_04b131c1e859ab 422,426-427,431-432
+  s_a39598a0a9c100::t_3433c1d03f6ec3 439,441,445-446
+rituais/tasting.html
+  s_a39598a0a9c100::t_a87edeabc5ee3c 120-121,124
+  s_a39598a0a9c100::t_4946b4b8ff15c5 201,204-205
+  s_385119d744440a::t_bc102845f8d475 171-179,182-184,186-187,190-200,202-203,206-220
+  s_a39598a0a9c100::t_038003a02569a9 180-181
+  s_a39598a0a9c100::t_a5186751616bb7 261
+  s_a39598a0a9c100::t_e2a386d3ce0646 160-161,164-165
+  s_a39598a0a9c100::t_bfc2e52752379b 443-444
+  s_a39598a0a9c100::t_00d9863d426220 6-7
+  s_a39598a0a9c100::t_c9bd012f649656 136,140
+  s_a39598a0a9c100::t_7f05ea3656c5c5 185,188-189
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "0b6400848bc9a6ddf9b0b0440cb8b0724995bb98",
+  "prompts": {},
+  "sessions": {
+    "s_385119d744440a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ac82a8cb-18b1-4cad-859f-b4e3ff8affad",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    },
+    "s_a39598a0a9c100": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "200049dd-f149-46b6-afe3-0aaa6d99eeff",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
