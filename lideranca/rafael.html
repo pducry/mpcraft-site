@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rafael Rodrigues — Liderança MpCross · MPCraft</title>
+  <meta name="description" content="Área restrita de liderança MpCross — Rafael Rodrigues.">
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem('lang');
+        if (lang === 'pt' || lang === 'es') {
+          document.documentElement.setAttribute('lang', lang);
+        }
+        if (localStorage.getItem('font') === 'serif') {
+          document.documentElement.classList.add('serif');
+        }
+        if (localStorage.getItem('lideranca-rafael-v1') === '1') {
+          document.documentElement.classList.add('authed');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/theme.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-midnight': 'rgb(var(--canvas) / <alpha-value>)',
+            'faded-steel':   'rgb(var(--line)   / <alpha-value>)',
+            'frost-white':   'rgb(var(--fg)     / <alpha-value>)',
+            'muted-ash':     'rgb(var(--muted)  / <alpha-value>)',
+            'whisper-gray':  'rgb(var(--whisper) / <alpha-value>)',
+            'electric-blue': 'rgb(var(--accent) / <alpha-value>)',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+            'mono': ['"Space Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          fontSize: {
+            'caption':    ['11px', { lineHeight: '2',    letterSpacing: '0.1em' }],
+            'body-sm':    ['13px', { lineHeight: '1.43', letterSpacing: '0' }],
+            'body':       ['15px', { lineHeight: '1.5',  letterSpacing: '-0.005em' }],
+            'subheading': ['18px', { lineHeight: '1.4',  letterSpacing: '-0.005em' }],
+            'heading':    ['30px', { lineHeight: '1.2',  letterSpacing: '-0.005em' }],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-deep-midnight text-frost-white">
+
+  <!-- PASSWORD GATE -->
+  <div class="gate-overlay" id="gate-overlay">
+    <div class="gate-card">
+      <img src="../assets/logo@2x.png" alt="MPCraft" class="gate-mark">
+      <p class="gate-caption">Liderança MpCross · Acesso restrito</p>
+      <p class="gate-title">Rafael Rodrigues</p>
+      <form id="gate-form" class="gate-form" autocomplete="off">
+        <input id="gate-input" type="password" class="gate-input" placeholder="••••••••" autocomplete="current-password" required aria-label="Senha">
+        <button type="submit" class="gate-submit">Entrar</button>
+      </form>
+      <p id="gate-error" class="gate-error" role="alert">Senha incorreta.</p>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" aria-label="MPCraft — home">
+        <img src="../assets/logo@2x.png" alt="MPCraft" class="h-6 w-auto block">
+      </a>
+      <div class="flex items-center gap-5 sm:gap-6">
+        <a href="../index.html" class="text-body text-frost-white/80 hover:text-frost-white transition">← Home</a>
+        <div class="nav-dropdown">
+          <a href="../index.html#lideranca" class="nav-dropdown-trigger text-body">Liderança MpCross
+            <svg class="nav-dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../lideranca/melanie.html"  class="nav-dropdown-item" role="menuitem">Melanie Florencia Devich</a>
+            <a href="../lideranca/rafael.html"   class="nav-dropdown-item" role="menuitem">Rafael Rodrigues</a>
+            <a href="../lideranca/natali.html"   class="nav-dropdown-item" role="menuitem">Natali Davila</a>
+            <a href="../lideranca/carolina.html" class="nav-dropdown-item" role="menuitem">Carolina Maia</a>
+            <a href="../lideranca/marcela.html"  class="nav-dropdown-item" role="menuitem">Marcela Lopez</a>
+          </div>
+        </div>
+        <button id="lang-toggle" type="button" class="toggle-btn lang-toggle" aria-label="Alternar idioma / Cambiar idioma">
+          <span class="lang-opt" data-lang="pt">PT</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-opt" data-lang="es">ES</span>
+        </button>
+        <button id="font-toggle" type="button" class="toggle-btn" aria-label="Alternar tipografia">
+          <span class="font-btn-label">Aa</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 md:pt-24 pb-12">
+    <div class="mb-6">
+      <span class="pill pill--craft">Liderança MpCross</span>
+    </div>
+    <h1 class="text-heading text-frost-white">Rafael Rodrigues</h1>
+    <p class="mt-3 text-body text-muted-ash italic max-w-xl">Área restrita de liderança.</p>
+    <div class="mt-10 pt-8 border-t border-faded-steel">
+      <p class="text-body text-muted-ash">Em breve.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-3xl mx-auto px-6 pt-8 pb-16 border-t border-faded-steel">
+    <div class="flex items-center justify-between pt-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">© 2026 MPCraft · Mercado Pago</span>
+      <a href="../index.html" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">← Home</a>
+    </div>
+  </footer>
+
+  <script src="../assets/theme.js"></script>
+  <script>
+    // Member-specific gate
+    (function () {
+      const GATE = {
+        KEY:  'lideranca-rafael-v1',
+        HASH: '0f74125d0e99dfacb26e5dc5dad76370394649309a11101dd7ce60133f227e2f',
+      };
+      const html = document.documentElement;
+      if (html.classList.contains('authed')) return;
+      const form  = document.getElementById('gate-form');
+      const input = document.getElementById('gate-input');
+      const err   = document.getElementById('gate-error');
+      if (!form || !input) return;
+
+      async function sha256(text) {
+        const buf  = new TextEncoder().encode(text);
+        const hash = await crypto.subtle.digest('SHA-256', buf);
+        return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,'0')).join('');
+      }
+
+      setTimeout(() => input.focus(), 50);
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const value = input.value.trim();
+        if (!value) return;
+        const hash = await sha256(value);
+        if (hash === GATE.HASH) {
+          try { localStorage.setItem(GATE.KEY, '1'); } catch (_) {}
+          html.classList.add('authed');
+        } else {
+          if (err) err.classList.add('show');
+          form.classList.add('shake');
+          setTimeout(() => form.classList.remove('shake'), 350);
+          input.select();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
