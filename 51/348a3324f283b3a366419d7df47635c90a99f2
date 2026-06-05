@@ -1,0 +1,26 @@
+rituais/tasting.html
+  s_a39598a0a9c100::t_915865d4e6b948 136
+  s_a39598a0a9c100::t_1c525b8659b372 180-181
+index.html
+  s_a39598a0a9c100::t_4b5f2a1b7ef8e9 441,445-446
+  s_a39598a0a9c100::t_3ec5ea71ebc0d8 470-471
+  s_a39598a0a9c100::t_49bededa484e2d 514-515
+rituais/critique-com-criterio.html
+  s_a39598a0a9c100::t_58185f3847c145 139
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.4",
+  "base_commit_sha": "51348a3324f283b3a366419d7df47635c90a99f2",
+  "prompts": {},
+  "sessions": {
+    "s_a39598a0a9c100": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "200049dd-f149-46b6-afe3-0aaa6d99eeff",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
