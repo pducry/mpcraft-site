@@ -1,0 +1,31 @@
+lideranca/melanie.html
+  s_a39598a0a9c100::t_4f5473f1ff0baa 7,15-17,50,81,102,105,108-354,360
+lideranca/carolina.html
+  s_a39598a0a9c100::t_4f5473f1ff0baa 7,15-17,50,81,102,105,108-354,360
+lideranca/rafael.html
+  s_a39598a0a9c100::t_4f5473f1ff0baa 7,15-17,50,81,102,105,108-354,360
+docs/superpowers/specs/2026-06-06-lideranca-page-design.md
+  s_a39598a0a9c100::t_50d6befb49b540 1-33
+assets/theme.css
+  s_a39598a0a9c100::t_6c2400aeec1a21 263-290
+lideranca/marcela.html
+  s_a39598a0a9c100::t_4f5473f1ff0baa 7,15-17,50,81,102,105,108-354,360
+lideranca/natali.html
+  s_a39598a0a9c100::t_4f5473f1ff0baa 7,15-17,50,81,102,105,108-354,360
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "5cb4b8a1f0eba434fdca2105ddb4dfe4ec984f57",
+  "prompts": {},
+  "sessions": {
+    "s_a39598a0a9c100": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "200049dd-f149-46b6-afe3-0aaa6d99eeff",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
