@@ -260,6 +260,35 @@ html.authed .gate-overlay { display: none; }
   background-color: rgba(22, 163, 74, 0.12);
   color: #166534;
 }
+.pill--lideranca {
+  background-color: rgba(37, 99, 235, 0.10);
+  color: #1e40af;
+}
+
+/* Status pills — Oportunidades de Melhoria */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-family: 'Space Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.status-pill--identificado {
+  background-color: rgb(var(--line) / 0.5);
+  color: rgb(var(--muted));
+}
+.status-pill--desenvolvendo {
+  background-color: rgba(217, 119, 6, 0.12);
+  color: #92400e;
+}
+.status-pill--resolvido {
+  background-color: rgba(22, 163, 74, 0.12);
+  color: #166534;
+}
 
 /* ============================================================
    Nav dropdown
