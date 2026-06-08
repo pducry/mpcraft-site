@@ -1,0 +1,21 @@
+lideranca/pilares.html
+  s_a39598a0a9c100::t_b27e59ab7e2476 148-149
+  s_a39598a0a9c100::t_6514c1290f7e84 122
+  s_a39598a0a9c100::t_605a87625c7550 293
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "db98c08d2ff3c2caa2f69bef7fa84406bcb56dd3",
+  "prompts": {},
+  "sessions": {
+    "s_a39598a0a9c100": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "200049dd-f149-46b6-afe3-0aaa6d99eeff",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
