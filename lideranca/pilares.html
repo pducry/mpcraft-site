@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilares de Liderança — MPCraft</title>
+  <meta name="description" content="Os 5 pilares que definem o modelo de liderança de design do MPCraft · Mercado Pago.">
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+  <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem('lang');
+        if (lang === 'pt' || lang === 'es') document.documentElement.setAttribute('lang', lang);
+        if (localStorage.getItem('font') === 'serif') document.documentElement.classList.add('serif');
+        if (localStorage.getItem('site-auth-v2') !== '1') { window.location.replace('../login.html'); } else {
+          document.documentElement.classList.add('authed');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/theme.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-midnight': 'rgb(var(--canvas) / <alpha-value>)',
+            'faded-steel':   'rgb(var(--line)   / <alpha-value>)',
+            'frost-white':   'rgb(var(--fg)     / <alpha-value>)',
+            'muted-ash':     'rgb(var(--muted)  / <alpha-value>)',
+            'whisper-gray':  'rgb(var(--whisper) / <alpha-value>)',
+            'electric-blue': 'rgb(var(--accent) / <alpha-value>)',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+            'mono': ['"Space Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          fontSize: {
+            'caption':    ['11px', { lineHeight: '2',    letterSpacing: '0.1em' }],
+            'body-sm':    ['13px', { lineHeight: '1.43', letterSpacing: '0' }],
+            'body':       ['15px', { lineHeight: '1.5',  letterSpacing: '-0.005em' }],
+            'subheading': ['18px', { lineHeight: '1.4',  letterSpacing: '-0.005em' }],
+            'heading':    ['30px', { lineHeight: '1.2',  letterSpacing: '-0.005em' }],
+            'heading-lg': ['40px', { lineHeight: '1.11', letterSpacing: '-0.005em' }],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-deep-midnight text-frost-white">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" aria-label="MPCraft — home">
+        <img src="../assets/logo@2x.png" alt="MPCraft" class="h-6 w-auto block">
+      </a>
+      <div class="flex items-center gap-5 sm:gap-6">
+        <a href="../index.html" class="text-body text-frost-white/80 hover:text-frost-white transition">← Home</a>
+        <div class="nav-dropdown">
+          <a href="../index.html#lideranca" class="nav-dropdown-trigger text-body">Liderança
+            <svg class="nav-dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../lideranca/pilares.html"   class="nav-dropdown-item" role="menuitem">Pilares de Liderança</a>
+            <a href="../lideranca/carolina.html"  class="nav-dropdown-item" role="menuitem">Carolina Maia</a>
+            <a href="../lideranca/marcela.html"   class="nav-dropdown-item" role="menuitem">Marcela Lopez</a>
+            <a href="../lideranca/melanie.html"   class="nav-dropdown-item" role="menuitem">Melanie Florencia Devich</a>
+            <a href="../lideranca/natali.html"    class="nav-dropdown-item" role="menuitem">Natali Davila</a>
+            <a href="../lideranca/rafael.html"    class="nav-dropdown-item" role="menuitem">Rafael Rodrigues</a>
+          </div>
+        </div>
+        <button id="font-toggle" type="button" class="toggle-btn" aria-label="Alternar tipografia">
+          <span class="font-btn-label">Aa</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 md:pt-24 pb-12">
+    <div class="mb-6">
+      <span class="pill pill--lideranca">Liderança · MPCraft</span>
+    </div>
+    <h1 class="text-heading-lg text-frost-white max-w-2xl">Pilares de Liderança</h1>
+    <p class="mt-6 text-subheading text-frost-white max-w-2xl leading-relaxed">
+      Líderes existem para elevar a qualidade do trabalho, não apenas para gerenciar pessoas.
+    </p>
+    <p class="mt-4 text-body text-muted-ash max-w-2xl">
+      Esse modelo se diferencia da liderança corporativa tradicional porque o principal ativo do líder não é o controle, nem a gestão de processos. É o bom gosto, o julgamento e a capacidade de elevar a qualidade do trabalho coletivo.
+    </p>
+
+    <!-- 5 pilares — navegação visual -->
+    <div class="ritual-timeline mt-12" role="img" aria-label="5 Pilares de Liderança">
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">01</div>
+        <span class="ritual-timeline-label">Craft Obsession</span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">02</div>
+        <span class="ritual-timeline-label">Hands-On Leadership</span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">03</div>
+        <span class="ritual-timeline-label">Radical Collaboration</span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">04</div>
+        <span class="ritual-timeline-label">Intelligent Pressure</span>
+      </div>
+      <div class="ritual-timeline-step">
+        <div class="ritual-timeline-dot">05</div>
+        <span class="ritual-timeline-label">Innovation Through Making</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- PILARES -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-4">
+    <header class="mb-10">
+      <span class="font-mono text-caption text-muted-ash uppercase">Os 5 Pilares</span>
+    </header>
+
+    <!-- 01 CRAFT OBSESSION -->
+    <div class="ritual-step">
+      <span class="ritual-step-num">01</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
+          <h2 class="text-subheading text-frost-white">Craft Obsession</h2>
+        </div>
+        <p class="text-body text-muted-ash italic mb-4">"A qualidade importa."</p>
+        <p class="text-body text-frost-white max-w-2xl mb-4">
+          O líder precisa ser um exemplo visível de excelência. Não significa fazer o trabalho da equipe — significa ter repertório, senso crítico e capacidade de reconhecer o que é excelente.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <div class="p-5 border border-faded-steel">
+            <span class="font-mono text-caption text-muted-ash uppercase block mb-3">Práticas</span>
+            <ul class="space-y-2">
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Participar de critiques
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Revisar detalhes visuais e de interação
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Debater decisões de design
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Estudar referências constantemente
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Elevar o padrão visual e funcional do time
+              </li>
+            </ul>
+          </div>
+          <div class="p-5 border border-faded-steel">
+            <span class="font-mono text-caption text-muted-ash uppercase block mb-3">Perguntas frequentes</span>
+            <ul class="space-y-2">
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">→</span>
+                Isso é realmente bom?
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">→</span>
+                Isso é memorável?
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">→</span>
+                Isso é o melhor que conseguimos fazer?
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 HANDS-ON LEADERSHIP -->
+    <div class="ritual-step">
+      <span class="ritual-step-num">02</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
+          <h2 class="text-subheading text-frost-white">Hands-On Leadership</h2>
+        </div>
+        <p class="text-body text-muted-ash italic mb-4">"Nunca se afastar do trabalho."</p>
+        <p class="text-body text-frost-white max-w-2xl mb-2">
+          Muitos líderes de design param de desenhar. Com o tempo, perdem contexto, repertório e credibilidade.
+        </p>
+        <p class="text-body text-muted-ash max-w-2xl mb-4">
+          O líder não precisa produzir 40 horas por semana — mas deve manter contato ativo com o fazer.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <div class="p-5 border border-faded-steel">
+            <span class="font-mono text-caption text-muted-ash uppercase block mb-3">Como fazer</span>
+            <ul class="space-y-2">
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Prototipar ocasionalmente
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Explorar IA
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Fazer experimentos
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Construir provas de conceito
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Demonstrar caminhos
+              </li>
+            </ul>
+          </div>
+          <div class="p-5 border border-faded-steel">
+            <span class="font-mono text-caption text-muted-ash uppercase block mb-3">O objetivo</span>
+            <p class="text-body-sm text-frost-white leading-relaxed">
+              Liderar pelo exemplo e não apenas pelo discurso.
+            </p>
+            <p class="text-body-sm text-muted-ash leading-relaxed mt-3">
+              Um líder que nunca faz perde a capacidade de avaliar o que o time produz com precisão real.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 RADICAL COLLABORATION -->
+    <div class="ritual-step">
+      <span class="ritual-step-num">03</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
+          <h2 class="text-subheading text-frost-white">Radical Collaboration</h2>
+        </div>
+        <p class="text-body text-muted-ash italic mb-4">"O melhor trabalho nasce da colisão de perspectivas."</p>
+        <p class="text-body text-frost-white max-w-2xl mb-4">
+          Design não acontece isoladamente. O líder cria um ambiente onde diferentes perspectivas se encontram — e o resultado é sempre melhor do que qualquer pessoa poderia construir sozinha.
+        </p>
+
+        <div class="p-5 border border-faded-steel mt-6">
+          <span class="font-mono text-caption text-muted-ash uppercase block mb-4">O ambiente que o líder cria</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="flex gap-3 text-body-sm text-frost-white">
+              <span class="text-muted-ash shrink-0">·</span>
+              Designers colaboram entre si
+            </div>
+            <div class="flex gap-3 text-body-sm text-frost-white">
+              <span class="text-muted-ash shrink-0">·</span>
+              UX trabalha junto de Produto
+            </div>
+            <div class="flex gap-3 text-body-sm text-frost-white">
+              <span class="text-muted-ash shrink-0">·</span>
+              Engenharia participa cedo
+            </div>
+            <div class="flex gap-3 text-body-sm text-frost-white">
+              <span class="text-muted-ash shrink-0">·</span>
+              Marketing contribui
+            </div>
+            <div class="flex gap-3 text-body-sm text-frost-white">
+              <span class="text-muted-ash shrink-0">·</span>
+              Dados influenciam decisões
+            </div>
+          </div>
+          <div class="mt-5 pt-5 border-t border-faded-steel grid grid-cols-2 gap-4">
+            <div>
+              <span class="font-mono text-caption text-muted-ash uppercase block mb-2">Antes</span>
+              <p class="text-body-sm text-muted-ash">"Quem teve a ideia?"</p>
+            </div>
+            <div>
+              <span class="font-mono text-caption text-electric-blue uppercase block mb-2">Depois</span>
+              <p class="text-body-sm text-frost-white">"Como construímos a melhor solução?"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 INTELLIGENT PRESSURE -->
+    <div class="ritual-step">
+      <span class="ritual-step-num">04</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
+          <h2 class="text-subheading text-frost-white">Intelligent Pressure</h2>
+        </div>
+        <p class="text-body text-muted-ash italic mb-4">"Alta expectativa com segurança psicológica."</p>
+        <p class="text-body text-frost-white max-w-2xl mb-2">
+          Times excepcionais não surgem apenas de gentileza. Mas também não surgem de medo.
+        </p>
+        <p class="text-body text-muted-ash max-w-2xl mb-4">
+          O papel do líder é desafiar constantemente — não como cobrança, mas como ambição. Pressão como elevação.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <div class="p-5 border border-faded-steel">
+            <span class="font-mono text-caption text-muted-ash uppercase block mb-3">Não aceitar</span>
+            <ul class="space-y-2">
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Primeira solução
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Primeira versão
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Primeira ideia
+              </li>
+            </ul>
+          </div>
+          <div class="p-5 border border-faded-steel">
+            <span class="font-mono text-caption text-muted-ash uppercase block mb-3">Perguntas que elevam</span>
+            <ul class="space-y-2">
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">→</span>
+                O que falta?
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">→</span>
+                Como melhorar?
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">→</span>
+                Onde está o diferencial?
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 INNOVATION THROUGH MAKING -->
+    <div class="ritual-step">
+      <span class="ritual-step-num">05</span>
+      <div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
+          <h2 class="text-subheading text-frost-white">Innovation Through Making</h2>
+        </div>
+        <p class="text-body text-muted-ash italic mb-4">"Inovação é consequência da experimentação."</p>
+        <p class="text-body text-frost-white max-w-2xl mb-2">
+          Grande parte dos times fala sobre inovação. Poucos constroem inovação.
+        </p>
+        <p class="text-body text-muted-ash max-w-2xl mb-4">
+          O líder precisa criar espaço para exploração real — não para discussões sobre inovação.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <div class="p-5 border border-faded-steel">
+            <span class="font-mono text-caption text-muted-ash uppercase block mb-3">O espaço que o líder cria</span>
+            <ul class="space-y-2">
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Exploração
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Protótipos
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                AI-first workflows
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Novas ferramentas
+              </li>
+              <li class="flex gap-3 text-body-sm text-frost-white">
+                <span class="text-muted-ash shrink-0">·</span>
+                Testes rápidos
+              </li>
+            </ul>
+          </div>
+          <div class="p-5 border border-faded-steel">
+            <span class="font-mono text-caption text-muted-ash uppercase block mb-3">A regra simples</span>
+            <p class="text-subheading text-frost-white leading-snug">
+              Mais fazer.
+            </p>
+            <p class="text-subheading text-muted-ash leading-snug mt-1">
+              Menos discutir.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- COMPORTAMENTOS ESPERADOS -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+    <header class="mb-8">
+      <span class="font-mono text-caption text-muted-ash uppercase">Comportamentos esperados</span>
+    </header>
+    <p class="text-body text-muted-ash mb-8 max-w-2xl">Um líder desse modelo não é definido por cargo ou título — é definido pelo que faz consistentemente.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3 max-w-2xl">
+      <div class="flex gap-3 text-body text-frost-white">
+        <span class="text-electric-blue shrink-0">✓</span>
+        Faz critiques
+      </div>
+      <div class="flex gap-3 text-body text-frost-white">
+        <span class="text-electric-blue shrink-0">✓</span>
+        Conhece profundamente o produto
+      </div>
+      <div class="flex gap-3 text-body text-frost-white">
+        <span class="text-electric-blue shrink-0">✓</span>
+        Entende tecnologia
+      </div>
+      <div class="flex gap-3 text-body text-frost-white">
+        <span class="text-electric-blue shrink-0">✓</span>
+        Tem repertório visual
+      </div>
+      <div class="flex gap-3 text-body text-frost-white">
+        <span class="text-electric-blue shrink-0">✓</span>
+        Mantém prática criativa
+      </div>
+      <div class="flex gap-3 text-body text-frost-white">
+        <span class="text-electric-blue shrink-0">✓</span>
+        Desenvolve pessoas
+      </div>
+      <div class="flex gap-3 text-body text-frost-white">
+        <span class="text-electric-blue shrink-0">✓</span>
+        Exige excelência
+      </div>
+      <div class="flex gap-3 text-body text-frost-white">
+        <span class="text-electric-blue shrink-0">✓</span>
+        Experimenta constantemente
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- MANIFESTO -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+    <header class="mb-10">
+      <span class="font-mono text-caption text-muted-ash uppercase">O Manifesto</span>
+    </header>
+    <div class="space-y-8 max-w-2xl">
+      <div class="ritual-step">
+        <span class="ritual-step-num" style="padding-top:2px">—</span>
+        <div>
+          <h3 class="text-subheading text-frost-white mb-1">Constantemente presente.</h3>
+          <p class="text-body text-muted-ash">O líder está próximo do trabalho.</p>
+        </div>
+      </div>
+      <div class="ritual-step">
+        <span class="ritual-step-num" style="padding-top:2px">—</span>
+        <div>
+          <h3 class="text-subheading text-frost-white mb-1">Obcecado por qualidade.</h3>
+          <p class="text-body text-muted-ash">O detalhe importa.</p>
+        </div>
+      </div>
+      <div class="ritual-step">
+        <span class="ritual-step-num" style="padding-top:2px">—</span>
+        <div>
+          <h3 class="text-subheading text-frost-white mb-1">Colaborativo por natureza.</h3>
+          <p class="text-body text-muted-ash">As melhores soluções são construídas em conjunto.</p>
+        </div>
+      </div>
+      <div class="ritual-step">
+        <span class="ritual-step-num" style="padding-top:2px">—</span>
+        <div>
+          <h3 class="text-subheading text-frost-white mb-1">Ambicioso com gentileza.</h3>
+          <p class="text-body text-muted-ash">Desafia sem destruir.</p>
+        </div>
+      </div>
+      <div class="ritual-step">
+        <span class="ritual-step-num" style="padding-top:2px">—</span>
+        <div>
+          <h3 class="text-subheading text-frost-white mb-1">Criador antes de gestor.</h3>
+          <p class="text-body text-muted-ash">Faz para aprender. Aprende para liderar.</p>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="mt-12 pt-8 border-t border-faded-steel max-w-2xl">
+      <p class="text-body text-muted-ash leading-relaxed">
+        O que separa um gestor de design de um verdadeiro líder de design é o bom gosto, o julgamento e a capacidade de elevar a qualidade do trabalho coletivo.
+      </p>
+    </blockquote>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-3xl mx-auto px-6 pt-8 pb-16 border-t border-faded-steel">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">© 2026 MPCraft · Mercado Pago</span>
+      <a href="../index.html" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">← Home</a>
+    </div>
+  </footer>
+
+  <script src="../assets/theme.js"></script>
+</body>
+</html>
