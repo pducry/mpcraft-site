@@ -1,0 +1,29 @@
+lideranca/natali.html
+  s_a39598a0a9c100::t_b43c5e354633b1 101-106
+assets/theme.css
+  s_a39598a0a9c100::t_6b81309fc23fdd 636-713
+lideranca/rafael.html
+  s_a39598a0a9c100::t_b43c5e354633b1 101-106
+lideranca/carolina.html
+  s_a39598a0a9c100::t_b43c5e354633b1 101-106
+lideranca/marcela.html
+  s_a39598a0a9c100::t_b43c5e354633b1 101-106
+lideranca/melanie.html
+  s_a39598a0a9c100::t_b43c5e354633b1 101-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "0380df4e1666d4180067d16b0f1f4f5820273c6a",
+  "prompts": {},
+  "sessions": {
+    "s_a39598a0a9c100": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "200049dd-f149-46b6-afe3-0aaa6d99eeff",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
