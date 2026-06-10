@@ -633,3 +633,81 @@ html.serif .font-btn-label {
   font-family: 'Newsreader', Georgia, serif;
   letter-spacing: 0;
 }
+
+/* ============================================================
+   PDF download button
+   ============================================================ */
+
+.pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-family: 'Space Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(var(--muted));
+  border: 1px solid rgb(var(--line));
+  background: transparent;
+  cursor: pointer;
+  transition: color .15s ease, border-color .15s ease;
+}
+.pdf-btn:hover {
+  color: rgb(var(--fg));
+  border-color: rgb(var(--fg) / 0.4);
+}
+
+/* ============================================================
+   Print / PDF styles
+   ============================================================ */
+
+@media print {
+  /* Hide interactive chrome */
+  nav,
+  .gate-overlay,
+  .pdf-btn,
+  .toggle-btn,
+  .nav-dropdown,
+  footer a,
+  .section-divider { display: none !important; }
+
+  /* Reset background/colors for print */
+  :root {
+    --canvas: 255 255 255;
+    --fg:     10 10 10;
+    --muted:  80 80 80;
+    --line:   200 200 200;
+    --accent: 37 99 235;
+    --whisper: 150 150 150;
+  }
+
+  body { font-size: 11pt; }
+
+  /* Avoid page breaks inside cards */
+  .ritual-step,
+  .p-5,
+  .space-y-8 > div,
+  .space-y-6 > div { break-inside: avoid; }
+
+  /* Section spacing */
+  section { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+
+  /* Ensure links print as text */
+  a[href]::after { content: none; }
+
+  /* Status pills — readable in B&W */
+  .status-pill--desenvolvendo { background-color: #f5f5f5 !important; color: #555 !important; }
+  .status-pill--identificado  { background-color: #f5f5f5 !important; color: #555 !important; }
+  .status-pill--resolvido     { background-color: #f5f5f5 !important; color: #555 !important; }
+
+  /* Metrics grid — full width */
+  .grid { display: block !important; }
+  .grid > div { margin-bottom: 1rem; }
+
+  /* Avatar photo */
+  img[style*="border-radius: 9999px"] { width: 40px !important; height: 40px !important; }
+
+  /* Page title */
+  @page { margin: 1.5cm 2cm; }
+}
