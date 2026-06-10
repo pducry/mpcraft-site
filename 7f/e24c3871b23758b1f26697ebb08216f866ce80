@@ -1,0 +1,23 @@
+lideranca/marcela.html
+  s_a39598a0a9c100::t_74936083e96695 267
+  s_a39598a0a9c100::t_59a27f7e1d6e85 110,115,119,122-123
+  s_a39598a0a9c100::t_93aa533f70ee2f 237,241,247,251
+  s_a39598a0a9c100::t_620c9b5a9d7cd8 185,188
+  s_a39598a0a9c100::t_ff2a2ab5d06280 203,205,210,212,217,219
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "7fe24c3871b23758b1f26697ebb08216f866ce80",
+  "prompts": {},
+  "sessions": {
+    "s_a39598a0a9c100": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "200049dd-f149-46b6-afe3-0aaa6d99eeff",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
