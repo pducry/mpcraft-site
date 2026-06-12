@@ -635,27 +635,40 @@ html.serif .font-btn-label {
 }
 
 /* ============================================================
-   PDF download button
+   PDF download button — floating pill
    ============================================================ */
 
 .pdf-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 100;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+  gap: 7px;
+  padding: 10px 18px;
   font-family: 'Space Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(var(--muted));
-  border: 1px solid rgb(var(--line));
-  background: transparent;
+  color: #fff;
+  background: rgb(var(--accent));
+  border: none;
+  border-radius: 9999px;
   cursor: pointer;
-  transition: color .15s ease, border-color .15s ease;
+  box-shadow: 0 4px 16px rgb(var(--accent) / 0.35);
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
 }
 .pdf-btn:hover {
-  color: rgb(var(--fg));
-  border-color: rgb(var(--fg) / 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgb(var(--accent) / 0.45);
+}
+.pdf-btn:active {
+  transform: translateY(0);
+}
+.pdf-btn.loading {
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 /* ============================================================

@@ -98,14 +98,7 @@
           <span class="lang-sep" aria-hidden="true">/</span>
           <span class="lang-opt" data-lang="es">ES</span>
         </button>
-      <button id="pdf-download-btn" class="pdf-btn" onclick="downloadPDF('Natali-Davila')" aria-label="Download PDF">
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
-            <path d="M5.5 1v6M2.5 5l3 3 3-3M1 9h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span lang="pt">Baixar PDF</span>
-          <span lang="es">Descargar PDF</span>
-        </button>
-        <button id="font-toggle" type="button" class="toggle-btn" aria-label="Alternar tipografia">
+<button id="font-toggle" type="button" class="toggle-btn" aria-label="Alternar tipografia">
           <span class="font-btn-label">Aa</span>
         </button>
       </div>
@@ -429,6 +422,15 @@
       <a href="../index.html" class="font-mono text-caption text-muted-ash uppercase link-hover-underline"><span lang="pt">← Home</span><span lang="es">← Home</span></a>
     </div>
   </footer>
+
+  <!-- PDF download — floating pill -->
+  <button id="pdf-download-btn" class="pdf-btn" onclick="downloadPDF('Natali-Davila')" aria-label="Download PDF">
+    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+      <path d="M5.5 1v6M2.5 5l3 3 3-3M1 9h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span lang="pt" class="btn-label">Baixar PDF</span>
+    <span lang="es" class="btn-label">Descargar PDF</span>
+  </button>
 
   <script src="../assets/theme.js"></script>
   <script>
