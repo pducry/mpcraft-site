@@ -635,18 +635,14 @@ html.serif .font-btn-label {
 }
 
 /* ============================================================
-   PDF download button — floating pill
+   PDF download button
    ============================================================ */
 
 .pdf-btn {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 100;
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 10px 18px;
+  padding: 8px 16px;
   font-family: 'Space Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.1em;
@@ -656,15 +652,13 @@ html.serif .font-btn-label {
   border: none;
   border-radius: 9999px;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgb(var(--accent) / 0.35);
-  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  transition: opacity .15s ease;
 }
 .pdf-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgb(var(--accent) / 0.45);
+  opacity: 0.8;
 }
 .pdf-btn:active {
-  transform: translateY(0);
+  opacity: 0.65;
 }
 .pdf-btn.loading {
   opacity: 0.7;
