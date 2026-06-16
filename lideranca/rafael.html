@@ -107,8 +107,15 @@
 
   <!-- ① HERO: PERFIL + MOMENTO ATUAL -->
   <section class="max-w-3xl mx-auto px-6 pt-16 md:pt-24 pb-12">
-    <div class="mb-6">
+    <div class="mb-6 flex items-center justify-between gap-4">
       <span class="pill pill--lideranca"><span lang="pt">Liderança · Portfólio</span><span lang="es">Liderazgo · Portafolio</span></span>
+      <button id="pdf-download-btn" class="pdf-btn" onclick="downloadPDF('Rafael-Rodrigues')" aria-label="Download PDF">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+            <path d="M5.5 1v6M2.5 5l3 3 3-3M1 9h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span lang="pt" class="btn-label">Baixar PDF</span>
+          <span lang="es" class="btn-label">Descargar PDF</span>
+        </button>
     </div>
     <h1 class="text-heading text-frost-white">Rafael Rodrigues</h1>
     <p class="mt-3 text-body text-muted-ash italic max-w-xl">
@@ -412,16 +419,7 @@
   <footer class="max-w-3xl mx-auto px-6 pt-8 pb-16 border-t border-faded-steel">
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
       <span class="font-mono text-caption text-muted-ash uppercase">© 2026 MPCraft · Mercado Pago</span>
-      <div class="flex items-center gap-4">
-        <button id="pdf-download-btn" class="pdf-btn" onclick="downloadPDF('Rafael-Rodrigues')" aria-label="Download PDF">
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
-            <path d="M5.5 1v6M2.5 5l3 3 3-3M1 9h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span lang="pt" class="btn-label">Baixar PDF</span>
-          <span lang="es" class="btn-label">Descargar PDF</span>
-        </button>
-        <a href="../index.html" class="font-mono text-caption text-muted-ash uppercase link-hover-underline"><span lang="pt">← Home</span><span lang="es">← Home</span></a>
-      </div>
+      <a href="../index.html" class="font-mono text-caption text-muted-ash uppercase link-hover-underline"><span lang="pt">← Home</span><span lang="es">← Home</span></a>
     </div>
   </footer>
 
