@@ -1,0 +1,27 @@
+lideranca/melanie.html
+  s_2d91c60a4155ab::t_52817879bcd232 110,112-118,429
+lideranca/carolina.html
+  s_2d91c60a4155ab::t_52817879bcd232 110,112-118,432
+lideranca/natali.html
+  s_2d91c60a4155ab::t_52817879bcd232 110,112-118,429
+lideranca/rafael.html
+  s_2d91c60a4155ab::t_52817879bcd232 110,112-118,422
+lideranca/marcela.html
+  s_2d91c60a4155ab::t_52817879bcd232 110,112-118,460
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "0302f862a5ef43e4e26fa8a44d2482ea0f08085f",
+  "prompts": {},
+  "sessions": {
+    "s_2d91c60a4155ab": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4da91c0a-ff51-492e-ba36-393363407843",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
