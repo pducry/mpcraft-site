@@ -1,0 +1,26 @@
+rituais/ux-critique.html
+  s_4c9967755d2941::t_a8e4c834dae7d5 125,163,302
+  s_4c9967755d2941::t_83f934e04ff0c3 126,164
+  s_4c9967755d2941::t_4485c5454140a5 6-7
+  s_4c9967755d2941::t_39a9748c527d40 1-5,8-124,127-162,165-301,303-482
+index.html
+  s_4c9967755d2941::t_fb268ca27a4e2b 131,475,479
+  s_4c9967755d2941::t_2ada3015fa113e 132,480
+  s_4c9967755d2941::t_7d40353346d7ba 130,477
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "bc8fc846757135137ec422b1da209328b99a9fad",
+  "prompts": {},
+  "sessions": {
+    "s_4c9967755d2941": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b38d0c88-6586-4af7-959c-1471599d8c9d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
