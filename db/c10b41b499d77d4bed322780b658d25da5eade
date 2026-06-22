@@ -1,0 +1,25 @@
+rituais/tasting.html
+  s_4c9967755d2941::t_3d606edbdc6122 126-127,136,140
+  s_4c9967755d2941::t_b266e0f342e67d 201-202,207-208,212-213,217-218,222-223
+  s_4c9967755d2941::t_9ce187bdc2f70b 7
+  s_4c9967755d2941::t_65eb7e49e56f3a 160-161,164-165,168-169,171-172,174-182
+index.html
+  s_4c9967755d2941::t_f31395e8765cac 445-446
+  s_4c9967755d2941::t_3b4a31dcacdf97 455-458,462-463,467-468,472-473
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "dbc10b41b499d77d4bed322780b658d25da5eade",
+  "prompts": {},
+  "sessions": {
+    "s_4c9967755d2941": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b38d0c88-6586-4af7-959c-1471599d8c9d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
