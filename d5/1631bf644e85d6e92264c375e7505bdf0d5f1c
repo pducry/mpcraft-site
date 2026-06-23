@@ -1,0 +1,19 @@
+lideranca/carolina.html
+  s_4c9967755d2941::t_f5e26b9944751b 206-207
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "d51631bf644e85d6e92264c375e7505bdf0d5f1c",
+  "prompts": {},
+  "sessions": {
+    "s_4c9967755d2941": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b38d0c88-6586-4af7-959c-1471599d8c9d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
