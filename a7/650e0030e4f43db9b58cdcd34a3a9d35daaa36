@@ -1,0 +1,19 @@
+lideranca/marcela.html
+  s_4c9967755d2941::t_b84351bd7743d8 353-393
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "a7650e0030e4f43db9b58cdcd34a3a9d35daaa36",
+  "prompts": {},
+  "sessions": {
+    "s_4c9967755d2941": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b38d0c88-6586-4af7-959c-1471599d8c9d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
