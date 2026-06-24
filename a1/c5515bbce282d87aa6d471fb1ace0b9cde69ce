@@ -1,0 +1,19 @@
+lideranca/rafael.html
+  s_4c9967755d2941::t_e74f3a75b5ad23 334-345,350-353,358-361
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "a1c5515bbce282d87aa6d471fb1ace0b9cde69ce",
+  "prompts": {},
+  "sessions": {
+    "s_4c9967755d2941": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b38d0c88-6586-4af7-959c-1471599d8c9d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
