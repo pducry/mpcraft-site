@@ -1,0 +1,31 @@
+lideranca/carolina.html
+  s_96fdfd596b563b::t_375f023d8e23a3 488-592
+  s_96fdfd596b563b::t_7b494207e6ee7e 327-428
+  s_96fdfd596b563b::t_d3e89ab38f8e37 429-487,593-597
+mpcraft-standalone.html
+  s_4c9967755d2941::t_1b1bdba9f3ee3f 6-7,820,899-900,910-911,921-922,964-965,1210-1211,1285-1286
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "db53f00abdcabd1624130b5045517465360fba1a",
+  "prompts": {},
+  "sessions": {
+    "s_4c9967755d2941": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b38d0c88-6586-4af7-959c-1471599d8c9d",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    },
+    "s_96fdfd596b563b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "108fb2ee-2402-4949-95ef-4a9449366c30",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
