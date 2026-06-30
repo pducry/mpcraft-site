@@ -14,9 +14,7 @@
         var lang = localStorage.getItem('lang');
         if (lang === 'pt' || lang === 'es') document.documentElement.setAttribute('lang', lang);
         if (localStorage.getItem('font') === 'serif') document.documentElement.classList.add('serif');
-        if (localStorage.getItem('site-auth-v2') !== '1') { window.location.replace('../login.html'); } else {
-          document.documentElement.classList.add('authed');
-        }
+        if (localStorage.getItem('lideranca-pilares-v1') === '1') document.documentElement.classList.add('authed');
       } catch (e) {}
     })();
   </script>
@@ -57,6 +55,20 @@
   </script>
 </head>
 <body class="bg-deep-midnight text-frost-white">
+
+  <!-- PASSWORD GATE -->
+  <div class="gate-overlay" id="gate-overlay">
+    <div class="gate-card">
+      <a href="../index.html" aria-label="MPCraft"><img src="../assets/logo@2x.png" alt="MPCraft" class="gate-mark"></a>
+      <p class="gate-caption"><span lang="pt">Liderança · Acesso restrito</span><span lang="es">Liderazgo · Acceso restringido</span></p>
+      <p class="gate-title">Pilares de Liderança</p>
+      <form id="gate-form" class="gate-form" autocomplete="off">
+        <input id="gate-input" type="password" class="gate-input" placeholder="••••••••" autocomplete="current-password" required aria-label="Senha">
+        <button type="submit" class="gate-submit"><span lang="pt">Entrar</span><span lang="es">Entrar</span></button>
+      </form>
+      <p id="gate-error" class="gate-error" role="alert"><span lang="pt">Senha incorreta.</span><span lang="es">Contraseña incorrecta.</span></p>
+    </div>
+  </div>
 
   <!-- NAV -->
   <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
@@ -163,6 +175,13 @@
         </a>
 
       </div>
+    </div>
+
+    <!-- Motto -->
+    <div class="mt-10 pt-8 border-t border-faded-steel">
+      <p class="text-subheading text-frost-white leading-relaxed">
+        Develop the taste.<br>Grow the craft.<br>Own your work.
+      </p>
     </div>
 
   </section>
@@ -482,5 +501,40 @@
   </footer>
 
   <script src="../assets/theme.js"></script>
+  <script>
+    (function () {
+      const GATE = {
+        KEY:  'lideranca-pilares-v1',
+        HASH: '1372b011bd1ac1f9b2eca9d84657fe47edfe72384e400d446d05884ae83b47ac',
+      };
+      const html = document.documentElement;
+      if (html.classList.contains('authed')) return;
+      const form  = document.getElementById('gate-form');
+      const input = document.getElementById('gate-input');
+      const err   = document.getElementById('gate-error');
+      if (!form || !input) return;
+      async function sha256(text) {
+        const buf  = new TextEncoder().encode(text);
+        const hash = await crypto.subtle.digest('SHA-256', buf);
+        return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,'0')).join('');
+      }
+      setTimeout(() => input.focus(), 50);
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const value = input.value.trim();
+        if (!value) return;
+        const hash = await sha256(value);
+        if (hash === GATE.HASH) {
+          try { localStorage.setItem(GATE.KEY, '1'); } catch (_) {}
+          html.classList.add('authed');
+        } else {
+          if (err) err.classList.add('show');
+          form.classList.add('shake');
+          setTimeout(() => form.classList.remove('shake'), 350);
+          input.select();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
