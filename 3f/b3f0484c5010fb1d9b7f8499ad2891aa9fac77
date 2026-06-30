@@ -1,0 +1,28 @@
+rituais/tasting.html
+  s_8e129428f83eff::t_26d4e197b7d8f3 136
+  s_8e129428f83eff::t_0d1a1c85c268bc 247,250-251,255-256,265,268-269,273-274,283,286-287,291-292,301,304-305,309-310,319,322-323,327-328
+  s_8e129428f83eff::t_e08ac2366ff752 222,226,230,234,238
+  s_8e129428f83eff::t_edc42cd680e0f6 7
+  s_8e129428f83eff::t_95fd5787466557 140
+  s_8e129428f83eff::t_ca56b17ee92b16 160-161
+index.html
+  s_8e129428f83eff::t_af6b02c1ce10ec 475-476
+mpcraft-standalone.html
+  s_8e129428f83eff::t_c642883ab5cd07 1225-1226
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "3fb3f0484c5010fb1d9b7f8499ad2891aa9fac77",
+  "prompts": {},
+  "sessions": {
+    "s_8e129428f83eff": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "deb43921-b6f7-4ab1-8df8-7fc7bb4905b2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
