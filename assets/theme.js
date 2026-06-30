@@ -1,3 +1,10 @@
+function downloadPDF(name) {
+  var prev = document.title;
+  document.title = 'MPCraft · ' + name;
+  window.print();
+  document.title = prev;
+}
+
 (function () {
   const html = document.documentElement;
 

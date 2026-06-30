@@ -670,6 +670,9 @@ html.serif .font-btn-label {
    ============================================================ */
 
 @media print {
+  /* Page margins */
+  @page { margin: 1.5cm 2cm; size: A4; }
+
   /* Hide interactive chrome */
   nav,
   .gate-overlay,
@@ -679,7 +682,7 @@ html.serif .font-btn-label {
   footer a,
   .section-divider { display: none !important; }
 
-  /* Reset background/colors for print */
+  /* White background, dark text */
   :root {
     --canvas: 255 255 255;
     --fg:     10 10 10;
@@ -689,32 +692,57 @@ html.serif .font-btn-label {
     --whisper: 150 150 150;
   }
 
-  body { font-size: 11pt; }
+  body {
+    font-size: 11pt;
+    background: #fff !important;
+    color: #0a0a0a !important;
+  }
 
-  /* Avoid page breaks inside cards */
+  /* Preserve two-column grids */
+  .grid-cols-2,
+  .md\:grid-cols-2 { display: grid !important; grid-template-columns: 1fr 1fr !important; }
+  .sm\:grid-cols-2 { display: grid !important; grid-template-columns: 1fr 1fr !important; }
+  .sm\:grid-cols-3,
+  .grid-cols-3     { display: grid !important; grid-template-columns: 1fr 1fr 1fr !important; }
+
+  /* Meta-grid layout */
+  .meta-grid { display: grid !important; grid-template-columns: 1fr 1fr 1fr !important; }
+
+  /* Avoid page breaks inside cards and sections */
   .ritual-step,
   .p-5,
   .space-y-8 > div,
-  .space-y-6 > div { break-inside: avoid; }
+  .space-y-6 > div,
+  .space-y-4 > div { break-inside: avoid; }
 
-  /* Section spacing */
   section { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
 
-  /* Ensure links print as text */
+  /* Strip link decorations */
   a[href]::after { content: none; }
 
-  /* Status pills — readable in B&W */
-  .status-pill--desenvolvendo { background-color: #f5f5f5 !important; color: #555 !important; }
-  .status-pill--identificado  { background-color: #f5f5f5 !important; color: #555 !important; }
-  .status-pill--resolvido     { background-color: #f5f5f5 !important; color: #555 !important; }
+  /* Status pills — readable in greyscale */
+  .status-pill--desenvolvendo,
+  .status-pill--identificado,
+  .status-pill--resolvido {
+    background-color: #f5f5f5 !important;
+    color: #555 !important;
+    border: 1px solid #ccc !important;
+  }
 
-  /* Metrics grid — full width */
-  .grid { display: block !important; }
-  .grid > div { margin-bottom: 1rem; }
+  /* Avatar */
+  img[style*="border-radius:9999px"],
+  img[style*="border-radius: 9999px"] {
+    width: 48px !important;
+    height: 48px !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
 
-  /* Avatar photo */
-  img[style*="border-radius: 9999px"] { width: 40px !important; height: 40px !important; }
+  /* Borders visible in print */
+  .border,
+  .border-t,
+  .border-b { border-color: #d1d5db !important; }
 
-  /* Page title */
-  @page { margin: 1.5cm 2cm; }
+  /* Pill badge */
+  .pill { border: 1px solid #d1d5db !important; color: #555 !important; background: #f9f9f9 !important; }
 }
