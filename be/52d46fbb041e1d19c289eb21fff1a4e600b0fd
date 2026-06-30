@@ -1,0 +1,19 @@
+lideranca/natali.html
+  s_96fdfd596b563b::t_8d4b61dd885c88 122,127,130-131,134-135,137-141,199,202,217,219,224,226,231,233,251,255,261-262,265,281,297,315,320,325,343,350,357,374,377
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "be52d46fbb041e1d19c289eb21fff1a4e600b0fd",
+  "prompts": {},
+  "sessions": {
+    "s_96fdfd596b563b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "108fb2ee-2402-4949-95ef-4a9449366c30",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
