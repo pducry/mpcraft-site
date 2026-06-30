@@ -1,0 +1,19 @@
+lideranca/natali.html
+  s_96fdfd596b563b::t_ebe0ed6cd37b33 120-123
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "317d8d95412e464f7c3c4701b90e0c48d9700f71",
+  "prompts": {},
+  "sessions": {
+    "s_96fdfd596b563b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "108fb2ee-2402-4949-95ef-4a9449366c30",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
