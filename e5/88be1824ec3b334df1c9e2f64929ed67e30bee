@@ -1,0 +1,25 @@
+lideranca/melanie.html
+  s_8e129428f83eff::t_b1079a191cd62d 182-183
+lideranca/natali.html
+  s_8e129428f83eff::t_b1079a191cd62d 125,173,180,202,212,228,262,267,297
+rituais/tasting.html
+  s_8e129428f83eff::t_b1079a191cd62d 160-161,250-251,255-256,268-269,273-274,286-287,304-305,322-323,327-328
+lideranca/carolina.html
+  s_8e129428f83eff::t_b1079a191cd62d 372-373,386-387,450-451,461-462,486,509,520-521,548
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "e588be1824ec3b334df1c9e2f64929ed67e30bee",
+  "prompts": {},
+  "sessions": {
+    "s_8e129428f83eff": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "deb43921-b6f7-4ab1-8df8-7fc7bb4905b2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
