@@ -1,0 +1,19 @@
+projetos/aiad.html
+  s_8e129428f83eff::t_705eb22ebe6fbf 347,351-352,355-356,359-360,364,366-377,379-381,383-385,387-392,394-407,409-422,424-428,430-451
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "a77a4c143fec870b23100c2a6ed8f2d505127aac",
+  "prompts": {},
+  "sessions": {
+    "s_8e129428f83eff": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "deb43921-b6f7-4ab1-8df8-7fc7bb4905b2",
+        "model": "unknown"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
