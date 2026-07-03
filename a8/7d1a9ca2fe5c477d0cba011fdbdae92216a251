@@ -1,0 +1,21 @@
+mpcraft-standalone.html
+  s_8e129428f83eff::t_585029f5e774c6 999-1002
+index.html
+  s_8e129428f83eff::t_4a83cb65c5bd7e 249-252
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "a87d1a9ca2fe5c477d0cba011fdbdae92216a251",
+  "prompts": {},
+  "sessions": {
+    "s_8e129428f83eff": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "deb43921-b6f7-4ab1-8df8-7fc7bb4905b2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
