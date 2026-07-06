@@ -1,0 +1,23 @@
+lideranca/melanie.html
+  s_8e129428f83eff::t_d8aaeea3778500 350-357,388,390
+  s_8e129428f83eff::t_e9e89253b73194 153-154,157-158,161-162
+  s_8e129428f83eff::t_1326868b7d5400 260-273
+  s_8e129428f83eff::t_aa170d115384ec 391-396
+  s_8e129428f83eff::t_ce618e75d4eb2d 389
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "658aef788b187622cd4f16f3aa5f38dc7ef37168",
+  "prompts": {},
+  "sessions": {
+    "s_8e129428f83eff": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "deb43921-b6f7-4ab1-8df8-7fc7bb4905b2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
