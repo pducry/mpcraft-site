@@ -1,3 +1,55 @@
+// ── Radar chart ──────────────────────────────────────────────────────────────
+(function () {
+  function buildRadarSVG(v) {
+    var W = 260, H = 220, cx = 130, cy = 108, maxR = 68, max = 3;
+    var axes = [
+      { key: 'core',    label: 'Core',    a: -90, la: 'middle', ldy: -3 },
+      { key: 'product', label: 'Product', a: -18, la: 'start',  ldy:  4 },
+      { key: 'visual',  label: 'Visual',  a:  54, la: 'start',  ldy: 13 },
+      { key: 'content', label: 'Content', a: 126, la: 'end',    ldy: 13 },
+      { key: 'lead',    label: 'Lead',    a: 198, la: 'end',    ldy:  4 },
+    ];
+    function r(deg) { return deg * Math.PI / 180; }
+    function px(dist, deg) { return (cx + dist * Math.cos(r(deg))).toFixed(1); }
+    function py(dist, deg) { return (cy + dist * Math.sin(r(deg))).toFixed(1); }
+    function pts(scale) { return axes.map(function(a){ return px((scale/max)*maxR, a.a)+','+py((scale/max)*maxR, a.a); }).join(' '); }
+
+    var s = '';
+    // grid
+    [1,2,3].forEach(function(lv){ s += '<polygon points="'+pts(lv)+'" fill="none" stroke="rgba(99,102,241,0.18)" stroke-width="1"/>'; });
+    // axes
+    axes.forEach(function(a){ s += '<line x1="'+cx+'" y1="'+cy+'" x2="'+px(maxR,a.a)+'" y2="'+py(maxR,a.a)+'" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>'; });
+    // data polygon
+    var dataPts = axes.map(function(a){ var vr=(v[a.key]/max)*maxR; return px(vr,a.a)+','+py(vr,a.a); }).join(' ');
+    s += '<polygon points="'+dataPts+'" fill="rgba(99,102,241,0.22)" stroke="rgba(129,140,248,0.9)" stroke-width="1.5" stroke-linejoin="round"/>';
+    // dots
+    axes.forEach(function(a){ var vr=(v[a.key]/max)*maxR; s += '<circle cx="'+px(vr,a.a)+'" cy="'+py(vr,a.a)+'" r="2.5" fill="rgba(129,140,248,0.9)"/>'; });
+    // labels
+    var lr = maxR + 20;
+    axes.forEach(function(a){
+      var lx = px(lr, a.a), ly = (parseFloat(py(lr,a.a)) + a.ldy).toFixed(1);
+      s += '<text x="'+lx+'" y="'+ly+'" text-anchor="'+a.la+'" font-family="Inter,sans-serif" font-size="10" letter-spacing="0.04em" fill="rgba(155,165,190,0.85)">'+a.label+'</text>';
+    });
+    // values
+    axes.forEach(function(a){
+      var vr=(v[a.key]/max)*maxR, vlr=vr+15;
+      var vx=px(vlr,a.a), vy=(parseFloat(py(vlr,a.a))+4).toFixed(1);
+      s += '<text x="'+vx+'" y="'+vy+'" text-anchor="middle" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" fill="rgba(129,140,248,1)">'+v[a.key].toFixed(1)+'</text>';
+    });
+    return '<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:'+W+'px;overflow:visible;">'+s+'</svg>';
+  }
+
+  document.querySelectorAll('.radar-chart').forEach(function(el) {
+    el.innerHTML = buildRadarSVG({
+      core:    +(el.dataset.core    || 0),
+      product: +(el.dataset.product || 0),
+      visual:  +(el.dataset.visual  || 0),
+      content: +(el.dataset.content || 0),
+      lead:    +(el.dataset.lead    || 0),
+    });
+  });
+})();
+
 function downloadPDF(name) {
   var prev = document.title;
   document.title = 'MPCraft · ' + name;
