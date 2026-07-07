@@ -1,0 +1,31 @@
+lideranca/rafael.html
+  s_8e129428f83eff::t_6fe2fc323ac83e 191-199
+assets/theme.js
+  s_8e129428f83eff::t_6432e1b9d3dd79 1-52
+lideranca/marcela.html
+  s_8e129428f83eff::t_6fe2fc323ac83e 206-214
+lideranca/melanie.html
+  s_8e129428f83eff::t_6fe2fc323ac83e 150-158
+lideranca/carolina.html
+  s_8e129428f83eff::t_6fe2fc323ac83e 194-202
+lideranca/natali.html
+  s_8e129428f83eff::t_6fe2fc323ac83e 142-150
+mpcraft-standalone.html
+  s_8e129428f83eff::t_12123dc63a9d75 1341-1392
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "54d5d568b2df3682b1f31b5dbc1ac118eb41bef9",
+  "prompts": {},
+  "sessions": {
+    "s_8e129428f83eff": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "deb43921-b6f7-4ab1-8df8-7fc7bb4905b2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
