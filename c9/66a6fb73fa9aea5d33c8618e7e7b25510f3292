@@ -1,0 +1,25 @@
+assets/theme.js
+  s_8e129428f83eff::t_49ef6e8adf53ea 37-39
+  s_8e129428f83eff::t_fac6df6f8031f9 6-10
+  s_8e129428f83eff::t_6c72fdaec9a0fe 33
+  s_8e129428f83eff::t_92024589751a3d 4
+  s_8e129428f83eff::t_78f8bed731b509 30
+mpcraft-standalone.html
+  s_8e129428f83eff::t_8b3c84067d1a5e 1344,1346-1350,1370,1373,1377-1379
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "c966a6fb73fa9aea5d33c8618e7e7b25510f3292",
+  "prompts": {},
+  "sessions": {
+    "s_8e129428f83eff": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "deb43921-b6f7-4ab1-8df8-7fc7bb4905b2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
