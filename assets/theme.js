@@ -1,13 +1,13 @@
 // ── Radar chart ──────────────────────────────────────────────────────────────
 (function () {
   function buildRadarSVG(v) {
-    var W = 380, H = 320, cx = 190, cy = 152, maxR = 100, max = 3;
+    var W = 460, H = 400, cx = 230, cy = 185, maxR = 130, max = 3;
     var axes = [
-      { key: 'core',    label: 'Core',    a: -90, la: 'middle', ldy: -5 },
-      { key: 'product', label: 'Product', a: -18, la: 'start',  ldy:  5 },
-      { key: 'visual',  label: 'Visual',  a:  54, la: 'start',  ldy: 16 },
-      { key: 'content', label: 'Content', a: 126, la: 'end',    ldy: 16 },
-      { key: 'lead',    label: 'Lead',    a: 198, la: 'end',    ldy:  5 },
+      { key: 'core',    label: 'Core',    a: -90, la: 'middle', ldy: -6 },
+      { key: 'product', label: 'Product', a: -18, la: 'start',  ldy:  6 },
+      { key: 'visual',  label: 'Visual',  a:  54, la: 'start',  ldy: 18 },
+      { key: 'content', label: 'Content', a: 126, la: 'end',    ldy: 18 },
+      { key: 'lead',    label: 'Lead',    a: 198, la: 'end',    ldy:  6 },
     ];
     function r(deg) { return deg * Math.PI / 180; }
     function px(dist, deg) { return (cx + dist * Math.cos(r(deg))).toFixed(1); }
@@ -27,16 +27,16 @@
     // dots
     axes.forEach(function(a){ var vr=(v[a.key]/max)*maxR; s += '<circle cx="'+px(vr,a.a)+'" cy="'+py(vr,a.a)+'" r="4" fill="rgba(129,140,248,1)" stroke="rgba(30,27,75,0.8)" stroke-width="1.5"/>'; });
     // category labels
-    var lr = maxR + 26;
+    var lr = maxR + 32;
     axes.forEach(function(a){
       var lx = px(lr, a.a), ly = (parseFloat(py(lr,a.a)) + a.ldy).toFixed(1);
-      s += '<text x="'+lx+'" y="'+ly+'" text-anchor="'+a.la+'" font-family="Inter,sans-serif" font-size="12" letter-spacing="0.06em" text-transform="uppercase" fill="rgba(150,160,185,0.9)">'+a.label+'</text>';
+      s += '<text x="'+lx+'" y="'+ly+'" text-anchor="'+a.la+'" font-family="Inter,sans-serif" font-size="14" font-weight="500" letter-spacing="0.06em" fill="rgba(160,170,195,1)">'+a.label+'</text>';
     });
     // value labels (large, prominent)
     axes.forEach(function(a){
-      var vr=(v[a.key]/max)*maxR, vlr=vr+18;
-      var vx=px(vlr,a.a), vy=(parseFloat(py(vlr,a.a))+5).toFixed(1);
-      s += '<text x="'+vx+'" y="'+vy+'" text-anchor="middle" font-family="Inter,sans-serif" font-size="15" font-weight="700" fill="rgba(129,140,248,1)">'+v[a.key].toFixed(1)+'</text>';
+      var vr=(v[a.key]/max)*maxR, vlr=vr+20;
+      var vx=px(vlr,a.a), vy=(parseFloat(py(vlr,a.a))+6).toFixed(1);
+      s += '<text x="'+vx+'" y="'+vy+'" text-anchor="middle" font-family="Inter,sans-serif" font-size="20" font-weight="700" fill="rgba(129,140,248,1)">'+v[a.key].toFixed(1)+'</text>';
     });
     return '<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:'+W+'px;display:block;margin:0 auto;overflow:visible;">'+s+'</svg>';
   }
