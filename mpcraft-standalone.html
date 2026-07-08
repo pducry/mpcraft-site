@@ -1341,13 +1341,13 @@ html.serif .font-btn-label {
 // ── Radar chart ──────────────────────────────────────────────────────────────
 (function () {
   function buildRadarSVG(v) {
-    var W = 460, H = 400, cx = 230, cy = 185, maxR = 130, max = 3;
+    var W = 460, H = 400, cx = 230, cy = 185, maxR = 128, max = 5;
     var axes = [
-      { key: 'core',    label: 'Core',    a: -90, la: 'middle', ldy: -6 },
-      { key: 'product', label: 'Product', a: -18, la: 'start',  ldy:  6 },
-      { key: 'visual',  label: 'Visual',  a:  54, la: 'start',  ldy: 18 },
-      { key: 'content', label: 'Content', a: 126, la: 'end',    ldy: 18 },
-      { key: 'lead',    label: 'Lead',    a: 198, la: 'end',    ldy:  6 },
+      { key: 'core',    label: 'Core',    a: -90, la: 'middle', ldy: -5 },
+      { key: 'product', label: 'Product', a: -18, la: 'start',  ldy:  5 },
+      { key: 'visual',  label: 'Visual',  a:  54, la: 'start',  ldy: 16 },
+      { key: 'content', label: 'Content', a: 126, la: 'end',    ldy: 16 },
+      { key: 'lead',    label: 'Lead',    a: 198, la: 'end',    ldy:  5 },
     ];
     function r(deg) { return deg * Math.PI / 180; }
     function px(dist, deg) { return (cx + dist * Math.cos(r(deg))).toFixed(1); }
@@ -1355,28 +1355,33 @@ html.serif .font-btn-label {
     function pts(scale) { return axes.map(function(a){ return px((scale/max)*maxR, a.a)+','+py((scale/max)*maxR, a.a); }).join(' '); }
 
     var s = '';
-    // filled grid levels (subtle)
-    [1,2,3].forEach(function(lv){
-      s += '<polygon points="'+pts(lv)+'" fill="'+(lv===3?'rgba(99,102,241,0.04)':'none')+'" stroke="rgba(99,102,241,0.15)" stroke-width="1"/>';
+    // grid levels 1–5
+    [1,2,3,4,5].forEach(function(lv){
+      s += '<polygon points="'+pts(lv)+'" fill="'+(lv===5?'rgba(99,102,241,0.04)':'none')+'" stroke="rgba(99,102,241,'+(lv===5?'0.22':'0.12')+')" stroke-width="'+(lv===5?'1.5':'1')+'"/>';
+    });
+    // scale numbers on the top (Core) axis
+    [1,2,3,4,5].forEach(function(lv){
+      var ty = (cy - (lv/max)*maxR - 4).toFixed(1);
+      s += '<text x="'+(cx+6)+'" y="'+ty+'" text-anchor="start" font-family="Inter,sans-serif" font-size="9" fill="rgba(120,130,160,0.55)">'+lv+'</text>';
     });
     // axes
     axes.forEach(function(a){ s += '<line x1="'+cx+'" y1="'+cy+'" x2="'+px(maxR,a.a)+'" y2="'+py(maxR,a.a)+'" stroke="rgba(99,102,241,0.18)" stroke-width="1"/>'; });
     // data polygon
     var dataPts = axes.map(function(a){ var vr=(v[a.key]/max)*maxR; return px(vr,a.a)+','+py(vr,a.a); }).join(' ');
-    s += '<polygon points="'+dataPts+'" fill="rgba(99,102,241,0.25)" stroke="rgba(129,140,248,1)" stroke-width="2" stroke-linejoin="round"/>';
+    s += '<polygon points="'+dataPts+'" fill="rgba(99,102,241,0.22)" stroke="rgba(129,140,248,1)" stroke-width="2" stroke-linejoin="round"/>';
     // dots
-    axes.forEach(function(a){ var vr=(v[a.key]/max)*maxR; s += '<circle cx="'+px(vr,a.a)+'" cy="'+py(vr,a.a)+'" r="4" fill="rgba(129,140,248,1)" stroke="rgba(30,27,75,0.8)" stroke-width="1.5"/>'; });
+    axes.forEach(function(a){ var vr=(v[a.key]/max)*maxR; s += '<circle cx="'+px(vr,a.a)+'" cy="'+py(vr,a.a)+'" r="3.5" fill="rgba(129,140,248,1)" stroke="rgba(30,27,75,0.8)" stroke-width="1.5"/>'; });
     // category labels
-    var lr = maxR + 32;
+    var lr = maxR + 28;
     axes.forEach(function(a){
       var lx = px(lr, a.a), ly = (parseFloat(py(lr,a.a)) + a.ldy).toFixed(1);
-      s += '<text x="'+lx+'" y="'+ly+'" text-anchor="'+a.la+'" font-family="Inter,sans-serif" font-size="14" font-weight="500" letter-spacing="0.06em" fill="rgba(160,170,195,1)">'+a.label+'</text>';
+      s += '<text x="'+lx+'" y="'+ly+'" text-anchor="'+a.la+'" font-family="Inter,sans-serif" font-size="12" font-weight="500" letter-spacing="0.06em" fill="rgba(155,165,190,0.95)">'+a.label+'</text>';
     });
-    // value labels (large, prominent)
+    // value labels
     axes.forEach(function(a){
-      var vr=(v[a.key]/max)*maxR, vlr=vr+20;
-      var vx=px(vlr,a.a), vy=(parseFloat(py(vlr,a.a))+6).toFixed(1);
-      s += '<text x="'+vx+'" y="'+vy+'" text-anchor="middle" font-family="Inter,sans-serif" font-size="20" font-weight="700" fill="rgba(129,140,248,1)">'+v[a.key].toFixed(1)+'</text>';
+      var vr=(v[a.key]/max)*maxR, vlr=vr+17;
+      var vx=px(vlr,a.a), vy=(parseFloat(py(vlr,a.a))+5).toFixed(1);
+      s += '<text x="'+vx+'" y="'+vy+'" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="rgba(129,140,248,1)">'+v[a.key].toFixed(1)+'</text>';
     });
     return '<svg viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:'+W+'px;display:block;margin:0 auto;overflow:visible;">'+s+'</svg>';
   }
