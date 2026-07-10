@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" class="authed">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +7,6 @@
   <meta name="description" content="Designers que constroem suas próprias ferramentas. Capacitação contínua e agentes de IA que absorvem o repetitivo.">
 
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-
-  <script>
-    (function () {
-      try {
-        var lang = localStorage.getItem('lang');
-        if (lang === 'pt' || lang === 'es') {
-          document.documentElement.setAttribute('lang', lang);
-        }
-        if (localStorage.getItem('font') === 'serif') {
-          document.documentElement.classList.add('serif');
-        }
-        if (localStorage.getItem('site-auth-v2') !== '1') { window.location.replace('../login.html'); } else {
-          document.documentElement.classList.add('authed');
-        }
-      } catch (e) {}
-    })();
-  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,33 +46,6 @@
   </script>
 </head>
 <body class="bg-deep-midnight text-frost-white">
-
-  <!-- PASSWORD GATE -->
-  <div class="gate-overlay" id="gate-overlay">
-    <div class="gate-card">
-      <img src="../assets/logo@2x.png" alt="MPCraft" class="gate-mark">
-      <p class="gate-caption">
-        <span lang="pt">MPCraft · Acesso restrito</span>
-        <span lang="es">MPCraft · Acceso restringido</span>
-      </p>
-      <p class="gate-title">
-        <span lang="pt">Digite a senha para continuar.</span>
-        <span lang="es">Ingresá la contraseña para continuar.</span>
-      </p>
-      <form id="gate-form" class="gate-form" autocomplete="off">
-        <input id="gate-input" type="password" class="gate-input" placeholder="••••••••" autocomplete="current-password" required aria-label="Senha">
-        <button type="submit" class="gate-submit">
-          <span lang="pt">Entrar</span>
-          <span lang="es">Entrar</span>
-        </button>
-      </form>
-      <p id="gate-error" class="gate-error" role="alert">
-        <span lang="pt">Senha incorreta.</span>
-        <span lang="es">Contraseña incorrecta.</span>
-      </p>
-    </div>
-  </div>
-
   <!-- NAV -->
   <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
     <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
