@@ -1,0 +1,37 @@
+work/helix-design-system.html
+  s_8e129428f83eff::t_367fc854c8f5e9 2
+rituais/ux-critique.html
+  s_8e129428f83eff::t_367fc854c8f5e9 2
+rituais/skill-drop.html
+  s_8e129428f83eff::t_367fc854c8f5e9 2
+rituais/build-review.html
+  s_8e129428f83eff::t_367fc854c8f5e9 2
+rituais/tasting.html
+  s_8e129428f83eff::t_367fc854c8f5e9 2
+index.html
+  s_8e129428f83eff::t_367fc854c8f5e9 2
+projetos/aiad.html
+  s_8e129428f83eff::t_367fc854c8f5e9 2
+writing/the-shape-of-systems.html
+  s_8e129428f83eff::t_367fc854c8f5e9 2
+projetos/aiud.html
+  s_8e129428f83eff::t_367fc854c8f5e9 2
+projetos/skillflix.html
+  s_8e129428f83eff::t_367fc854c8f5e9 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "46bd6dfd6a4e0b547b2f23ec33627c8799903d07",
+  "prompts": {},
+  "sessions": {
+    "s_8e129428f83eff": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "deb43921-b6f7-4ab1-8df8-7fc7bb4905b2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
