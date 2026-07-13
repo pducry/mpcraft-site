@@ -1,0 +1,19 @@
+lideranca/melanie.html
+  s_8e129428f83eff::t_58b18cb78c1000 375
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.13",
+  "base_commit_sha": "720aa784e273f0e525901c523ed77cca5fbbc33a",
+  "prompts": {},
+  "sessions": {
+    "s_8e129428f83eff": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "deb43921-b6f7-4ab1-8df8-7fc7bb4905b2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
