@@ -1,0 +1,33 @@
+lideranca/pilares.html
+  s_4692569f44c2ae::t_e33eb68be0c322 528-529
+  s_4692569f44c2ae::t_391a00a061f702 443-444
+  s_4692569f44c2ae::t_3b6174f3baf368 558-559
+  s_4692569f44c2ae::t_42d4c7080366de 538-539
+  s_4692569f44c2ae::t_ef8ff42fd35ab3 401-402
+  s_4692569f44c2ae::t_db38c1dd27881e 491-492
+  s_4692569f44c2ae::t_2db93a363b5017 583
+  s_4692569f44c2ae::t_29312b193904eb 585
+  s_4692569f44c2ae::t_14fcdc7ee5e790 388-389
+  s_4692569f44c2ae::t_47e03be25e7a0c 508-509
+  s_4692569f44c2ae::t_99218fc4faa095 415-416
+  s_4692569f44c2ae::t_bdfd4f93507567 429-430
+  s_4692569f44c2ae::t_8a11333116b368 548-549
+  s_4692569f44c2ae::t_0138c94595a10d 568-569
+  s_4692569f44c2ae::t_ae490a2c549ce9 595
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "d6848fa1ecf5d03d449873dccaa26e1497949cb1",
+  "prompts": {},
+  "sessions": {
+    "s_4692569f44c2ae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f0276591-1764-4bde-84ac-7802cb806024",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Pedro Julien <pducry@gmail.com>"
+    }
+  }
+}
