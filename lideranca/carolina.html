@@ -109,13 +109,21 @@
   <section class="max-w-3xl mx-auto px-6 pt-16 md:pt-24 pb-12">
     <div class="mb-6 flex items-center justify-between gap-4">
       <span class="pill pill--lideranca"><span lang="pt">Liderança · Mid Year Review 2026</span><span lang="es">Liderazgo · Mid Year Review 2026</span></span>
-      <button id="pdf-download-btn" class="pdf-btn" onclick="downloadPDF('Carolina-Maia')" aria-label="Download PDF">
+      <div class="flex items-center gap-3">
+        <a href="https://auth-meli.adminml.com/oauth2/v1/authorize?client_id=0oa1vqln3pshCC0ng1d8&response_type=code&scope=openid+profile+email&redirect_uri=https%3A%2F%2Fokta-login-office.adminml.com%2Fauthorization-code-response&state=requestId%3D8cd22e74-c415-42a3-8154-9e686cb221b8%26callbackURL%3Dhttps%253A%252F%252Fgrid.adminml.com%252Fd%252F01KWMQWVBRCH4AKMH682YVP1VD%252Fview" target="_blank" rel="noopener" class="pdf-btn" aria-label="Ver no Grid">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+            <path d="M1 5.5h9M6.5 1.5l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="btn-label">Grid</span>
+        </a>
+        <button id="pdf-download-btn" class="pdf-btn" onclick="downloadPDF('Carolina-Maia')" aria-label="Download PDF">
           <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
             <path d="M5.5 1v6M2.5 5l3 3 3-3M1 9h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <span lang="pt" class="btn-label">Baixar PDF</span>
           <span lang="es" class="btn-label">Descargar PDF</span>
         </button>
+      </div>
     </div>
 
     <div class="flex items-center gap-4 mb-0">
