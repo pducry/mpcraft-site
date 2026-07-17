@@ -1,0 +1,19 @@
+lideranca/natali.html
+  s_d9fb0cfce90e68::t_fe12f94e830323 194,196,200,204
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "b089c5163c020b6c98272640cc57af8394c2cfea",
+  "prompts": {},
+  "sessions": {
+    "s_d9fb0cfce90e68": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a3126586-40b0-4c91-8584-27a669e710c8",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "pducry_meli <pedro.ducry@mercadolivre.com>"
+    }
+  }
+}
