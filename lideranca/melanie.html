@@ -109,13 +109,21 @@
   <section class="max-w-3xl mx-auto px-6 pt-16 md:pt-24 pb-12">
     <div class="mb-6 flex items-center justify-between gap-4">
       <span class="pill pill--lideranca"><span lang="pt">Liderança · Mid Year Review 2026</span><span lang="es">Liderazgo · Mid Year Review 2026</span></span>
-      <button id="pdf-download-btn" class="pdf-btn" onclick="downloadPDF('Melanie-Florencia-Devich')" aria-label="Download PDF">
-        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
-          <path d="M5.5 1v6M2.5 5l3 3 3-3M1 9h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span lang="pt" class="btn-label">Baixar PDF</span>
-        <span lang="es" class="btn-label">Descargar PDF</span>
-      </button>
+      <div class="flex items-center gap-3">
+        <a href="https://grid.adminml.com/d/01KY2VEAYT15QYVYP7SJFQ7GM2/view" target="_blank" rel="noopener" class="pdf-btn" aria-label="Ver no Grid">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+            <path d="M1 5.5h9M6.5 1.5l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="btn-label">Grid</span>
+        </a>
+        <button id="pdf-download-btn" class="pdf-btn" onclick="downloadPDF('Melanie-Florencia-Devich')" aria-label="Download PDF">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+            <path d="M5.5 1v6M2.5 5l3 3 3-3M1 9h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span lang="pt" class="btn-label">Baixar PDF</span>
+          <span lang="es" class="btn-label">Descargar PDF</span>
+        </button>
+      </div>
     </div>
 
     <div class="flex items-center gap-5 mb-6">
