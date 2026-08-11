@@ -1,0 +1,5 @@
+{
+  "setup": ["./.superset/setup.sh"],
+  "run": ["python3 -m http.server 3000"],
+  "teardown": ["./.superset/teardown.sh"]
+}
