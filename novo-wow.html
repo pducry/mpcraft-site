@@ -792,12 +792,63 @@
     </header>
 
     <p class="text-body text-frost-white max-w-2xl mb-4">
-      <span lang="pt">Duas ferramentas que tornam o dia a dia no terminal significativamente melhor — e que você vai querer instalar cedo.</span>
-      <span lang="es">Dos herramientas que hacen el día a día en la terminal significativamente mejor — y que vas a querer instalar pronto.</span>
+      <span lang="pt">Ferramentas que tornam o dia a dia no terminal e no código significativamente melhor — e que você vai querer instalar cedo.</span>
+      <span lang="es">Herramientas que hacen el día a día en la terminal y en el código significativamente mejor — y que vas a querer instalar pronto.</span>
     </p>
 
-    <!-- zsh -->
+    <!-- VS Code -->
     <div class="cmd-card cmd-card--extra mt-10">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-muted-ash">VS Code</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">editor de código</span><span lang="es">editor de código</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-3">
+        <span lang="pt">O <strong>Visual Studio Code</strong> é o editor de código mais usado no mundo. Gratuito, leve e altamente extensível. Para designers que trabalham com código — HTML, CSS, JS ou qualquer arquivo de texto estruturado — é o ambiente mais confortável para começar. Tem terminal integrado, visualização de Git e extensões para praticamente tudo.</span>
+        <span lang="es">El <strong>Visual Studio Code</strong> es el editor de código más usado en el mundo. Gratuito, liviano y altamente extensible. Para diseñadores que trabajan con código — HTML, CSS, JS o cualquier archivo de texto estructurado — es el ambiente más cómodo para empezar. Tiene terminal integrada, visualización de Git y extensiones para prácticamente todo.</span>
+      </p>
+      <div class="space-y-2 mb-3">
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Terminal integrado</span><span lang="es">Terminal integrada</span></strong> — <span lang="pt">abre com <code class="font-mono">Ctrl+`</code> (ou <code class="font-mono">Cmd+`</code> no Mac). Você não precisa sair do editor para rodar comandos.</span><span lang="es">abrí con <code class="font-mono">Ctrl+`</code> (o <code class="font-mono">Cmd+`</code> en Mac). No necesitás salir del editor para ejecutar comandos.</span></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Source Control (painel de Git)</span><span lang="es">Source Control (panel de Git)</span></strong> — <span lang="pt">ícone de ramificação na barra lateral. Mostra arquivos modificados, permite fazer stage, commit e push sem digitar nada.</span><span lang="es">ícono de rama en la barra lateral. Muestra archivos modificados, permite hacer stage, commit y push sin escribir nada.</span></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Paleta de comandos</span><span lang="es">Paleta de comandos</span></strong> — <span lang="pt"><code class="font-mono">Cmd+Shift+P</code> abre uma busca para qualquer ação do editor. Não precisa memorizar menus.</span><span lang="es"><code class="font-mono">Cmd+Shift+P</code> abre una búsqueda para cualquier acción del editor. No hace falta memorizar menús.</span></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Abrir pasta no terminal</span><span lang="es">Abrir carpeta en la terminal</span></strong> — <span lang="pt">no terminal, rode <code class="font-mono">code .</code> dentro de qualquer pasta para abrir o VS Code direto naquele diretório.</span><span lang="es">en la terminal, ejecutá <code class="font-mono">code .</code> dentro de cualquier carpeta para abrir VS Code directamente en ese directorio.</span></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Extensões essenciais</span><span lang="es">Extensiones esenciales</span></strong> — <span lang="pt">Prettier (formata o código automaticamente), GitLens (histórico de Git linha a linha), GitHub Copilot (autocompletar com IA).</span><span lang="es">Prettier (formatea el código automáticamente), GitLens (historial de Git línea a línea), GitHub Copilot (autocompletar con IA).</span></div>
+        </div>
+      </div>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">brew install --cask visual-studio-code</span></div>
+          <div class="t-gap"></div>
+          <div class="t-cmt"><span lang="pt"># após instalar, habilite o comando 'code' no terminal:</span><span lang="es"># después de instalar, habilitá el comando 'code' en la terminal:</span></div>
+          <div class="t-cmt"><span lang="pt"># Cmd+Shift+P → "Shell Command: Install 'code' command in PATH"</span><span lang="es"># Cmd+Shift+P → "Shell Command: Install 'code' command in PATH"</span></div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">code .</span></div>
+          <div class="t-cmt"><span lang="pt"># abre o VS Code na pasta atual</span><span lang="es"># abre VS Code en la carpeta actual</span></div>
+        </div>
+      </div>
+      <div class="tip-inline">
+        <span class="text-electric-blue shrink-0 select-none">→</span>
+        <span lang="pt">O VS Code tem um terminal embutido que já roda zsh no Mac. Para a maioria dos fluxos de design com código, você não precisa de nenhum outro terminal além desse.</span>
+        <span lang="es">VS Code tiene una terminal integrada que ya corre zsh en Mac. Para la mayoría de los flujos de diseño con código, no necesitás ninguna otra terminal además de esta.</span>
+      </div>
+    </div>
+
+    <!-- zsh -->
+    <div class="cmd-card cmd-card--extra">
       <div class="flex flex-wrap items-baseline gap-3 mb-2">
         <code class="font-mono text-subheading text-muted-ash">zsh</code>
         <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">shell aprimorado</span><span lang="es">shell mejorado</span></span>
@@ -837,49 +888,6 @@
         <span class="text-electric-blue shrink-0 select-none">→</span>
         <span lang="pt">No Mac moderno, o zsh já vem instalado. Rode <code class="font-mono">echo $SHELL</code> — se aparecer <code class="font-mono">/bin/zsh</code>, você já está usando.</span>
         <span lang="es">En Mac moderno, zsh ya viene instalado. Ejecutá <code class="font-mono">echo $SHELL</code> — si aparece <code class="font-mono">/bin/zsh</code>, ya lo estás usando.</span>
-      </div>
-    </div>
-
-    <!-- iTerm2 -->
-    <div class="cmd-card cmd-card--extra">
-      <div class="flex flex-wrap items-baseline gap-3 mb-2">
-        <code class="font-mono text-subheading text-muted-ash">iTerm2</code>
-        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">emulador de terminal</span><span lang="es">emulador de terminal</span></span>
-      </div>
-      <p class="text-body text-frost-white mb-3">
-        <span lang="pt">O Mac vem com um terminal padrão chamado <strong>Terminal.app</strong>. Ele funciona, mas tem limitações. O <strong>iTerm2</strong> é um substituto gratuito com bem mais recursos — a maioria dos devs no Mac usa iTerm2 no lugar do terminal nativo.</span>
-        <span lang="es">El Mac viene con una terminal por defecto llamada <strong>Terminal.app</strong>. Funciona, pero tiene limitaciones. El <strong>iTerm2</strong> es un reemplazo gratuito con muchos más recursos — la mayoría de los devs en Mac usa iTerm2 en lugar de la terminal nativa.</span>
-      </p>
-      <div class="space-y-2 mb-3">
-        <div class="feat-row">
-          <div class="feat-dot feat-dot--muted"></div>
-          <div><strong class="text-frost-white"><span lang="pt">Painéis divididos</span><span lang="es">Paneles divididos</span></strong> — <span lang="pt">duas ou mais janelas de terminal lado a lado (Cmd+D para dividir verticalmente).</span><span lang="es">dos o más ventanas de terminal lado a lado (Cmd+D para dividir verticalmente).</span></div>
-        </div>
-        <div class="feat-row">
-          <div class="feat-dot feat-dot--muted"></div>
-          <div><strong class="text-frost-white"><span lang="pt">Busca no histórico visual</span><span lang="es">Búsqueda en el historial visual</span></strong> — <span lang="pt">Cmd+F abre uma busca que destaca os resultados diretamente na tela.</span><span lang="es">Cmd+F abre una búsqueda que resalta los resultados directamente en la pantalla.</span></div>
-        </div>
-        <div class="feat-row">
-          <div class="feat-dot feat-dot--muted"></div>
-          <div><strong class="text-frost-white"><span lang="pt">Melhor renderização de fontes</span><span lang="es">Mejor renderizado de fuentes</span></strong> — <span lang="pt">suporte nativo a fontes com ligaturas (como Fira Code).</span><span lang="es">soporte nativo para fuentes con ligaturas (como Fira Code).</span></div>
-        </div>
-        <div class="feat-row">
-          <div class="feat-dot feat-dot--muted"></div>
-          <div><strong class="text-frost-white"><span lang="pt">Perfis e temas</span><span lang="es">Perfiles y temas</span></strong> — <span lang="pt">salve configurações de cor, fonte e tamanho para diferentes contextos.</span><span lang="es">guardá configuraciones de color, fuente y tamaño para diferentes contextos.</span></div>
-        </div>
-      </div>
-      <div class="terminal-block">
-        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
-        <div class="terminal-block__body">
-          <div><span class="t-prompt">$</span> <span class="t-cmd">brew install --cask iterm2</span></div>
-          <div class="t-out">==> Downloading iTerm2...</div>
-          <div class="t-out">iterm2 was successfully installed!</div>
-        </div>
-      </div>
-      <div class="tip-inline">
-        <span class="text-electric-blue shrink-0 select-none">→</span>
-        <span lang="pt">Depois de instalar o iTerm2, configure o shell como zsh nas preferências se ainda não estiver. As duas ferramentas juntas fazem uma diferença grande no conforto do dia a dia.</span>
-        <span lang="es">Después de instalar iTerm2, configurá el shell como zsh en las preferencias si aún no está así. Las dos herramientas juntas hacen una gran diferencia en el día a día.</span>
       </div>
     </div>
 
