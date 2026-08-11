@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt" class="authed">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novo Wow · MPCraft</title>
+  <meta name="description" content="Referência rápida de Terminal, Git e ferramentas de linha de comando para designers do time MPCraft.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/theme.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-midnight': 'rgb(var(--canvas) / <alpha-value>)',
+            'faded-steel':   'rgb(var(--line)   / <alpha-value>)',
+            'frost-white':   'rgb(var(--fg)     / <alpha-value>)',
+            'muted-ash':     'rgb(var(--muted)  / <alpha-value>)',
+            'whisper-gray':  'rgb(var(--whisper) / <alpha-value>)',
+            'electric-blue': 'rgb(var(--accent) / <alpha-value>)',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
+            'mono': ['"Space Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          fontSize: {
+            'caption':    ['11px', { lineHeight: '2',    letterSpacing: '0.1em' }],
+            'body-sm':    ['13px', { lineHeight: '1.43', letterSpacing: '0' }],
+            'body':       ['15px', { lineHeight: '1.5',  letterSpacing: '-0.005em' }],
+            'subheading': ['18px', { lineHeight: '1.4',  letterSpacing: '-0.005em' }],
+            'heading':    ['30px', { lineHeight: '1.2',  letterSpacing: '-0.005em' }],
+            'heading-lg': ['40px', { lineHeight: '1.11', letterSpacing: '-0.005em' }],
+            'display':    ['64px', { lineHeight: '1',    letterSpacing: '-0.005em' }],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .cmd-card {
+      border-left: 2px solid rgb(var(--accent));
+      padding-left: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .cmd-card--git {
+      border-left-color: rgb(var(--line));
+    }
+    .cmd-card--extra {
+      border-left-color: rgb(var(--muted));
+    }
+    .terminal-block {
+      background: #0E1018;
+      border: 1px solid rgba(var(--line), 0.3);
+      border-radius: 4px;
+      overflow: hidden;
+      font-family: "Space Mono", ui-monospace, monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+    .terminal-block__bar {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      padding: 8px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      background: #181C28;
+    }
+    .terminal-block__dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #2E3248;
+    }
+    .terminal-block__body {
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .t-prompt { color: rgb(var(--accent)); user-select: none; }
+    .t-cmd    { color: #E8E6E2; }
+    .t-out    { color: #8890A8; padding-left: 14px; }
+    .t-cmt    { color: #454B5E; font-style: italic; padding-left: 14px; }
+    .t-gap    { height: 4px; }
+    .tip-inline {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      border: 1px solid rgba(var(--line), 0.4);
+      padding: 10px 14px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: rgb(var(--muted));
+      line-height: 1.6;
+    }
+    .tip-inline--warn {
+      border-color: rgba(237, 95, 56, 0.3);
+    }
+    .concept-box {
+      background: rgba(var(--line), 0.06);
+      border: 1px solid rgba(var(--line), 0.25);
+      padding: 20px 20px 18px;
+      margin-bottom: 2rem;
+    }
+    .concept-box h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: rgb(var(--fg));
+    }
+    .feat-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+      color: rgb(var(--muted));
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+    .feat-dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: rgb(var(--accent));
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+    .feat-dot--muted { background: rgb(var(--muted)); }
+    .branch-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .branch-tag {
+      font-family: "Space Mono", monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 2px;
+      background: rgba(var(--accent), 0.08);
+      color: rgb(var(--accent));
+      min-width: 48px;
+      text-align: center;
+    }
+    .branch-name {
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+      color: rgb(var(--accent));
+      background: #0E1018;
+      padding: 3px 10px;
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .pr-box {
+      border: 1px solid rgba(var(--line), 0.3);
+      margin-top: 12px;
+      overflow: hidden;
+    }
+    .pr-box__header {
+      background: rgba(var(--accent), 0.05);
+      border-bottom: 1px solid rgba(var(--line), 0.2);
+      padding: 8px 14px;
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pr-box__body {
+      padding: 12px 14px;
+      font-size: 13px;
+      color: rgb(var(--muted));
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body class="bg-deep-midnight text-frost-white">
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 nav-blur border-b border-faded-steel">
+    <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" aria-label="MPCraft">
+        <img src="assets/logo@2x.png" alt="MPCraft" class="h-6 w-auto block">
+      </a>
+      <div class="flex items-center gap-5 sm:gap-6">
+        <a href="index.html" class="text-body text-frost-white/80 hover:text-frost-white transition">
+          <span lang="pt">← Início</span>
+          <span lang="es">← Inicio</span>
+        </a>
+        <button id="lang-toggle" type="button" class="toggle-btn lang-toggle" aria-label="Alternar idioma / Cambiar idioma">
+          <span class="lang-opt" data-lang="pt">PT</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-opt" data-lang="es">ES</span>
+        </button>
+        <button id="font-toggle" type="button" class="toggle-btn" aria-label="Alternar tipografia">
+          <span class="font-btn-label">Aa</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 md:pt-24 pb-12">
+    <h1 class="text-heading text-frost-white">Novo Wow</h1>
+    <p class="mt-3 text-body text-muted-ash italic max-w-xl">
+      <span lang="pt">Terminal, Git e ferramentas de linha de comando. Sem pré-requisito, com exemplos reais.</span>
+      <span lang="es">Terminal, Git y herramientas de línea de comandos. Sin prerequisitos, con ejemplos reales.</span>
+    </p>
+    <dl class="meta-grid grid grid-cols-2 sm:grid-cols-4 gap-y-4 gap-x-6 mt-10 pt-8 border-t border-faded-steel">
+      <div>
+        <dt><span lang="pt">Tipo</span><span lang="es">Tipo</span></dt>
+        <dd class="mt-1"><span lang="pt">Referência</span><span lang="es">Referencia</span></dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Temas</span><span lang="es">Temas</span></dt>
+        <dd class="mt-1">Terminal · Git</dd>
+      </div>
+      <div>
+        <dt><span lang="pt">Nível</span><span lang="es">Nivel</span></dt>
+        <dd class="mt-1"><span lang="pt">Iniciante</span><span lang="es">Principiante</span></dd>
+      </div>
+      <div>
+        <dt>Idioma</dt>
+        <dd class="mt-1">PT / ES</dd>
+      </div>
+    </dl>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ═══ TERMINAL ═══ -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">Terminal</span>
+    </header>
+
+    <p class="text-body text-frost-white max-w-2xl mb-4">
+      <span lang="pt">O terminal é uma janela onde você conversa com o computador digitando comandos. Em vez de clicar em pastas e ícones, você navega e manipula arquivos por texto. Assustador na primeira vez, rápido pra sempre depois.</span>
+      <span lang="es">La terminal es una ventana donde te comunicás con la computadora escribiendo comandos. En lugar de hacer clic en carpetas e íconos, navegás y manipulás archivos por texto. Intimidante la primera vez, eficiente para siempre después.</span>
+    </p>
+
+    <!-- $HOME -->
+    <div class="mt-10 concept-box">
+      <h3>
+        <span lang="pt">O que é <code class="font-mono">$HOME</code> e como as pastas se organizam</span>
+        <span lang="es">Qué es <code class="font-mono">$HOME</code> y cómo se organizan las carpetas</span>
+      </h3>
+      <p class="text-body-sm text-muted-ash mb-2">
+        <span lang="pt">O computador organiza tudo em uma árvore de pastas que começa na raiz <strong class="text-frost-white"><code class="font-mono">/</code></strong>. Cada usuário tem uma pasta pessoal dentro de <code class="font-mono">/Users/</code> (Mac) ou <code class="font-mono">/home/</code> (Linux). Essa pasta é o <strong class="text-frost-white"><code class="font-mono">$HOME</code></strong> — o ponto de partida de quase tudo que você vai acessar.</span>
+        <span lang="es">La computadora organiza todo en un árbol de carpetas que empieza en la raíz <strong class="text-frost-white"><code class="font-mono">/</code></strong>. Cada usuario tiene una carpeta personal dentro de <code class="font-mono">/Users/</code> (Mac) o <code class="font-mono">/home/</code> (Linux). Esa carpeta es el <strong class="text-frost-white"><code class="font-mono">$HOME</code></strong> — el punto de partida de casi todo lo que vas a acceder.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar">
+          <div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div>
+          <span style="font-size:10px;color:#3A4060;margin-left:6px;letter-spacing:0.03em">
+            <span lang="pt">estrutura de pastas (Mac)</span>
+            <span lang="es">estructura de carpetas (Mac)</span>
+          </span>
+        </div>
+        <div class="terminal-block__body">
+          <div class="t-out">/</div>
+          <div class="t-out">└── Users/</div>
+          <div class="t-out">    └── ana/  <span class="t-cmt"><span lang="pt"># isso é $HOME — também chamado de ~</span><span lang="es"># esto es $HOME — también llamado ~</span></span></div>
+          <div class="t-out">        ├── Desktop/</div>
+          <div class="t-out">        ├── Documents/</div>
+          <div class="t-out">        ├── Downloads/</div>
+          <div class="t-out">        └── workspace/  <span class="t-cmt"><span lang="pt"># onde geralmente ficam os projetos</span><span lang="es"># donde generalmente están los proyectos</span></span></div>
+        </div>
+      </div>
+      <p class="mt-3 text-body-sm text-muted-ash">
+        <span lang="pt">Quando você abre o terminal, começa em <code class="font-mono">$HOME</code> por padrão. O símbolo <strong class="text-frost-white"><code class="font-mono">~</code></strong> é um atalho para esse caminho — <code class="font-mono">cd ~</code>, <code class="font-mono">cd $HOME</code> e <code class="font-mono">cd /Users/ana</code> levam para o mesmo lugar.</span>
+        <span lang="es">Cuando abrís la terminal, empezás en <code class="font-mono">$HOME</code> por defecto. El símbolo <strong class="text-frost-white"><code class="font-mono">~</code></strong> es un atajo para ese camino — <code class="font-mono">cd ~</code>, <code class="font-mono">cd $HOME</code> y <code class="font-mono">cd /Users/ana</code> llevan al mismo lugar.</span>
+      </p>
+      <div class="tip-inline mt-3">
+        <span class="text-electric-blue shrink-0 select-none">→</span>
+        <span lang="pt">Perdeu o fio e não sabe onde está? <code class="font-mono">pwd</code> mostra o caminho completo. <code class="font-mono">cd ~</code> te leva de volta para casa.</span>
+        <span lang="es">¿Perdiste el hilo y no sabés dónde estás? <code class="font-mono">pwd</code> muestra el camino completo. <code class="font-mono">cd ~</code> te lleva de vuelta a casa.</span>
+      </div>
+    </div>
+
+    <!-- pwd -->
+    <div class="cmd-card mt-10">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-electric-blue">pwd</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">navegação</span><span lang="es">navegación</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt"><strong>Print Working Directory</strong> — mostra em qual pasta você está agora. Quando estiver perdido, rode isso primeiro.</span>
+        <span lang="es"><strong>Print Working Directory</strong> — muestra en qué carpeta estás ahora. Cuando estés perdido, ejecutá esto primero.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">pwd</span></div>
+          <div class="t-out">/Users/ana/workspace/meu-projeto</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- cd -->
+    <div class="cmd-card">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-electric-blue">cd</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">navegação</span><span lang="es">navegación</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt"><strong>Change Directory</strong> — muda de pasta. Como clicar em uma pasta no Finder, mas digitando. <strong><code class="font-mono">cd ..</code></strong> volta uma pasta. <strong><code class="font-mono">cd $HOME</code></strong> (ou <code class="font-mono">cd ~</code>) volta para a pasta pessoal.</span>
+        <span lang="es"><strong>Change Directory</strong> — cambia de carpeta. Como hacer clic en una carpeta en el Finder, pero escribiendo. <strong><code class="font-mono">cd ..</code></strong> sube una carpeta. <strong><code class="font-mono">cd $HOME</code></strong> (o <code class="font-mono">cd ~</code>) va a tu carpeta personal.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">cd projetos</span></div>
+          <div class="t-cmt"><span lang="pt"># entra na pasta "projetos"</span><span lang="es"># entra a la carpeta "proyectos"</span></div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">cd ..</span></div>
+          <div class="t-cmt"><span lang="pt"># volta uma pasta acima</span><span lang="es"># sube una carpeta</span></div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">cd $HOME</span></div>
+          <div class="t-cmt"><span lang="pt"># vai direto para /Users/seu-nome</span><span lang="es"># va directo a /Users/tu-nombre</span></div>
+        </div>
+      </div>
+      <div class="tip-inline">
+        <span class="text-electric-blue shrink-0 select-none">→</span>
+        <span lang="pt">Use <strong class="text-frost-white">Tab</strong> para autocompletar nomes. Digite <code class="font-mono">cd pro</code> e pressione Tab — o terminal completa.</span>
+        <span lang="es">Usá <strong class="text-frost-white">Tab</strong> para autocompletar nombres. Escribí <code class="font-mono">cd pro</code> y presioná Tab — la terminal completa.</span>
+      </div>
+    </div>
+
+    <!-- ls -->
+    <div class="cmd-card">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-electric-blue">ls</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">navegação</span><span lang="es">navegación</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt"><strong>List</strong> — lista arquivos e pastas. Com <strong><code class="font-mono">-la</code></strong> mostra detalhes: tamanho, data, permissões e arquivos ocultos (os que começam com <code class="font-mono">.</code>).</span>
+        <span lang="es"><strong>List</strong> — lista archivos y carpetas. Con <strong><code class="font-mono">-la</code></strong> muestra detalles: tamaño, fecha, permisos y archivos ocultos (los que empiezan con <code class="font-mono">.</code>).</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">ls</span></div>
+          <div class="t-out">README.md   src/   package.json   node_modules/</div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">ls -la</span></div>
+          <div class="t-out">drwxr-xr-x  ana  staff   README.md</div>
+          <div class="t-out">drwxr-xr-x  ana  staff   src/</div>
+          <div class="t-out">-rw-r--r--  ana  staff   .env</div>
+          <div class="t-cmt"><span lang="pt"># .env só aparece com -la</span><span lang="es"># .env solo aparece con -la</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- mkdir -->
+    <div class="cmd-card">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-electric-blue">mkdir</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">arquivos</span><span lang="es">archivos</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt"><strong>Make Directory</strong> — cria uma nova pasta. Com <strong><code class="font-mono">-p</code></strong> cria toda a hierarquia de uma vez, sem erro se a pasta já existir.</span>
+        <span lang="es"><strong>Make Directory</strong> — crea una nueva carpeta. Con <strong><code class="font-mono">-p</code></strong> crea toda la jerarquía de una vez, sin error si la carpeta ya existe.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">mkdir designs</span></div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">mkdir -p assets/icons/svg</span></div>
+          <div class="t-cmt"><span lang="pt"># cria assets/, assets/icons/ e assets/icons/svg/ de uma vez</span><span lang="es"># crea assets/, assets/icons/ y assets/icons/svg/ de una vez</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- cp -->
+    <div class="cmd-card">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-electric-blue">cp</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">arquivos</span><span lang="es">archivos</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt"><strong>Copy</strong> — copia um arquivo para outro lugar. O original é mantido. Com <strong><code class="font-mono">-r</code></strong> (recursivo) copia uma pasta inteira com tudo dentro.</span>
+        <span lang="es"><strong>Copy</strong> — copia un archivo a otro lugar. El original se mantiene. Con <strong><code class="font-mono">-r</code></strong> (recursivo) copia toda una carpeta con su contenido.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">cp relatorio.pdf relatorio-backup.pdf</span></div>
+          <div class="t-cmt"><span lang="pt"># cria uma cópia ao lado</span><span lang="es"># crea una copia al lado</span></div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">cp relatorio.pdf ../documentos/</span></div>
+          <div class="t-cmt"><span lang="pt"># copia para outra pasta</span><span lang="es"># copia a otra carpeta</span></div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">cp -r src/ src-backup/</span></div>
+          <div class="t-cmt"><span lang="pt"># copia a pasta src/ inteira</span><span lang="es"># copia toda la carpeta src/</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- mv -->
+    <div class="cmd-card">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-electric-blue">mv</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">arquivos</span><span lang="es">archivos</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt"><strong>Move</strong> — move <em>ou renomeia</em> um arquivo. O original some do lugar de origem. Para renomear é o mesmo comando: mova para o mesmo lugar com outro nome.</span>
+        <span lang="es"><strong>Move</strong> — mueve <em>o renombra</em> un archivo. El original desaparece del lugar de origen. Para renombrar es el mismo comando: movés al mismo lugar con otro nombre.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">mv rascunho.txt final.txt</span></div>
+          <div class="t-cmt"><span lang="pt"># renomeia (sem mudar de lugar)</span><span lang="es"># renombra (sin cambiar de lugar)</span></div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">mv wireframes/ ../design/</span></div>
+          <div class="t-cmt"><span lang="pt"># move a pasta para outro lugar</span><span lang="es"># mueve la carpeta a otro lugar</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- rm -->
+    <div class="cmd-card">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-electric-blue">rm</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">arquivos</span><span lang="es">archivos</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt"><strong>Remove</strong> — apaga arquivos. Com <strong><code class="font-mono">-rf</code></strong> apaga uma pasta inteira com tudo dentro. <strong>Não vai para a lixeira. Sem desfazer.</strong></span>
+        <span lang="es"><strong>Remove</strong> — borra archivos. Con <strong><code class="font-mono">-rf</code></strong> borra toda una carpeta con todo su contenido. <strong>No va a la papelera. Sin deshacer.</strong></span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">rm arquivo-velho.txt</span></div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">rm -rf pasta-temporaria/</span></div>
+          <div class="t-cmt"><span lang="pt"># apaga a pasta e tudo dentro, sem pedir confirmação</span><span lang="es"># borra la carpeta y todo su contenido, sin pedir confirmación</span></div>
+        </div>
+      </div>
+      <div class="tip-inline tip-inline--warn">
+        <span class="shrink-0 select-none" style="color:#ED5F38">!</span>
+        <span>
+          <strong class="text-frost-white"><span lang="pt">Cuidado com </span><span lang="es">Cuidado con </span><code class="font-mono">rm -rf</code>.</strong>
+          <span lang="pt"> Se errar o nome da pasta, não tem desfazer. Para arquivos importantes, prefira arrastar para a lixeira manualmente.</span>
+          <span lang="es"> Si te equivocás con el nombre, no hay deshacer. Para archivos importantes, preferí arrastrar a la papelera manualmente.</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- cat -->
+    <div class="cmd-card">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-electric-blue">cat</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">visualização</span><span lang="es">visualización</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt">Exibe o conteúdo de um arquivo de texto direto no terminal. Útil para checar um <code class="font-mono">.env</code>, um <code class="font-mono">README</code> ou qualquer arquivo pequeno sem precisar abrir o editor.</span>
+        <span lang="es">Muestra el contenido de un archivo de texto directamente en la terminal. Útil para revisar un <code class="font-mono">.env</code>, un <code class="font-mono">README</code> o cualquier archivo pequeño sin abrir el editor.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">cat README.md</span></div>
+          <div class="t-out"># Meu Projeto</div>
+          <div class="t-out">Este projeto faz X e Y...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- clear & history -->
+    <div class="cmd-card">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-electric-blue">clear &amp; history</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">utilidade</span><span lang="es">utilidad</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt"><strong>clear</strong> limpa a tela (os comandos não somem, só saem do campo de visão). <strong>history</strong> lista todos os comandos já digitados. Use a seta <strong>↑</strong> para reutilizar o último comando sem redigitar.</span>
+        <span lang="es"><strong>clear</strong> limpia la pantalla (los comandos no desaparecen, solo salen del campo visual). <strong>history</strong> lista todos los comandos ya escritos. Usá la flecha <strong>↑</strong> para reutilizar el último comando sin reescribirlo.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">clear</span></div>
+          <div class="t-cmt"># Ctrl+L faz o mesmo</div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">history</span></div>
+          <div class="t-out">  301  cd workspace</div>
+          <div class="t-out">  302  ls -la</div>
+          <div class="t-out">  303  git status</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- alias -->
+    <div class="cmd-card">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-electric-blue">alias</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">atalhos personalizados</span><span lang="es">atajos personalizados</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt">Um <strong>alias</strong> é um apelido que você cria para um comando longo ou que você usa muito. Em vez de digitar o comando inteiro toda vez, você define uma palavra curta que o representa.</span>
+        <span lang="es">Un <strong>alias</strong> es un apodo que creás para un comando largo o que usás mucho. En lugar de escribir el comando entero cada vez, definís una palabra corta que lo representa.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div class="t-cmt"><span lang="pt"># cria um alias na sessão atual</span><span lang="es"># crea un alias en la sesión actual</span></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">alias ll='ls -la'</span></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">ll</span></div>
+          <div class="t-out">drwxr-xr-x  ana  staff   src/</div>
+          <div class="t-gap"></div>
+          <div class="t-cmt"><span lang="pt"># para o alias durar para sempre, adicione no ~/.zshrc</span><span lang="es"># para que el alias dure para siempre, agregalo en ~/.zshrc</span></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">echo "alias ll='ls -la'" >> ~/.zshrc</span></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">source ~/.zshrc</span></div>
+        </div>
+      </div>
+      <div class="tip-inline">
+        <span class="text-electric-blue shrink-0 select-none">→</span>
+        <span lang="pt"><strong class="text-frost-white">Peça ao Claude para criar um alias.</strong> Descreva o que você quer atalhar e o Claude escreve o alias pronto para colar no seu <code class="font-mono">~/.zshrc</code>.</span>
+        <span lang="es"><strong class="text-frost-white">Pedile a Claude que cree un alias.</strong> Describí lo que querés acortar y Claude escribe el alias listo para pegar en tu <code class="font-mono">~/.zshrc</code>.</span>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ═══ GIT & GITHUB ═══ -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-12">
+
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">Git &amp; GitHub</span>
+    </header>
+
+    <p class="text-body text-frost-white max-w-2xl mb-4">
+      <span lang="pt">Git é o sistema que guarda o histórico de tudo que acontece no código. GitHub é onde esses projetos ficam armazenados online e onde as equipes colaboram. Dois conceitos resolvem a maior parte das dúvidas: branch e pull request.</span>
+      <span lang="es">Git es el sistema que guarda el historial de todo lo que pasa en el código. GitHub es donde esos proyectos se almacenan online y donde los equipos colaboran. Dos conceptos resuelven la mayoría de las dudas: branch y pull request.</span>
+    </p>
+
+    <!-- Branch concept -->
+    <div class="mt-10 concept-box">
+      <h3><span lang="pt">O que é uma branch</span><span lang="es">Qué es una branch</span></h3>
+      <p class="text-body-sm text-muted-ash mb-2">
+        <span lang="pt">Imagine que o código é um documento compartilhado. Uma <strong class="text-frost-white">branch</strong> é uma cópia paralela onde você pode fazer mudanças sem afetar a versão principal. Quando terminar e o time revisar, você une tudo de volta.</span>
+        <span lang="es">Imaginá que el código es un documento compartido. Una <strong class="text-frost-white">branch</strong> es una copia paralela donde podés hacer cambios sin afectar la versión principal. Cuando terminás y el equipo revisa, lo unís todo de vuelta.</span>
+      </p>
+      <p class="text-body-sm text-muted-ash mb-3">
+        <span lang="pt">A branch principal é a <strong class="text-frost-white"><code class="font-mono">main</code></strong> ou <strong class="text-frost-white"><code class="font-mono">master</code></strong> — é a versão "oficial" que vai para produção. Todo desenvolvimento novo acontece em branches separadas.</span>
+        <span lang="es">La branch principal es <strong class="text-frost-white"><code class="font-mono">main</code></strong> o <strong class="text-frost-white"><code class="font-mono">master</code></strong> — es la versión "oficial" que va a producción. Todo el desarrollo nuevo sucede en branches separadas.</span>
+      </p>
+      <div class="space-y-2 mt-3">
+        <div class="branch-row">
+          <span class="branch-tag">feature</span>
+          <code class="branch-name">feature/cadastro-pj</code>
+          <span class="text-body-sm text-muted-ash"><span lang="pt">nova funcionalidade</span><span lang="es">nueva funcionalidad</span></span>
+        </div>
+        <div class="branch-row">
+          <span class="branch-tag">fix</span>
+          <code class="branch-name">fix/botao-login-mobile</code>
+          <span class="text-body-sm text-muted-ash"><span lang="pt">correção de bug</span><span lang="es">corrección de bug</span></span>
+        </div>
+        <div class="branch-row">
+          <span class="branch-tag">chore</span>
+          <code class="branch-name">chore/atualiza-dependencias</code>
+          <span class="text-body-sm text-muted-ash"><span lang="pt">manutenção</span><span lang="es">mantenimiento</span></span>
+        </div>
+        <div class="branch-row">
+          <span class="branch-tag">docs</span>
+          <code class="branch-name">docs/readme-setup</code>
+          <span class="text-body-sm text-muted-ash"><span lang="pt">só documentação</span><span lang="es">solo documentación</span></span>
+        </div>
+      </div>
+      <div class="tip-inline mt-3">
+        <span class="text-electric-blue shrink-0 select-none">→</span>
+        <span lang="pt">Padrão: <strong class="text-frost-white">tipo/descricao-com-hifens</strong> — tudo minúsculo, sem espaços, sem acentos.</span>
+        <span lang="es">Patrón: <strong class="text-frost-white">tipo/descripcion-con-guiones</strong> — todo minúsculas, sin espacios, sin tildes.</span>
+      </div>
+    </div>
+
+    <!-- PR concept -->
+    <div class="mt-6 concept-box">
+      <h3><span lang="pt">O que é um Pull Request (PR)</span><span lang="es">Qué es un Pull Request (PR)</span></h3>
+      <p class="text-body-sm text-muted-ash mb-2">
+        <span lang="pt">Um <strong class="text-frost-white">Pull Request</strong> é um pedido para incorporar as mudanças da sua branch de volta à principal. É o momento de revisão: o time pode comentar, aprovar ou pedir ajustes antes de qualquer coisa ir para produção.</span>
+        <span lang="es">Un <strong class="text-frost-white">Pull Request</strong> es una solicitud para incorporar los cambios de tu branch a la principal. Es el momento de revisión: el equipo puede comentar, aprobar o pedir ajustes antes de que algo llegue a producción.</span>
+      </p>
+      <div class="pr-box">
+        <div class="pr-box__header">
+          <span class="text-electric-blue">feature/novo-onboarding</span>
+          <span class="text-muted-ash font-bold">→</span>
+          <span class="text-muted-ash">main</span>
+        </div>
+        <div class="pr-box__body">
+          <span lang="pt">Você criou a feature na sua branch, testou, e abre um PR para o time revisar. Uma vez aprovado, o código é mergeado.</span>
+          <span lang="es">Creaste la feature en tu branch, la testeaste, y abrís un PR para que el equipo revise. Una vez aprobado, el código se mergea.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- git status -->
+    <div class="cmd-card cmd-card--git mt-10">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-frost-white">git status</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">situação atual</span><span lang="es">situación actual</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt">Mostra em qual branch você está, quais arquivos foram modificados e quais estão prontos para commit. <strong>Rode sempre que estiver em dúvida.</strong></span>
+        <span lang="es">Muestra en qué branch estás, qué archivos fueron modificados y cuáles están listos para commit. <strong>Ejecutalo siempre que tengas dudas.</strong></span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">git status</span></div>
+          <div class="t-out">On branch feature/novo-onboarding</div>
+          <div class="t-out">Changes not staged for commit:</div>
+          <div class="t-out">  modified:   src/components/Form.jsx</div>
+          <div class="t-out">Untracked files:</div>
+          <div class="t-out">  src/components/NewStep.jsx</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- git checkout -->
+    <div class="cmd-card cmd-card--git">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-frost-white">git checkout</code>
+        <span class="font-mono text-caption text-muted-ash uppercase">branches</span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt">Muda entre branches. <strong><code class="font-mono">git checkout &lt;branch&gt;</code></strong> muda para uma já existente. <strong><code class="font-mono">git checkout -b &lt;branch&gt;</code></strong> cria uma nova branch e já muda para ela.</span>
+        <span lang="es">Cambia entre branches. <strong><code class="font-mono">git checkout &lt;branch&gt;</code></strong> cambia a una ya existente. <strong><code class="font-mono">git checkout -b &lt;branch&gt;</code></strong> crea una nueva branch y cambia a ella.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">git checkout main</span></div>
+          <div class="t-out">Switched to branch 'main'</div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">git checkout -b feature/pagamento-pix</span></div>
+          <div class="t-out">Switched to a new branch 'feature/pagamento-pix'</div>
+          <div class="t-cmt"><span lang="pt"># criou E já mudou para a nova branch</span><span lang="es"># creó Y cambió a la nueva branch</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- git pull -->
+    <div class="cmd-card cmd-card--git">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-frost-white">git pull</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">sincronizar</span><span lang="es">sincronizar</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt">Baixa as alterações do GitHub e atualiza o código local. <strong>Rode antes de começar a trabalhar</strong> para garantir que está com a versão mais recente.</span>
+        <span lang="es">Descarga los cambios de GitHub y actualiza el código local. <strong>Ejecutalo antes de empezar a trabajar</strong> para asegurarte de tener la versión más reciente.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">git pull</span></div>
+          <div class="t-out">Updating a3f1b2c..d4e5f6a</div>
+          <div class="t-out">Fast-forward</div>
+          <div class="t-out"> src/index.js | 3 +++</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- git add -->
+    <div class="cmd-card cmd-card--git">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-frost-white">git add</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">preparar commit</span><span lang="es">preparar commit</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt">Seleciona quais arquivos modificados vão entrar no próximo commit. <strong><code class="font-mono">git add .</code></strong> adiciona tudo. Você também pode adicionar arquivos específicos um a um.</span>
+        <span lang="es">Selecciona qué archivos modificados entrarán en el próximo commit. <strong><code class="font-mono">git add .</code></strong> agrega todo. También podés agregar archivos específicos uno por uno.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">git add .</span></div>
+          <div class="t-cmt"><span lang="pt"># adiciona tudo que foi modificado</span><span lang="es"># agrega todo lo que fue modificado</span></div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">git add src/Form.jsx</span></div>
+          <div class="t-cmt"><span lang="pt"># adiciona só aquele arquivo</span><span lang="es"># agrega solo ese archivo</span></div>
+        </div>
+      </div>
+      <div class="tip-inline">
+        <span class="text-electric-blue shrink-0 select-none">→</span>
+        <span lang="pt">Depois do <code class="font-mono">git add</code>, rode <strong class="text-frost-white"><code class="font-mono">git status</code></strong> para confirmar o que ficou selecionado — aparece em verde.</span>
+        <span lang="es">Después del <code class="font-mono">git add</code>, ejecutá <strong class="text-frost-white"><code class="font-mono">git status</code></strong> para confirmar qué quedó seleccionado — aparece en verde.</span>
+      </div>
+    </div>
+
+    <!-- git commit -->
+    <div class="cmd-card cmd-card--git">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-frost-white">git commit</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">salvar alterações</span><span lang="es">guardar cambios</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt">Cria um "ponto de save" com os arquivos preparados. A mensagem descreve o que mudou. Use o padrão <strong><code class="font-mono">tipo(escopo): descrição</code></strong> para manter o histórico legível.</span>
+        <span lang="es">Crea un "punto de guardado" con los archivos preparados. El mensaje describe qué cambió. Usá el patrón <strong><code class="font-mono">tipo(scope): descripción</code></strong> para mantener el historial legible.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">git commit -m "feat(onboarding): adiciona step de email"</span></div>
+          <div class="t-out">[feature/novo-onboarding a1b2c3d]</div>
+          <div class="t-out"> 2 files changed, 34 insertions(+), 1 deletion(-)</div>
+        </div>
+      </div>
+      <div class="tip-inline">
+        <span class="text-electric-blue shrink-0 select-none">→</span>
+        <span lang="pt">Prefixos comuns: <strong class="text-frost-white">feat</strong> (nova feature), <strong class="text-frost-white">fix</strong> (correção), <strong class="text-frost-white">chore</strong> (manutenção), <strong class="text-frost-white">docs</strong> (documentação).</span>
+        <span lang="es">Prefijos comunes: <strong class="text-frost-white">feat</strong> (nueva feature), <strong class="text-frost-white">fix</strong> (corrección), <strong class="text-frost-white">chore</strong> (mantenimiento), <strong class="text-frost-white">docs</strong> (documentación).</span>
+      </div>
+    </div>
+
+    <!-- git push -->
+    <div class="cmd-card cmd-card--git">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-frost-white">git push</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">enviar para o GitHub</span><span lang="es">enviar a GitHub</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt">Envia os commits para o GitHub. Na primeira vez em uma branch nova, use <strong><code class="font-mono">-u origin &lt;branch&gt;</code></strong> para conectar. Nas vezes seguintes, só <code class="font-mono">git push</code> já basta.</span>
+        <span lang="es">Envía los commits a GitHub. La primera vez en una branch nueva, usá <strong><code class="font-mono">-u origin &lt;branch&gt;</code></strong> para conectar. Las siguientes veces, solo <code class="font-mono">git push</code> es suficiente.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">git push -u origin feature/pagamento-pix</span></div>
+          <div class="t-cmt"><span lang="pt"># primeira vez: conecta branch local com a remota</span><span lang="es"># primera vez: conecta branch local con la remota</span></div>
+          <div class="t-out">Branch 'feature/pagamento-pix' set up to track remote.</div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">git push</span></div>
+          <div class="t-cmt"><span lang="pt"># nas próximas vezes, só isso</span><span lang="es"># las siguientes veces, solo esto</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- git log -->
+    <div class="cmd-card cmd-card--git">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-frost-white">git log</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">histórico</span><span lang="es">historial</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-1">
+        <span lang="pt">Mostra o histórico de commits da branch atual: quem fez, quando, e o que mudou. Use <strong><code class="font-mono">--oneline</code></strong> para ver uma linha por commit, mais fácil de ler.</span>
+        <span lang="es">Muestra el historial de commits de la branch actual: quién hizo, cuándo, y qué cambió. Usá <strong><code class="font-mono">--oneline</code></strong> para ver una línea por commit, más fácil de leer.</span>
+      </p>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">git log --oneline</span></div>
+          <div class="t-out">d4e5f6a feat(onboarding): adiciona step de email</div>
+          <div class="t-out">a3f1b2c fix(form): corrige validação de CPF no mobile</div>
+          <div class="t-out">9c2a1d8 chore: atualiza dependências</div>
+          <div class="t-cmt"><span lang="pt"># pressione Q para sair</span><span lang="es"># presioná Q para salir</span></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ═══ EXTRAS ═══ -->
+  <section class="max-w-3xl mx-auto px-6 pt-12 pb-16">
+
+    <header class="mb-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">Extras</span>
+    </header>
+
+    <p class="text-body text-frost-white max-w-2xl mb-4">
+      <span lang="pt">Duas ferramentas que tornam o dia a dia no terminal significativamente melhor — e que você vai querer instalar cedo.</span>
+      <span lang="es">Dos herramientas que hacen el día a día en la terminal significativamente mejor — y que vas a querer instalar pronto.</span>
+    </p>
+
+    <!-- zsh -->
+    <div class="cmd-card cmd-card--extra mt-10">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-muted-ash">zsh</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">shell aprimorado</span><span lang="es">shell mejorado</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-3">
+        <span lang="pt">O terminal que você usa é, na verdade, um programa chamado <strong>shell</strong>. O shell padrão de anos atrás era o <strong>bash</strong>. O <strong>zsh</strong> é uma versão mais moderna e inteligente. No Mac, o zsh já é o padrão desde 2019 (macOS Catalina).</span>
+        <span lang="es">La terminal que usás es, en realidad, un programa llamado <strong>shell</strong>. El shell por defecto de años atrás era <strong>bash</strong>. El <strong>zsh</strong> es una versión más moderna e inteligente. En Mac, zsh ya es el default desde 2019 (macOS Catalina).</span>
+      </p>
+      <div class="space-y-2 mb-3">
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Autocompletar mais inteligente</span><span lang="es">Autocompletar más inteligente</span></strong> — <span lang="pt">pressione Tab e o zsh mostra opções.</span><span lang="es">presioná Tab y zsh muestra opciones.</span></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Histórico compartilhado entre janelas</span><span lang="es">Historial compartido entre ventanas</span></strong> — <span lang="pt">um comando rodado em outra aba aparece no histórico de todas.</span><span lang="es">un comando ejecutado en otra pestaña aparece en el historial de todas.</span></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Correção de typos</span><span lang="es">Corrección de typos</span></strong> — <span lang="pt">digitou <code class="font-mono">git statsu</code>? O zsh pergunta se você quis dizer <code class="font-mono">git status</code>.</span><span lang="es">¿escribiste <code class="font-mono">git statsu</code>? El zsh pregunta si quisiste decir <code class="font-mono">git status</code>.</span></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white">Oh My Zsh</strong> — <span lang="pt">um pacote de plugins e temas que deixa o terminal customizado e adiciona atalhos úteis. Vale instalar depois do zsh.</span><span lang="es">un paquete de plugins y temas que personaliza el terminal y agrega atajos útiles. Vale instalarlo después del zsh.</span></div>
+        </div>
+      </div>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">brew install zsh</span></div>
+          <div class="t-gap"></div>
+          <div><span class="t-prompt">$</span> <span class="t-cmd">zsh --version</span></div>
+          <div class="t-out">zsh 5.9 (arm-apple-darwin24.0)</div>
+        </div>
+      </div>
+      <div class="tip-inline">
+        <span class="text-electric-blue shrink-0 select-none">→</span>
+        <span lang="pt">No Mac moderno, o zsh já vem instalado. Rode <code class="font-mono">echo $SHELL</code> — se aparecer <code class="font-mono">/bin/zsh</code>, você já está usando.</span>
+        <span lang="es">En Mac moderno, zsh ya viene instalado. Ejecutá <code class="font-mono">echo $SHELL</code> — si aparece <code class="font-mono">/bin/zsh</code>, ya lo estás usando.</span>
+      </div>
+    </div>
+
+    <!-- iTerm2 -->
+    <div class="cmd-card cmd-card--extra">
+      <div class="flex flex-wrap items-baseline gap-3 mb-2">
+        <code class="font-mono text-subheading text-muted-ash">iTerm2</code>
+        <span class="font-mono text-caption text-muted-ash uppercase"><span lang="pt">emulador de terminal</span><span lang="es">emulador de terminal</span></span>
+      </div>
+      <p class="text-body text-frost-white mb-3">
+        <span lang="pt">O Mac vem com um terminal padrão chamado <strong>Terminal.app</strong>. Ele funciona, mas tem limitações. O <strong>iTerm2</strong> é um substituto gratuito com bem mais recursos — a maioria dos devs no Mac usa iTerm2 no lugar do terminal nativo.</span>
+        <span lang="es">El Mac viene con una terminal por defecto llamada <strong>Terminal.app</strong>. Funciona, pero tiene limitaciones. El <strong>iTerm2</strong> es un reemplazo gratuito con muchos más recursos — la mayoría de los devs en Mac usa iTerm2 en lugar de la terminal nativa.</span>
+      </p>
+      <div class="space-y-2 mb-3">
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Painéis divididos</span><span lang="es">Paneles divididos</span></strong> — <span lang="pt">duas ou mais janelas de terminal lado a lado (Cmd+D para dividir verticalmente).</span><span lang="es">dos o más ventanas de terminal lado a lado (Cmd+D para dividir verticalmente).</span></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Busca no histórico visual</span><span lang="es">Búsqueda en el historial visual</span></strong> — <span lang="pt">Cmd+F abre uma busca que destaca os resultados diretamente na tela.</span><span lang="es">Cmd+F abre una búsqueda que resalta los resultados directamente en la pantalla.</span></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Melhor renderização de fontes</span><span lang="es">Mejor renderizado de fuentes</span></strong> — <span lang="pt">suporte nativo a fontes com ligaturas (como Fira Code).</span><span lang="es">soporte nativo para fuentes con ligaturas (como Fira Code).</span></div>
+        </div>
+        <div class="feat-row">
+          <div class="feat-dot feat-dot--muted"></div>
+          <div><strong class="text-frost-white"><span lang="pt">Perfis e temas</span><span lang="es">Perfiles y temas</span></strong> — <span lang="pt">salve configurações de cor, fonte e tamanho para diferentes contextos.</span><span lang="es">guardá configuraciones de color, fuente y tamaño para diferentes contextos.</span></div>
+        </div>
+      </div>
+      <div class="terminal-block">
+        <div class="terminal-block__bar"><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div><div class="terminal-block__dot"></div></div>
+        <div class="terminal-block__body">
+          <div><span class="t-prompt">$</span> <span class="t-cmd">brew install --cask iterm2</span></div>
+          <div class="t-out">==> Downloading iTerm2...</div>
+          <div class="t-out">iterm2 was successfully installed!</div>
+        </div>
+      </div>
+      <div class="tip-inline">
+        <span class="text-electric-blue shrink-0 select-none">→</span>
+        <span lang="pt">Depois de instalar o iTerm2, configure o shell como zsh nas preferências se ainda não estiver. As duas ferramentas juntas fazem uma diferença grande no conforto do dia a dia.</span>
+        <span lang="es">Después de instalar iTerm2, configurá el shell como zsh en las preferencias si aún no está así. Las dos herramientas juntas hacen una gran diferencia en el día a día.</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-3xl mx-auto px-6 pt-8 pb-16 border-t border-faded-steel">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
+      <span class="font-mono text-caption text-muted-ash uppercase">© 2026 MPCraft · Mercado Pago</span>
+      <a href="index.html" class="font-mono text-caption text-muted-ash uppercase link-hover-underline">
+        <span lang="pt">← Início</span>
+        <span lang="es">← Inicio</span>
+      </a>
+    </div>
+  </footer>
+
+  <script src="assets/theme.js"></script>
+</body>
+</html>
